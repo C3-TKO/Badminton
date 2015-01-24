@@ -1,3 +1,6 @@
+.DS_STORE
+.vagrant
+Vagrantfile
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
