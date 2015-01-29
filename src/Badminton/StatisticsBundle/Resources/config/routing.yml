@@ -1,0 +1,3 @@
+statistics_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: StatisticsBundle:Default:index }
