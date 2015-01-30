@@ -1,4 +1,0 @@
-services:
-#    statistics.example:
-#        class: Badminton\StatisticsBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
