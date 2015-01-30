@@ -1,0 +1,30 @@
+crud_round_:
+    path:     /
+    defaults: { _controller: "AppBundle:Round:index" }
+
+crud_round__show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Round:show" }
+
+crud_round__new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Round:new" }
+
+crud_round__create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Round:create" }
+    requirements: { _method: post }
+
+crud_round__edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Round:edit" }
+
+crud_round__update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Round:update" }
+    requirements: { _method: post|put }
+
+crud_round__delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Round:delete" }
+    requirements: { _method: post|delete }
