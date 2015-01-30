@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="idSeason" type="boolean" column="id_season" nullable="false"/>
+    <field name="idSeason" type="smallint" column="id_season" nullable="false"/>
     <field name="date" type="date" column="date" nullable="true"/>
   </entity>
 </doctrine-mapping>
