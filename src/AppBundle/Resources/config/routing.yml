@@ -1,3 +1,7 @@
+crud_round:
+    resource: "@AppBundle/Resources/config/routing/round.yml"
+    prefix:   /crud/round/
+
 crud_game:
     resource: "@AppBundle/Resources/config/routing/game.yml"
     prefix:   /crud/game/
