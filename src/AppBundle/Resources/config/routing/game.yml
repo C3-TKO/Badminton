@@ -1,0 +1,30 @@
+crud_game_:
+    path:     /
+    defaults: { _controller: "AppBundle:Game:index" }
+
+crud_game__show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Game:show" }
+
+crud_game__new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Game:new" }
+
+crud_game__create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Game:create" }
+    requirements: { _method: post }
+
+crud_game__edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Game:edit" }
+
+crud_game__update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Game:update" }
+    requirements: { _method: post|put }
+
+crud_game__delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Game:delete" }
+    requirements: { _method: post|delete }
