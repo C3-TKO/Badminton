@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="AppBundle\Entity\Match" table="match">
+  <entity name="AppBundle\Entity\Game" table="game">
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="idMatchday" type="boolean" column="id_matchday" nullable="false"/>
+    <field name="idRound" type="boolean" column="id_round" nullable="false"/>
     <field name="idTeamA" type="boolean" column="id_team_a" nullable="false"/>
     <field name="idTeamB" type="boolean" column="id_team_b" nullable="false"/>
     <field name="teamAScore" type="boolean" column="team_a_score" nullable="false"/>

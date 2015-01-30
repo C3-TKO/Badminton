@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Matchday
+ * Round
  */
-class Matchday
+class Round
 {
     /**
      * @var boolean
@@ -29,7 +29,7 @@ class Matchday
      * Set idSeason
      *
      * @param boolean $idSeason
-     * @return Matchday
+     * @return Round
      */
     public function setIdSeason($idSeason)
     {
@@ -52,7 +52,7 @@ class Matchday
      * Set date
      *
      * @param \DateTime $date
-     * @return Matchday
+     * @return Round
      */
     public function setDate($date)
     {

@@ -5,14 +5,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Match
+ * Game
  */
-class Match
+class Game
 {
     /**
      * @var boolean
      */
-    private $idMatchday;
+    private $idRound;
 
     /**
      * @var boolean
@@ -41,33 +41,33 @@ class Match
 
 
     /**
-     * Set idMatchday
+     * Set idRound
      *
-     * @param boolean $idMatchday
-     * @return Match
+     * @param boolean $idRound
+     * @return Game
      */
-    public function setIdMatchday($idMatchday)
+    public function setIdRound($idRound)
     {
-        $this->idMatchday = $idMatchday;
+        $this->idRound = $idRound;
 
         return $this;
     }
 
     /**
-     * Get idMatchday
+     * Get idRound
      *
      * @return boolean 
      */
-    public function getIdMatchday()
+    public function getIdRound()
     {
-        return $this->idMatchday;
+        return $this->idRound;
     }
 
     /**
      * Set idTeamA
      *
      * @param boolean $idTeamA
-     * @return Match
+     * @return Game
      */
     public function setIdTeamA($idTeamA)
     {
@@ -90,7 +90,7 @@ class Match
      * Set idTeamB
      *
      * @param boolean $idTeamB
-     * @return Match
+     * @return Game
      */
     public function setIdTeamB($idTeamB)
     {
@@ -113,7 +113,7 @@ class Match
      * Set teamAScore
      *
      * @param boolean $teamAScore
-     * @return Match
+     * @return Game
      */
     public function setTeamAScore($teamAScore)
     {
@@ -136,7 +136,7 @@ class Match
      * Set teamBScore
      *
      * @param boolean $teamBScore
-     * @return Match
+     * @return Game
      */
     public function setTeamBScore($teamBScore)
     {
