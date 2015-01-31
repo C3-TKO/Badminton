@@ -1,3 +1,7 @@
+crud_season:
+    resource: "@AppBundle/Resources/config/routing/season.yml"
+    prefix:   /crud/season/
+
 crud_player:
     resource: "@AppBundle/Resources/config/routing/player.yml"
     prefix:   /crud/player/
