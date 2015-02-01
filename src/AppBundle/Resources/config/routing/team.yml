@@ -1,0 +1,30 @@
+crud_team_:
+    path:     /
+    defaults: { _controller: "AppBundle:Team:index" }
+
+crud_team__show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Team:show" }
+
+crud_team__new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Team:new" }
+
+crud_team__create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Team:create" }
+    requirements: { _method: post }
+
+crud_team__edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Team:edit" }
+
+crud_team__update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Team:update" }
+    requirements: { _method: post|put }
+
+crud_team__delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Team:delete" }
+    requirements: { _method: post|delete }

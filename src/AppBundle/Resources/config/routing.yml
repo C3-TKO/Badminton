@@ -1,0 +1,26 @@
+crud_season:
+    resource: "@AppBundle/Resources/config/routing/season.yml"
+    prefix:   /crud/season/
+
+crud_player:
+    resource: "@AppBundle/Resources/config/routing/player.yml"
+    prefix:   /crud/player/
+
+crud_team:
+    resource: "@AppBundle/Resources/config/routing/team.yml"
+    prefix:   /crud/team/
+
+crud_round:
+    resource: "@AppBundle/Resources/config/routing/round.yml"
+    prefix:   /crud/round/
+
+crud_game:
+    resource: "@AppBundle/Resources/config/routing/game.yml"
+    prefix:   /crud/game/
+
+#app_homepage:
+#    path:     /hello/{name}
+#    defaults: { _controller: AppBundle:Default:index }
+homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
