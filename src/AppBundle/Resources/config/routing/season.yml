@@ -1,0 +1,30 @@
+crud_season_:
+    path:     /
+    defaults: { _controller: "AppBundle:Season:index" }
+
+crud_season__show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Season:show" }
+
+crud_season__new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Season:new" }
+
+crud_season__create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Season:create" }
+    requirements: { _method: post }
+
+crud_season__edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Season:edit" }
+
+crud_season__update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Season:update" }
+    requirements: { _method: post|put }
+
+crud_season__delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Season:delete" }
+    requirements: { _method: post|delete }

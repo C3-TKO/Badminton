@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Team" table="team">
+    <unique-constraints>
+      <unique-constraint name="team_combination" columns="id_player_a,id_player_b"/>
+    </unique-constraints>
+    <id name="id" type="smallint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idPlayerA" type="smallint" column="id_player_a" nullable="false"/>
+    <field name="idPlayerB" type="smallint" column="id_player_b" nullable="false"/>
+    <field name="name" type="string" column="name" nullable="true"/>
+  </entity>
+</doctrine-mapping>

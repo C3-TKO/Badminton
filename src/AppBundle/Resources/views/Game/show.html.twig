@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Game</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idround</th>
+                <td>{{ entity.idRound }}</td>
+            </tr>
+            <tr>
+                <th>Idteama</th>
+                <td>{{ entity.idTeamA }}</td>
+            </tr>
+            <tr>
+                <th>Idteamb</th>
+                <td>{{ entity.idTeamB }}</td>
+            </tr>
+            <tr>
+                <th>Teamascore</th>
+                <td>{{ entity.teamAScore }}</td>
+            </tr>
+            <tr>
+                <th>Teambscore</th>
+                <td>{{ entity.teamBScore }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('crud_game_') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('crud_game__edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
