@@ -31,7 +31,9 @@
         "sensio/distribution-bundle": "~3.0.12",
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
-        "braincrafted/bootstrap-bundle": "dev-master"
+        "braincrafted/bootstrap-bundle": "dev-master",
+        "twbs/bootstrap-sass": "3.3.*",
+        "jquery/jquery":  "1.11.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
