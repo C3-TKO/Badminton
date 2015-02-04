@@ -1,4 +1,7 @@
 {% extends '::layout.html.twig' %}
+{% block body_id %}
+    id="login"
+{% endblock %}
 
 {% block body %}
     <form class="form-horizontal" action="{{ path('login_check') }}" method="post">
