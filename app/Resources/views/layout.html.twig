@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- TODO: Decide whether to zoom or not to zoom - that's the question @see: http://getbootstrap.com/css/#overview-mobile
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>{% block title %}Badminton{% endblock %}</title>
         {% block stylesheets %}
             <!-- Bootstrap -->
@@ -17,6 +19,7 @@
     </head>
     <body>
         {% include '::navbar.html.twig' %}
+        <div class="container-fluid">
         {% block body %}{% endblock %}
         {% block javascripts %}
         <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
@@ -24,5 +27,6 @@
         <!-- Include all JavaScripts, compiled by Assetic -->
         <script src="{{ asset('js/bootstrap.js') }}"></script>
         {% endblock %}
+        </div>
     </body>
 </html>
