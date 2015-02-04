@@ -1,0 +1,19 @@
+<div class="navbar navbar-inverse">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('home') }}">Badminton</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav navbar-right">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <li><a class="link" href="{{ path('logout') }}">Logout</a></li>
+            {% else %}
+            <li><a href="{{ path('login') }}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
