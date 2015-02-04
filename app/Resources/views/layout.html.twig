@@ -14,14 +14,7 @@
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
     </head>
     <body>
-    <ul>
-        <li>
-            <a href="{{ path('login') }}">Login</a>
-        </li>
-        <li>
-            <a href="{{ path('logout') }}">Logout</a>
-        </li>
-    </ul>
+        {% include '::navbar.html.twig' %}
         {% block body %}{% endblock %}
         {% block javascripts %}
         <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
