@@ -30,4 +30,19 @@ AppBundle\Entity\Team:
             nullable: true
             length: 45
             fixed: false
+
+    manyToOne:
+        teams_a:
+            targetEntity: Player
+            inversedBy: team_player_a
+            joinColumn:
+                name: id_player_a
+                referencedColumnName: id
+        teams_b:
+            targetEntity: Player
+            inversedBy: team_player_b
+            joinColumn:
+                name: id_player_b
+                referencedColumnName: id
+
     lifecycleCallbacks: {  }
