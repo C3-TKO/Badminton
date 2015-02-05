@@ -18,4 +18,13 @@ AppBundle\Entity\Round:
         date:
             type: date
             nullable: true
+
+    manyToOne:
+        season:
+            targetEntity: Season
+            inversedBy: rounds
+            joinColumn:
+                name: id_season
+                referencedColumnName: id
+
     lifecycleCallbacks: {  }

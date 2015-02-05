@@ -52,4 +52,77 @@ class Season
     {
         return $this->id;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $rounds;
+
+    /**
+     * @var \AppBundle\Entity\Season
+     */
+    private $season;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->rounds = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add rounds
+     *
+     * @param \AppBundle\Entity\Round $rounds
+     * @return Season
+     */
+    public function addRound(\AppBundle\Entity\Round $rounds)
+    {
+        $this->rounds[] = $rounds;
+
+        return $this;
+    }
+
+    /**
+     * Remove rounds
+     *
+     * @param \AppBundle\Entity\Round $rounds
+     */
+    public function removeRound(\AppBundle\Entity\Round $rounds)
+    {
+        $this->rounds->removeElement($rounds);
+    }
+
+    /**
+     * Get rounds
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRounds()
+    {
+        return $this->rounds;
+    }
+
+    /**
+     * Set season
+     *
+     * @param \AppBundle\Entity\Season $season
+     * @return Season
+     */
+    public function setSeason(\AppBundle\Entity\Season $season = null)
+    {
+        $this->season = $season;
+
+        return $this;
+    }
+
+    /**
+     * Get season
+     *
+     * @return \AppBundle\Entity\Season 
+     */
+    public function getSeason()
+    {
+        return $this->season;
+    }
 }

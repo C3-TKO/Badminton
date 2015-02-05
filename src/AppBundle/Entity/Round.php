@@ -80,4 +80,32 @@ class Round
     {
         return $this->id;
     }
+    /**
+     * @var \AppBundle\Entity\Season
+     */
+    private $season;
+
+
+    /**
+     * Set season
+     *
+     * @param \AppBundle\Entity\Season $season
+     * @return Round
+     */
+    public function setSeason(\AppBundle\Entity\Season $season = null)
+    {
+        $this->season = $season;
+
+        return $this;
+    }
+
+    /**
+     * Get season
+     *
+     * @return \AppBundle\Entity\Season 
+     */
+    public function getSeason()
+    {
+        return $this->season;
+    }
 }
