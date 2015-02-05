@@ -37,9 +37,9 @@ AppBundle\Entity\Game:
             column: team_b_score
 
     manyToOne:
-        round:
+        round_2_games:
             targetEntity: Round
-            inversedBy: games
+            inversedBy: games_2_round
             joinColumn:
                 name: id_round
                 referencedColumnName: id
