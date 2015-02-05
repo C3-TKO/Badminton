@@ -3,7 +3,7 @@ AppBundle\Entity\Season:
     table: season
     id:
         id:
-            type: integer
+            type: smallint
             nullable: false
             unsigned: false
             id: true
@@ -16,3 +16,7 @@ AppBundle\Entity\Season:
             length: 45
             fixed: false
     lifecycleCallbacks: {  }
+    oneToMany:
+        rounds:
+            targetEntity: Round
+            mappedBy: season
