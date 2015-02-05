@@ -3,7 +3,7 @@ AppBundle\Entity\Season:
     table: season
     id:
         id:
-            type: smallint
+            type: integer
             nullable: false
             unsigned: false
             id: true
