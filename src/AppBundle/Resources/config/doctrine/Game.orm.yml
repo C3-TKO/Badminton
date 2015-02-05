@@ -11,7 +11,7 @@ AppBundle\Entity\Game:
                 strategy: IDENTITY
     fields:
         idRound:
-            type: smallint
+            type: integer
             nullable: false
             unsigned: false
             column: id_round
@@ -35,4 +35,13 @@ AppBundle\Entity\Game:
             nullable: false
             unsigned: false
             column: team_b_score
+
+    manyToOne:
+        round:
+            targetEntity: Round
+            inversedBy: games
+            joinColumn:
+                name: id_round
+                referencedColumnName: id
+
     lifecycleCallbacks: {  }

@@ -164,4 +164,32 @@ class Game
     {
         return $this->id;
     }
+    /**
+     * @var \AppBundle\Entity\Round
+     */
+    private $round;
+
+
+    /**
+     * Set round
+     *
+     * @param \AppBundle\Entity\Round $round
+     * @return Game
+     */
+    public function setRound(\AppBundle\Entity\Round $round = null)
+    {
+        $this->round = $round;
+
+        return $this;
+    }
+
+    /**
+     * Get round
+     *
+     * @return \AppBundle\Entity\Round 
+     */
+    public function getRound()
+    {
+        return $this->round;
+    }
 }
