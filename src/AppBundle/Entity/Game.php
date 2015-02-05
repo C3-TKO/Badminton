@@ -293,4 +293,32 @@ class Game
     {
         return $this->games_2_team_b;
     }
+    /**
+     * @var \AppBundle\Entity\Round
+     */
+    private $round_2_games;
+
+
+    /**
+     * Set round_2_games
+     *
+     * @param \AppBundle\Entity\Round $round2Games
+     * @return Game
+     */
+    public function setRound2Games(\AppBundle\Entity\Round $round2Games = null)
+    {
+        $this->round_2_games = $round2Games;
+
+        return $this;
+    }
+
+    /**
+     * Get round_2_games
+     *
+     * @return \AppBundle\Entity\Round 
+     */
+    public function getRound2Games()
+    {
+        return $this->round_2_games;
+    }
 }

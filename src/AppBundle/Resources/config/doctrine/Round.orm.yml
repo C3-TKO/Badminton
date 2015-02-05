@@ -20,16 +20,16 @@ AppBundle\Entity\Round:
             nullable: true
 
     manyToOne:
-        season:
+        season_2_rounds:
             targetEntity: Season
-            inversedBy: rounds
+            inversedBy: rounds_2_season
             joinColumn:
                 name: id_season
                 referencedColumnName: id
 
     oneToMany:
-        games:
+        games_2_round:
             targetEntity: Game
-            mappedBy: round
+            mappedBy: round_2_games
 
     lifecycleCallbacks: {  }

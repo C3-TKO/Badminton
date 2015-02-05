@@ -32,15 +32,15 @@ AppBundle\Entity\Team:
             fixed: false
 
     manyToOne:
-        teams_a:
+        teams_2_player_a:
             targetEntity: Player
-            inversedBy: team_player_a
+            inversedBy: player_a_2_teams
             joinColumn:
                 name: id_player_a
                 referencedColumnName: id
-        teams_b:
+        teams_2_player_b:
             targetEntity: Player
-            inversedBy: team_player_b
+            inversedBy: player_b_2_teams
             joinColumn:
                 name: id_player_b
                 referencedColumnName: id

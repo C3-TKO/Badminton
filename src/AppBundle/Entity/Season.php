@@ -125,4 +125,42 @@ class Season
     {
         return $this->season;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $rounds_2_season;
+
+
+    /**
+     * Add rounds_2_season
+     *
+     * @param \AppBundle\Entity\Round $rounds2Season
+     * @return Season
+     */
+    public function addRounds2Season(\AppBundle\Entity\Round $rounds2Season)
+    {
+        $this->rounds_2_season[] = $rounds2Season;
+
+        return $this;
+    }
+
+    /**
+     * Remove rounds_2_season
+     *
+     * @param \AppBundle\Entity\Round $rounds2Season
+     */
+    public function removeRounds2Season(\AppBundle\Entity\Round $rounds2Season)
+    {
+        $this->rounds_2_season->removeElement($rounds2Season);
+    }
+
+    /**
+     * Get rounds_2_season
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRounds2Season()
+    {
+        return $this->rounds_2_season;
+    }
 }

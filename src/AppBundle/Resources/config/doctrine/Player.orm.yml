@@ -16,13 +16,12 @@ AppBundle\Entity\Player:
             length: 45
             fixed: false
 
-
     oneToMany:
-        team_player_a:
+        player_a_2_teams:
             targetEntity: Team
-            mappedBy: teams_a
-        team_player_b:
+            mappedBy: teams_2_player_a
+        player_b_2_teams:
             targetEntity: Team
-            mappedBy: teams_b
+            mappedBy: teams_2_player_b
 
     lifecycleCallbacks: {  }
