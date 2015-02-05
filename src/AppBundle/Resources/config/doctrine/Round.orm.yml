@@ -1,0 +1,21 @@
+AppBundle\Entity\Round:
+    type: entity
+    table: round
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idSeason:
+            type: smallint
+            nullable: false
+            unsigned: false
+            column: id_season
+        date:
+            type: date
+            nullable: true
+    lifecycleCallbacks: {  }

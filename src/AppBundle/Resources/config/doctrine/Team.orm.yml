@@ -1,0 +1,33 @@
+AppBundle\Entity\Team:
+    type: entity
+    table: team
+    uniqueConstraints:
+        team_combination:
+            columns:
+                - id_player_a
+                - id_player_b
+    id:
+        id:
+            type: smallint
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idPlayerA:
+            type: smallint
+            nullable: false
+            unsigned: false
+            column: id_player_a
+        idPlayerB:
+            type: smallint
+            nullable: false
+            unsigned: false
+            column: id_player_b
+        name:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+    lifecycleCallbacks: {  }
