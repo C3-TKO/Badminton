@@ -27,4 +27,9 @@ AppBundle\Entity\Round:
                 name: id_season
                 referencedColumnName: id
 
+    oneToMany:
+        games:
+            targetEntity: Game
+            mappedBy: round
+
     lifecycleCallbacks: {  }
