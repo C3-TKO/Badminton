@@ -43,5 +43,17 @@ AppBundle\Entity\Game:
             joinColumn:
                 name: id_round
                 referencedColumnName: id
+        games_2_team_a:
+            targetEntity: Team
+            inversedBy: team_player_a_2_game
+            joinColumn:
+                name: id_team_a
+                referencedColumnName: id
+        games_2_team_b:
+            targetEntity: Team
+            inversedBy: team_player_b_2_game
+            joinColumn:
+                name: id_team_b
+                referencedColumnName: id
 
     lifecycleCallbacks: {  }

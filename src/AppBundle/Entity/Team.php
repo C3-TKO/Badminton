@@ -209,4 +209,146 @@ class Team
     {
         return $this->teams_b;
     }
+    /**
+     * @var \AppBundle\Entity\Game
+     */
+    private $teams_a_2_game;
+
+
+    /**
+     * Set teams_a_2_game
+     *
+     * @param \AppBundle\Entity\Game $teamsA2Game
+     * @return Team
+     */
+    public function setTeamsA2Game(\AppBundle\Entity\Game $teamsA2Game = null)
+    {
+        $this->teams_a_2_game = $teamsA2Game;
+
+        return $this;
+    }
+
+    /**
+     * Get teams_a_2_game
+     *
+     * @return \AppBundle\Entity\Game 
+     */
+    public function getTeamsA2Game()
+    {
+        return $this->teams_a_2_game;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $team_player_a;
+
+
+    /**
+     * Add team_player_a
+     *
+     * @param \AppBundle\Entity\Game $teamPlayerA
+     * @return Team
+     */
+    public function addTeamPlayerA(\AppBundle\Entity\Game $teamPlayerA)
+    {
+        $this->team_player_a[] = $teamPlayerA;
+
+        return $this;
+    }
+
+    /**
+     * Remove team_player_a
+     *
+     * @param \AppBundle\Entity\Game $teamPlayerA
+     */
+    public function removeTeamPlayerA(\AppBundle\Entity\Game $teamPlayerA)
+    {
+        $this->team_player_a->removeElement($teamPlayerA);
+    }
+
+    /**
+     * Get team_player_a
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeamPlayerA()
+    {
+        return $this->team_player_a;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $team_player_a_2_game;
+
+
+    /**
+     * Add team_player_a_2_game
+     *
+     * @param \AppBundle\Entity\Game $teamPlayerA2Game
+     * @return Team
+     */
+    public function addTeamPlayerA2Game(\AppBundle\Entity\Game $teamPlayerA2Game)
+    {
+        $this->team_player_a_2_game[] = $teamPlayerA2Game;
+
+        return $this;
+    }
+
+    /**
+     * Remove team_player_a_2_game
+     *
+     * @param \AppBundle\Entity\Game $teamPlayerA2Game
+     */
+    public function removeTeamPlayerA2Game(\AppBundle\Entity\Game $teamPlayerA2Game)
+    {
+        $this->team_player_a_2_game->removeElement($teamPlayerA2Game);
+    }
+
+    /**
+     * Get team_player_a_2_game
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeamPlayerA2Game()
+    {
+        return $this->team_player_a_2_game;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $team_player_b_2_game;
+
+
+    /**
+     * Add team_player_b_2_game
+     *
+     * @param \AppBundle\Entity\Game $teamPlayerB2Game
+     * @return Team
+     */
+    public function addTeamPlayerB2Game(\AppBundle\Entity\Game $teamPlayerB2Game)
+    {
+        $this->team_player_b_2_game[] = $teamPlayerB2Game;
+
+        return $this;
+    }
+
+    /**
+     * Remove team_player_b_2_game
+     *
+     * @param \AppBundle\Entity\Game $teamPlayerB2Game
+     */
+    public function removeTeamPlayerB2Game(\AppBundle\Entity\Game $teamPlayerB2Game)
+    {
+        $this->team_player_b_2_game->removeElement($teamPlayerB2Game);
+    }
+
+    /**
+     * Get team_player_b_2_game
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeamPlayerB2Game()
+    {
+        return $this->team_player_b_2_game;
+    }
 }

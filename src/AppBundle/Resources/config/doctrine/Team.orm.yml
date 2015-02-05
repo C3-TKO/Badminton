@@ -45,4 +45,12 @@ AppBundle\Entity\Team:
                 name: id_player_b
                 referencedColumnName: id
 
+    oneToMany:
+        team_player_a_2_game:
+            targetEntity: Game
+            mappedBy: games_2_team_a
+        team_player_b_2_game:
+            targetEntity: Game
+            mappedBy: games_2_team_b
+
     lifecycleCallbacks: {  }
