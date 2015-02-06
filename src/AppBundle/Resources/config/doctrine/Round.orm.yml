@@ -1,5 +1,6 @@
 AppBundle\Entity\Round:
     type: entity
+    repositoryClass: AppBundle\Entity\RoundRepository
     table: round
     id:
         id:
