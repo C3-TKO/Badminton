@@ -8,6 +8,14 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AppBundle:Default:index.html.twig', $this->get('app.round_results')->findByLastRound() );
+        $em = $this->getDoctrine()->getManager();
+
+        // temporarily abuse this controller to see if this all works
+        $roundRepo = $em->getRepository('AppBundle:Round');
+
+        $games  = $roundRepo->findLastRoundGames();
+        $date   = \DateTime::createFromFormat('Y-m-d', $games[0]['date'] );
+
+        return $this->render('AppBundle:Default:index.html.twig', array('date' => $date->format('d.m.Y'), 'games' => $games ));
     }
 }
