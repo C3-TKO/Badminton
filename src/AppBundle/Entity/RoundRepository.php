@@ -13,13 +13,26 @@ use PDO;
  */
 class RoundRepository extends EntityRepository
 {
-    public function findLatestId()
+    public function findLastRoundGames()
     {
-        $sql = "SELECT id FROM round ORDER BY date DESC LIMIT 1";
+        $em = $this->getEntityManager();
+
+
+        $sql = "
+        SELECT r.date, pata.name AS team_a_player_a, pbta.name AS team_a_player_b, patb.name AS team_b_player_a, pbtb.name AS team_b_player_b, g.team_a_score, g.team_b_score FROM round r
+        JOIN game AS g ON g.id_round = r.id
+        JOIN team AS ta ON ta.id = g.id_team_a
+        JOIN team AS tb ON tb.id = g.id_team_b
+        JOIN player AS pata ON pata.id = ta.id_player_a
+        JOIN player AS pbta ON pbta.id = ta.id_player_b
+        JOIN player AS patb ON patb.id = tb.id_player_a
+        JOIN player AS pbtb ON pbtb.id = tb.id_player_b
+        WHERE r.id = (SELECT id FROM round ORDER BY date DESC LIMIT 1)
+        ORDER BY r.date DESC;
+        ";
 
         $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
         $stmt->execute();
-        $ids = $stmt->fetch();
-        return (int) array_pop($ids);
+        return $stmt->fetchAll();
     }
 }
