@@ -16,6 +16,6 @@ class DefaultController extends Controller
         $games  = $roundRepo->findLastRoundGames();
         $date   = \DateTime::createFromFormat('Y-m-d', $games[0]['date'] );
 
-        return $this->render('AppBundle:Default:index.html.twig', array('date' => $date->format('d.m.Y'), 'games' => $games ));
+        return $this->render('AppBundle:Default:index.html.twig', array('date' => $date->format('d.m.y'), 'games' => $games ));
     }
 }
