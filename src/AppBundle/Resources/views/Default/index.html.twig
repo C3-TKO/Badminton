@@ -2,22 +2,34 @@
 
 {%- block body -%}
 <div class="row">
-    <h4 class="col-xs-12">Ergebnisse vom letzten Spieltag ({{ date }}):</h4>
+    <h2 class="col-xs-12">Ergebnisse vom {{ date }}:</h2>
 </div>
 <div class="row">
-    <table class="table table-striped table-hover">
-        <tbody>
-            {% for game in games %}
-            <tr>
-                <td>{{ game.team_a_player_a }}</td>
-                <td>{{ game.team_a_player_b }}</td>
-                <td>{{ game.team_b_player_a }}</td>
-                <td>{{ game.team_b_player_b }}</td>
-                <td>{{ game.team_a_score }} : {{ game.team_b_score }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="col-xs-12">
+        <table class="table table-striped table-condensed">
+            <tbody>
+                {% for game in games %}
+                <tr>
+                    <td>
+                        <span class="box box-success">{{ game.team_a_player_a }}</span>
+                    </td>
+                    <td>
+                        <span class="box box-success">{{ game.team_a_player_b }}</span>
+                    </td>
+                    <td>
+                        <span class="box box-danger">{{ game.team_b_player_a }}</span>
+                    </td>
+                    <td>
+                        <span class="box box-danger">{{ game.team_b_player_b }}</span>
+                    </td>
+                    <td>
+                        <span>{{ game.team_a_score }} : {{ game.team_b_score }}</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {%- endblock -%}

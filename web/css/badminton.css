@@ -1,3 +1,23 @@
 #login-form-container {
     width: 350px;
 }
+
+.box {
+    padding-clip: border-box; /* this has been added */
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    text-align: center;
+    color: white;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.box-success {
+    border: 3px solid #62c462;
+    background-color: #62c462;
+}
+
+.box-danger {
+    border: 3px solid #ee5f5b;
+    background-color: #ee5f5b;
+}
