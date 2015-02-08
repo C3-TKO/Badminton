@@ -1,0 +1,22 @@
+AppBundle\Entity\Season:
+    type: entity
+    table: season
+    id:
+        id:
+            type: smallint
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+    lifecycleCallbacks: {  }
+    oneToMany:
+        rounds_2_season:
+            targetEntity: Round
+            mappedBy: season_2_rounds
