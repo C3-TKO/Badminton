@@ -164,4 +164,161 @@ class Game
     {
         return $this->id;
     }
+    /**
+     * @var \AppBundle\Entity\Round
+     */
+    private $round;
+
+
+    /**
+     * Set round
+     *
+     * @param \AppBundle\Entity\Round $round
+     * @return Game
+     */
+    public function setRound(\AppBundle\Entity\Round $round = null)
+    {
+        $this->round = $round;
+
+        return $this;
+    }
+
+    /**
+     * Get round
+     *
+     * @return \AppBundle\Entity\Round 
+     */
+    public function getRound()
+    {
+        return $this->round;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $game_2_team_a;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->game_2_team_a = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add game_2_team_a
+     *
+     * @param \AppBundle\Entity\Team $game2TeamA
+     * @return Game
+     */
+    public function addGame2TeamA(\AppBundle\Entity\Team $game2TeamA)
+    {
+        $this->game_2_team_a[] = $game2TeamA;
+
+        return $this;
+    }
+
+    /**
+     * Remove game_2_team_a
+     *
+     * @param \AppBundle\Entity\Team $game2TeamA
+     */
+    public function removeGame2TeamA(\AppBundle\Entity\Team $game2TeamA)
+    {
+        $this->game_2_team_a->removeElement($game2TeamA);
+    }
+
+    /**
+     * Get game_2_team_a
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGame2TeamA()
+    {
+        return $this->game_2_team_a;
+    }
+    /**
+     * @var \AppBundle\Entity\Team
+     */
+    private $games_2_team_a;
+
+
+    /**
+     * Set games_2_team_a
+     *
+     * @param \AppBundle\Entity\Team $games2TeamA
+     * @return Game
+     */
+    public function setGames2TeamA(\AppBundle\Entity\Team $games2TeamA = null)
+    {
+        $this->games_2_team_a = $games2TeamA;
+
+        return $this;
+    }
+
+    /**
+     * Get games_2_team_a
+     *
+     * @return \AppBundle\Entity\Team 
+     */
+    public function getGames2TeamA()
+    {
+        return $this->games_2_team_a;
+    }
+    /**
+     * @var \AppBundle\Entity\Team
+     */
+    private $games_2_team_b;
+
+
+    /**
+     * Set games_2_team_b
+     *
+     * @param \AppBundle\Entity\Team $games2TeamB
+     * @return Game
+     */
+    public function setGames2TeamB(\AppBundle\Entity\Team $games2TeamB = null)
+    {
+        $this->games_2_team_b = $games2TeamB;
+
+        return $this;
+    }
+
+    /**
+     * Get games_2_team_b
+     *
+     * @return \AppBundle\Entity\Team 
+     */
+    public function getGames2TeamB()
+    {
+        return $this->games_2_team_b;
+    }
+    /**
+     * @var \AppBundle\Entity\Round
+     */
+    private $round_2_games;
+
+
+    /**
+     * Set round_2_games
+     *
+     * @param \AppBundle\Entity\Round $round2Games
+     * @return Game
+     */
+    public function setRound2Games(\AppBundle\Entity\Round $round2Games = null)
+    {
+        $this->round_2_games = $round2Games;
+
+        return $this;
+    }
+
+    /**
+     * Get round_2_games
+     *
+     * @return \AppBundle\Entity\Round 
+     */
+    public function getRound2Games()
+    {
+        return $this->round_2_games;
+    }
 }
