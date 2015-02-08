@@ -1,5 +1,6 @@
 AppBundle\Entity\Game:
     type: entity
+    repositoryClass: AppBundle\Entity\GameRepository
     table: game
     id:
         id:
