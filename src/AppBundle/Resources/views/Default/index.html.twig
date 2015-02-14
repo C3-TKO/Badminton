@@ -11,16 +11,16 @@
                 {% for game in games %}
                 <tr>
                     <td>
-                        <span class="box {% if game.team_a_score > game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.team_a_player_a }}</span>
+                        <span class="box {% if game.team_a_score > game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.name_player_a_team_a }}</span>
                     </td>
                     <td>
-                        <span class="box {% if game.team_a_score > game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.team_a_player_b }}</span>
+                        <span class="box {% if game.team_a_score > game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.name_player_b_team_a }}</span>
                     </td>
                     <td>
-                        <span class="box {% if game.team_a_score < game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.team_b_player_a }}</span>
+                        <span class="box {% if game.team_a_score < game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.name_player_a_team_b }}</span>
                     </td>
                     <td>
-                        <span class="box {% if game.team_a_score < game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.team_b_player_b }}</span>
+                        <span class="box {% if game.team_a_score < game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.name_player_b_team_b }}</span>
                     </td>
                     <td>
                         <span style="padding-top: 1px; display: block;">{{ game.team_a_score }} : {{ game.team_b_score }}</span>

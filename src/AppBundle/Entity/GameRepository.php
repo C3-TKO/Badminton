@@ -15,7 +15,17 @@ class GameRepository extends EntityRepository
     public function findByRoundId( $idRound )
     {
         $sql = sprintf( "
-        SELECT r.date, pata.name AS team_a_player_a, pbta.name AS team_a_player_b, patb.name AS team_b_player_a, pbtb.name AS team_b_player_b, g.team_a_score, g.team_b_score FROM round r
+        SELECT
+            r.date,
+            ta.id AS id_team_a,
+            tb.id AS id_team_b,
+            pata.id AS id_player_a_team_a, pata.name AS name_player_a_team_a,
+            pbta.id AS id_player_b_team_a, pbta.name AS name_player_b_team_a,
+            patb.id AS id_player_a_team_b, patb.name AS name_player_a_team_b,
+            pbtb.id AS id_player_b_team_b, pbtb.name AS name_player_b_team_b,
+            g.team_a_score,
+            g.team_b_score
+        FROM round r
         JOIN game AS g ON g.id_round = r.id
         JOIN team AS ta ON ta.id = g.id_team_a
         JOIN team AS tb ON tb.id = g.id_team_b
