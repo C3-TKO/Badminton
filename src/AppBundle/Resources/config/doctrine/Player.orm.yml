@@ -1,5 +1,6 @@
 AppBundle\Entity\Player:
     type: entity
+    repositoryClass: AppBundle\Entity\PlayerRepository
     table: player
     id:
         id:
