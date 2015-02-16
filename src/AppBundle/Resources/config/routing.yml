@@ -21,6 +21,12 @@ crud_game:
 home:
     path:     /
     defaults: { _controller: AppBundle:Default:index }
+results:
+    path:     /results
+    defaults: { _controller: AppBundle:Default:results }
+ranking:
+    path:     /ranking
+    defaults: { _controller: AppBundle:Default:ranking }
 login:
     path:     /login
     defaults: { _controller: AppBundle:Security:login }
