@@ -19,6 +19,13 @@ class RoundRanking
      */
     private $ranking = array();
 
+    /**
+     * @var array
+     */
+    private $playerStats = array();
+
+
+
     public function __construct( EntityManager $em ) {
         $this->em = $em;
     }
@@ -35,9 +42,9 @@ class RoundRanking
         $games          = $gameRepo->findByRoundId($id);
 
         foreach($players as $player) {
-            $this->ranking[$player['id']]['name']         = $player['name'];
-            $this->ranking[$player['id']]['games_played'] = 0;
-            $this->ranking[$player['id']]['games_won']    = 0;
+            $this->playerStats[$player['id']]['name']         = $player['name'];
+            $this->playerStats[$player['id']]['games_played'] = 0;
+            $this->playerStats[$player['id']]['games_won']    = 0;
         }
 
         foreach($games as $game) {
@@ -45,31 +52,25 @@ class RoundRanking
             $idPlayerBTeamA = $game['id_player_b_team_a'];
             $idPlayerATeamB = $game['id_player_a_team_b'];
             $idPlayerBTeamB = $game['id_player_b_team_b'];
-
-            $this->ranking[$idPlayerATeamA]['games_played']++;
-            $this->ranking[$idPlayerBTeamA]['games_played']++;
-            $this->ranking[$idPlayerATeamB]['games_played']++;
-            $this->ranking[$idPlayerBTeamB]['games_played']++;
+            $this->playerStats[$idPlayerATeamA]['games_played']++;
+            $this->playerStats[$idPlayerBTeamA]['games_played']++;
+            $this->playerStats[$idPlayerATeamB]['games_played']++;
+            $this->playerStats[$idPlayerBTeamB]['games_played']++;
 
             if ( $game['team_a_score'] > $game['team_b_score']) {
-                $this->ranking[$idPlayerATeamA]['games_won']++;
-                $this->ranking[$idPlayerBTeamA]['games_won']++;
+                $this->playerStats[$idPlayerATeamA]['games_won']++;
+                $this->playerStats[$idPlayerBTeamA]['games_won']++;
             }
             else {
-                $this->ranking[$idPlayerATeamB]['games_won']++;
-                $this->ranking[$idPlayerBTeamB]['games_won']++;
+                $this->playerStats[$idPlayerATeamB]['games_won']++;
+                $this->playerStats[$idPlayerBTeamB]['games_won']++;
             }
         }
 
         $this->calculateRatio();
         $this->sortByGamesWon();
 
-        echo '<pre>';
-        var_dump( $this->ranking );
-        die();
-
-
-        return true;
+        return $this->ranking;
     }
 
     /**
@@ -83,14 +84,27 @@ class RoundRanking
     }
 
 
+    /**
+     * Sorts the return array by number of won games
+     */
     private function sortByGamesWon() {
-        return;
+        Foreach($this->playerStats as $playerStatsKey => $playerStatsValue) {
+            $this->ranking[$playerStatsKey] = $playerStatsValue['games_won'];
+        }
+
+        arsort($this->ranking);
+
+        foreach($this->ranking as $key => &$value ) {
+            $value = $this->playerStats[$key];
+        }
     }
 
-
+    /**
+     * Calculates the ration of won games over played games
+     */
     private function calculateRatio() {
-        foreach($this->ranking as &$player) {
-            $player['win_ratio'] = round( ( ( $player['games_won'] / $player['games_played'] ) * 100), 2);
+        foreach($this->playerStats as &$playerStat) {
+            $playerStat['win_ratio'] = round( ( ( $playerStat['games_won'] / $playerStat['games_played'] ) * 100), 2);
         }
     }
 }
