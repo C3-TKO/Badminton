@@ -42,6 +42,7 @@ class RoundRanking
         $games          = $gameRepo->findByRoundId($id);
 
         foreach($players as $player) {
+            $this->playerStats[$player['id']]['id']           = $player['id'];
             $this->playerStats[$player['id']]['name']         = $player['name'];
             $this->playerStats[$player['id']]['games_played'] = 0;
             $this->playerStats[$player['id']]['games_won']    = 0;
@@ -70,7 +71,9 @@ class RoundRanking
         $this->calculateRatio();
         $this->sortByGamesWon();
 
-        return $this->ranking;
+        $date = \DateTime::createFromFormat('Y-m-d', $games[0]['date']);
+
+        return array('date' => $date->format('d.m.y'), 'ranking' => $this->ranking);
     }
 
     /**
