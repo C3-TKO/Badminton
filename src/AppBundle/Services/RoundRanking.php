@@ -70,6 +70,7 @@ class RoundRanking
 
         $this->calculateRatio();
         $this->sortByGamesWon();
+        $this->setRanking();
 
         $date = \DateTime::createFromFormat('Y-m-d', $games[0]['date']);
 
@@ -91,7 +92,7 @@ class RoundRanking
      * Sorts the return array by number of won games
      */
     private function sortByGamesWon() {
-        Foreach($this->playerStats as $playerStatsKey => $playerStatsValue) {
+        foreach($this->playerStats as $playerStatsKey => $playerStatsValue) {
             $this->ranking[$playerStatsKey] = $playerStatsValue['games_won'];
         }
 
@@ -99,6 +100,21 @@ class RoundRanking
 
         foreach($this->ranking as $key => &$value ) {
             $value = $this->playerStats[$key];
+        }
+    }
+
+    private function setRanking() {
+        $lastGameWon = 1337;
+        $positioning = 1;
+        foreach($this->ranking as &$topDownRanking) {
+            if ($topDownRanking['games_won'] < $lastGameWon) {
+                $topDownRanking['positioning'] = $positioning;
+                $positioning++;
+                $lastGameWon = $topDownRanking['games_won'];
+            }
+            elseif($topDownRanking['games_won'] === $lastGameWon) {
+                $topDownRanking['trophy_level'] = $positioning;
+            }
         }
     }
 
