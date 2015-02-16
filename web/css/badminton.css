@@ -36,3 +36,19 @@
     -webkit-filter: none;
     filter: none;
 }
+
+.trophy-positioning-1 {
+    color: #dfc463;
+}
+
+.trophy-positioning-2 {
+    color: #c0c0c0;
+}
+
+.trophy-positioning-3 {
+    color: #cd7f32;
+}
+
+.icon-invisible {
+    visibility: hidden;
+}
