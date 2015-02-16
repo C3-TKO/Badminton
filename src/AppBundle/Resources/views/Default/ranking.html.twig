@@ -2,28 +2,33 @@
 
 {%- block body -%}
 <div class="row">
-    <h2 class="col-xs-12">Ergebnisse vom {{ date }}:</h2>
+    <h2 class="col-xs-12">Platzierung vom {{ date }}:</h2>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <table class="table table-striped table-condensed">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Spieler</th>
+                    <th>Siege</th>
+                    <th>Quote</th>
+                </tr>
+            </thead>
             <tbody>
-                {% for game in games %}
+                {% for rank in ranking %}
                 <tr>
                     <td>
-                        <span class="box {% if game.team_a_score > game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.name_player_a_team_a }}</span>
+                        <span>{{ rank.positioning }}</span>
                     </td>
                     <td>
-                        <span class="box {% if game.team_a_score > game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.name_player_b_team_a }}</span>
+                        <i class="fa fa-trophy fa-fw trophy-positioning-{{ rank.positioning }} {% if rank.positioning > 3 %}icon-invisible{% endif %}"></i><span>{{ rank.name }}</span>
                     </td>
                     <td>
-                        <span class="box {% if game.team_a_score < game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.name_player_a_team_b }}</span>
+                        <span>{{ rank.games_won }}</span>
                     </td>
                     <td>
-                        <span class="box {% if game.team_a_score < game.team_b_score %}box-success{% else %}box-danger{% endif %}">{{ game.name_player_b_team_b }}</span>
-                    </td>
-                    <td>
-                        <span style="padding-top: 1px; display: block;">{{ game.team_a_score }} : {{ game.team_b_score }}</span>
+                        <span>{{ rank.win_ratio }} %</span>
                     </td>
                 </tr>
                 {% endfor %}
