@@ -12,7 +12,3 @@ services:
         class: AppBundle\Services\RoundResults
         arguments:
             em: @doctrine.orm.entity_manager
-    app.round_ranking:
-            class: AppBundle\Services\RoundRanking
-            arguments:
-                em: @doctrine.orm.entity_manager
