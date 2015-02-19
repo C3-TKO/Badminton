@@ -1,0 +1,40 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <h1>Team</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idplayera</th>
+                <td>{{ entity.idPlayerA }}</td>
+            </tr>
+            <tr>
+                <th>Idplayerb</th>
+                <td>{{ entity.idPlayerB }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('crud_team_') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('crud_team__edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

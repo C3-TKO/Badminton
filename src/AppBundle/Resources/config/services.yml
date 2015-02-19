@@ -1,0 +1,14 @@
+services:
+#    app.example:
+#        class: AppBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    app.round_results:
+        class: AppBundle\Services\RoundResults
+        arguments:
+            em: @doctrine.orm.entity_manager
+    app.round_ranking:
+        class: AppBundle\Services\RoundRanking
+        arguments:
+            em: @doctrine.orm.entity_manager
+    app.matchmaker:
+        class: AppBundle\Services\MatchScheduling\MatchScheduler

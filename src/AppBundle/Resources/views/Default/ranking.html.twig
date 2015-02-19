@@ -1,0 +1,40 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{%- block body -%}
+<div class="row">
+    <h2 class="col-xs-12">Platzierung vom {{ date }}:</h2>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Spieler</th>
+                    <th>Siege</th>
+                    <th>Quote</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rank in ranking %}
+                <tr>
+                    <td>
+                        <span>{{ rank.positioning }}</span>
+                    </td>
+                    <td>
+                        <i class="fa fa-trophy fa-fw trophy-positioning-{{ rank.positioning }} {% if rank.positioning > 3 %}icon-invisible{% endif %}"></i><span>{{ rank.name }}</span>
+                    </td>
+                    <td>
+                        <span>{{ rank.games_won }}</span>
+                    </td>
+                    <td>
+                        <span>{{ rank.win_ratio }} %</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{%- endblock -%}

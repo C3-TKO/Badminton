@@ -1,0 +1,28 @@
+AppBundle\Entity\Player:
+    type: entity
+    repositoryClass: AppBundle\Entity\PlayerRepository
+    table: player
+    id:
+        id:
+            type: smallint
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+
+    oneToMany:
+        player_a_2_teams:
+            targetEntity: Team
+            mappedBy: teams_2_player_a
+        player_b_2_teams:
+            targetEntity: Team
+            mappedBy: teams_2_player_b
+
+    lifecycleCallbacks: {  }

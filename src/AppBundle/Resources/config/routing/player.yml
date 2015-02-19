@@ -1,0 +1,30 @@
+crud_player_:
+    path:     /
+    defaults: { _controller: "AppBundle:Player:index" }
+
+crud_player__show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Player:show" }
+
+crud_player__new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Player:new" }
+
+crud_player__create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Player:create" }
+    requirements: { _method: post }
+
+crud_player__edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Player:edit" }
+
+crud_player__update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Player:update" }
+    requirements: { _method: post|put }
+
+crud_player__delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Player:delete" }
+    requirements: { _method: post|delete }

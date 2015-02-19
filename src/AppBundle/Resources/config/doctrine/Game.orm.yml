@@ -1,0 +1,60 @@
+AppBundle\Entity\Game:
+    type: entity
+    repositoryClass: AppBundle\Entity\GameRepository
+    table: game
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idRound:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_round
+        idTeamA:
+            type: smallint
+            nullable: false
+            unsigned: false
+            column: id_team_a
+        idTeamB:
+            type: smallint
+            nullable: false
+            unsigned: false
+            column: id_team_b
+        teamAScore:
+            type: smallint
+            nullable: false
+            unsigned: false
+            column: team_a_score
+        teamBScore:
+            type: smallint
+            nullable: false
+            unsigned: false
+            column: team_b_score
+
+    manyToOne:
+        round_2_games:
+            targetEntity: Round
+            inversedBy: games_2_round
+            joinColumn:
+                name: id_round
+                referencedColumnName: id
+        games_2_team_a:
+            targetEntity: Team
+            inversedBy: team_player_a_2_game
+            joinColumn:
+                name: id_team_a
+                referencedColumnName: id
+        games_2_team_b:
+            targetEntity: Team
+            inversedBy: team_player_b_2_game
+            joinColumn:
+                name: id_team_b
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }
