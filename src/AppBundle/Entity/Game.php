@@ -10,27 +10,27 @@ use Doctrine\ORM\Mapping as ORM;
 class Game
 {
     /**
-     * @var boolean
+     * @var integer
      */
     private $idRound;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $idTeamA;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $idTeamB;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $teamAScore;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $teamBScore;
 
@@ -43,7 +43,7 @@ class Game
     /**
      * Set idRound
      *
-     * @param boolean $idRound
+     * @param integer $idRound
      * @return Game
      */
     public function setIdRound($idRound)
@@ -56,7 +56,7 @@ class Game
     /**
      * Get idRound
      *
-     * @return boolean 
+     * @return integer
      */
     public function getIdRound()
     {
@@ -66,7 +66,7 @@ class Game
     /**
      * Set idTeamA
      *
-     * @param boolean $idTeamA
+     * @param integer $idTeamA
      * @return Game
      */
     public function setIdTeamA($idTeamA)
@@ -79,7 +79,7 @@ class Game
     /**
      * Get idTeamA
      *
-     * @return boolean 
+     * @return integer
      */
     public function getIdTeamA()
     {
@@ -89,7 +89,7 @@ class Game
     /**
      * Set idTeamB
      *
-     * @param boolean $idTeamB
+     * @param integer $idTeamB
      * @return Game
      */
     public function setIdTeamB($idTeamB)
@@ -102,7 +102,7 @@ class Game
     /**
      * Get idTeamB
      *
-     * @return boolean 
+     * @return integer
      */
     public function getIdTeamB()
     {
@@ -112,7 +112,7 @@ class Game
     /**
      * Set teamAScore
      *
-     * @param boolean $teamAScore
+     * @param integer $teamAScore
      * @return Game
      */
     public function setTeamAScore($teamAScore)
@@ -125,7 +125,7 @@ class Game
     /**
      * Get teamAScore
      *
-     * @return boolean 
+     * @return integer
      */
     public function getTeamAScore()
     {
@@ -135,7 +135,7 @@ class Game
     /**
      * Set teamBScore
      *
-     * @param boolean $teamBScore
+     * @param integer $teamBScore
      * @return Game
      */
     public function setTeamBScore($teamBScore)
@@ -148,7 +148,7 @@ class Game
     /**
      * Get teamBScore
      *
-     * @return boolean 
+     * @return integer
      */
     public function getTeamBScore()
     {

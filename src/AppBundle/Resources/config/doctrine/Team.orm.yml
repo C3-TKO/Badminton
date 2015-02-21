@@ -1,6 +1,7 @@
 AppBundle\Entity\Team:
     type: entity
     table: team
+    repositoryClass: AppBundle\Entity\TeamRepository
     uniqueConstraints:
         team_combination:
             columns:
