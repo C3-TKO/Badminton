@@ -29,6 +29,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources: ['bootstrap_3_layout.html.twig']
+        # resources: ['bootstrap_3_horizontal_layout.html.twig']
 
 # Assetic Configuration
 assetic:
@@ -47,10 +50,6 @@ assetic:
             node_paths: [/usr/local/lib/node_modules]
             apply_to: "\.less$"
             cssrewrite: ~
-braincrafted_bootstrap:
-    less_filter: less
-    customize:
-        variables_file: %kernel.root_dir%/Resources/less/variables.less
 
 # Doctrine Configuration
 doctrine:
