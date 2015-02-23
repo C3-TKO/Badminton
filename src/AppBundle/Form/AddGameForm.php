@@ -6,13 +6,16 @@
 namespace AppBundle\Form;
 
 /**
- * @TDODO Add a constraint to checks that all players are unique 
+ * @TDODO Add a constraint to checks that all players are unique
  */
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Range;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 const NAME = 'create_schedule';
 const MIN_NUMBER_PLAYERS = 4;
@@ -109,4 +112,24 @@ class AddGameForm extends AbstractType {
     {
         return NAME;
     }
+
+    /*
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'constraints' => array(
+                new Assert\Callback(
+                    array(
+                        array($this, 'validatePlayerCombinations' )
+                    )
+                )
+            )
+        ));
+    }
+
+    public function validatePlayerCombinations(ExecutionContextInterface $context) {
+        echo '<pre>';
+        var_dump( $context );
+    }
+    */
 }
