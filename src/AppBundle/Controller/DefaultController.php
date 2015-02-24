@@ -39,6 +39,12 @@ class DefaultController extends Controller
         $form = $this->createForm(new AddGameForm());
 
         $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em         = $this->getDoctrine()->getManager();
+            $teamRepo   = $em->getRepository('AppBundle:Team');
+            $teamA      = $teamRepo->findByPlayerIds($form->get('pata')->getData()->getId(), $form->get('pbta')->getData()->getId());
+            $teamB      = $teamRepo->findByPlayerIds($form->get('patb')->getData()->getId(), $form->get('pbtb')->getData()->getId());
+        }
 
         return $this->render('AppBundle:Default:add_game.html.twig', array('form' => $form->createView()));
     }
