@@ -12,7 +12,7 @@ AppBundle\Entity\Round:
                 strategy: IDENTITY
     fields:
         idSeason:
-            type: smallint
+            type: integer
             nullable: false
             unsigned: false
             column: id_season
@@ -21,16 +21,16 @@ AppBundle\Entity\Round:
             nullable: true
 
     manyToOne:
-        season_2_rounds:
+        season:
             targetEntity: Season
-            inversedBy: rounds_2_season
+            inversedBy: rounds
             joinColumn:
                 name: id_season
                 referencedColumnName: id
 
     oneToMany:
-        games_2_round:
+        games:
             targetEntity: Game
-            mappedBy: round_2_games
+            mappedBy: round
 
     lifecycleCallbacks: {  }

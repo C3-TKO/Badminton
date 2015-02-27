@@ -407,4 +407,136 @@ class Team
     {
         return $this->teams_2_player_b;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $team_a_game;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $team_b_game;
+
+    /**
+     * @var \AppBundle\Entity\Player
+     */
+    private $player_a;
+
+    /**
+     * @var \AppBundle\Entity\Player
+     */
+    private $player_b;
+
+
+    /**
+     * Add team_a_game
+     *
+     * @param \AppBundle\Entity\Game $teamAGame
+     * @return Team
+     */
+    public function addTeamAGame(\AppBundle\Entity\Game $teamAGame)
+    {
+        $this->team_a_game[] = $teamAGame;
+
+        return $this;
+    }
+
+    /**
+     * Remove team_a_game
+     *
+     * @param \AppBundle\Entity\Game $teamAGame
+     */
+    public function removeTeamAGame(\AppBundle\Entity\Game $teamAGame)
+    {
+        $this->team_a_game->removeElement($teamAGame);
+    }
+
+    /**
+     * Get team_a_game
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeamAGame()
+    {
+        return $this->team_a_game;
+    }
+
+    /**
+     * Add team_b_game
+     *
+     * @param \AppBundle\Entity\Game $teamBGame
+     * @return Team
+     */
+    public function addTeamBGame(\AppBundle\Entity\Game $teamBGame)
+    {
+        $this->team_b_game[] = $teamBGame;
+
+        return $this;
+    }
+
+    /**
+     * Remove team_b_game
+     *
+     * @param \AppBundle\Entity\Game $teamBGame
+     */
+    public function removeTeamBGame(\AppBundle\Entity\Game $teamBGame)
+    {
+        $this->team_b_game->removeElement($teamBGame);
+    }
+
+    /**
+     * Get team_b_game
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeamBGame()
+    {
+        return $this->team_b_game;
+    }
+
+    /**
+     * Set player_a
+     *
+     * @param \AppBundle\Entity\Player $playerA
+     * @return Team
+     */
+    public function setPlayerA(\AppBundle\Entity\Player $playerA = null)
+    {
+        $this->player_a = $playerA;
+
+        return $this;
+    }
+
+    /**
+     * Get player_a
+     *
+     * @return \AppBundle\Entity\Player 
+     */
+    public function getPlayerA()
+    {
+        return $this->player_a;
+    }
+
+    /**
+     * Set player_b
+     *
+     * @param \AppBundle\Entity\Player $playerB
+     * @return Team
+     */
+    public function setPlayerB(\AppBundle\Entity\Player $playerB = null)
+    {
+        $this->player_b = $playerB;
+
+        return $this;
+    }
+
+    /**
+     * Get player_b
+     *
+     * @return \AppBundle\Entity\Player 
+     */
+    public function getPlayerB()
+    {
+        return $this->player_b;
+    }
 }

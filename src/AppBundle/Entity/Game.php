@@ -321,4 +321,60 @@ class Game
     {
         return $this->round_2_games;
     }
+    /**
+     * @var \AppBundle\Entity\Team
+     */
+    private $team_a;
+
+    /**
+     * @var \AppBundle\Entity\Team
+     */
+    private $team_b;
+
+
+    /**
+     * Set team_a
+     *
+     * @param \AppBundle\Entity\Team $teamA
+     * @return Game
+     */
+    public function setTeamA(\AppBundle\Entity\Team $teamA = null)
+    {
+        $this->team_a = $teamA;
+
+        return $this;
+    }
+
+    /**
+     * Get team_a
+     *
+     * @return \AppBundle\Entity\Team 
+     */
+    public function getTeamA()
+    {
+        return $this->team_a;
+    }
+
+    /**
+     * Set team_b
+     *
+     * @param \AppBundle\Entity\Team $teamB
+     * @return Game
+     */
+    public function setTeamB(\AppBundle\Entity\Team $teamB = null)
+    {
+        $this->team_b = $teamB;
+
+        return $this;
+    }
+
+    /**
+     * Get team_b
+     *
+     * @return \AppBundle\Entity\Team 
+     */
+    public function getTeamB()
+    {
+        return $this->team_b;
+    }
 }
