@@ -239,4 +239,80 @@ class Player
     {
         return $this->player_b_2_teams;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $teams_player_a;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $teams_player_b;
+
+
+    /**
+     * Add teams_player_a
+     *
+     * @param \AppBundle\Entity\Team $teamsPlayerA
+     * @return Player
+     */
+    public function addTeamsPlayerA(\AppBundle\Entity\Team $teamsPlayerA)
+    {
+        $this->teams_player_a[] = $teamsPlayerA;
+
+        return $this;
+    }
+
+    /**
+     * Remove teams_player_a
+     *
+     * @param \AppBundle\Entity\Team $teamsPlayerA
+     */
+    public function removeTeamsPlayerA(\AppBundle\Entity\Team $teamsPlayerA)
+    {
+        $this->teams_player_a->removeElement($teamsPlayerA);
+    }
+
+    /**
+     * Get teams_player_a
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeamsPlayerA()
+    {
+        return $this->teams_player_a;
+    }
+
+    /**
+     * Add teams_player_b
+     *
+     * @param \AppBundle\Entity\Team $teamsPlayerB
+     * @return Player
+     */
+    public function addTeamsPlayerB(\AppBundle\Entity\Team $teamsPlayerB)
+    {
+        $this->teams_player_b[] = $teamsPlayerB;
+
+        return $this;
+    }
+
+    /**
+     * Remove teams_player_b
+     *
+     * @param \AppBundle\Entity\Team $teamsPlayerB
+     */
+    public function removeTeamsPlayerB(\AppBundle\Entity\Team $teamsPlayerB)
+    {
+        $this->teams_player_b->removeElement($teamsPlayerB);
+    }
+
+    /**
+     * Get teams_player_b
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeamsPlayerB()
+    {
+        return $this->teams_player_b;
+    }
 }

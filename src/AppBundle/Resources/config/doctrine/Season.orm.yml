@@ -17,6 +17,6 @@ AppBundle\Entity\Season:
             fixed: false
     lifecycleCallbacks: {  }
     oneToMany:
-        rounds_2_season:
+        rounds:
             targetEntity: Round
-            mappedBy: season_2_rounds
+            mappedBy: season

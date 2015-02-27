@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Season
@@ -67,7 +68,7 @@ class Season
      */
     public function __construct()
     {
-        $this->rounds = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->rounds = new ArrayCollection();
     }
 
     /**

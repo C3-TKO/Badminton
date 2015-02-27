@@ -4,7 +4,7 @@ AppBundle\Entity\Player:
     table: player
     id:
         id:
-            type: smallint
+            type: integer
             nullable: false
             unsigned: false
             id: true
@@ -18,11 +18,11 @@ AppBundle\Entity\Player:
             fixed: false
 
     oneToMany:
-        player_a_2_teams:
+        teams_player_a:
             targetEntity: Team
-            mappedBy: teams_2_player_a
-        player_b_2_teams:
+            mappedBy: player_a
+        teams_player_b:
             targetEntity: Team
-            mappedBy: teams_2_player_b
+            mappedBy: player_b
 
     lifecycleCallbacks: {  }
