@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\CreateScheduleForm;
 use AppBundle\Form\AddGameForm;
 use AppBundle\Entity\Game;
+use AppBundle\Entity\Season;
+use AppBundle\Entity\Round;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class DefaultController extends Controller
 {
@@ -45,16 +48,16 @@ class DefaultController extends Controller
             $teamA      = $teamRepo->findByPlayerIds($form->get('pata')->getData()->getId(), $form->get('pbta')->getData()->getId());
             $teamB      = $teamRepo->findByPlayerIds($form->get('patb')->getData()->getId(), $form->get('pbtb')->getData()->getId());
 
-            $round = $em->find('AppBundle\Entity\Round', 2);
+            $round = $em->find('AppBundle\Entity\Round', 3);
 
             $game = new Game();
-            $game->setGames2TeamA($teamA);
-            $game->setGames2TeamB($teamB);
-            $game->setTeamAScore(21);
-            $game->setTeamBScore(23);
+            $game->setTeamA($teamA);
+            $game->setTeamB($teamB);
+            $game->setTeamAScore($form->get('score_team_a')->getData());
+            $game->setTeamBScore($form->get('score_team_b')->getData());
             $game->setRound($round);
 
-            $em->persist($game);
+            $em->merge($game);
             $em->flush();
 
         }

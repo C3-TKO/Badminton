@@ -24,19 +24,19 @@ DROP TABLE IF EXISTS `game`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `game` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_round` int(6) NOT NULL,
-  `id_team_a` smallint(6) NOT NULL,
-  `id_team_b` smallint(6) NOT NULL,
-  `team_a_score` smallint(4) NOT NULL,
-  `team_b_score` smallint(4) NOT NULL,
+  `id_round` int(11) NOT NULL,
+  `id_team_a` int(11) NOT NULL,
+  `id_team_b` int(11) NOT NULL,
+  `team_a_score` smallint(6) NOT NULL,
+  `team_b_score` smallint(6) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_232B318C2B6BAB04` (`id_round`),
   KEY `IDX_232B318C92977BE4` (`id_team_a`),
   KEY `IDX_232B318CB9E2A5E` (`id_team_b`),
+  CONSTRAINT `FK_232B318CB9E2A5E` FOREIGN KEY (`id_team_b`) REFERENCES `team` (`id`),
   CONSTRAINT `FK_232B318C2B6BAB04` FOREIGN KEY (`id_round`) REFERENCES `round` (`id`),
-  CONSTRAINT `FK_232B318C92977BE4` FOREIGN KEY (`id_team_a`) REFERENCES `team` (`id`),
-  CONSTRAINT `FK_232B318CB9E2A5E` FOREIGN KEY (`id_team_b`) REFERENCES `team` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_232B318C92977BE4` FOREIGN KEY (`id_team_a`) REFERENCES `team` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,10 +57,10 @@ DROP TABLE IF EXISTS `player`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `player` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,12 +82,12 @@ DROP TABLE IF EXISTS `round`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `round` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_season` smallint(6) NOT NULL,
+  `id_season` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_C5EEEA34D6D3EE44` (`id_season`),
   CONSTRAINT `FK_C5EEEA34D6D3EE44` FOREIGN KEY (`id_season`) REFERENCES `season` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,10 +108,10 @@ DROP TABLE IF EXISTS `season`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `season` (
-  `id` smallint(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,17 +132,17 @@ DROP TABLE IF EXISTS `team`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `id_player_a` smallint(6) NOT NULL,
-  `id_player_b` smallint(6) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_player_a` int(11) NOT NULL,
+  `id_player_b` int(11) NOT NULL,
+  `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `team_combination` (`id_player_a`,`id_player_b`),
   KEY `IDX_C4E0A61FBECE71E6` (`id_player_a`),
   KEY `IDX_C4E0A61F27C7205C` (`id_player_b`),
   CONSTRAINT `FK_C4E0A61F27C7205C` FOREIGN KEY (`id_player_b`) REFERENCES `player` (`id`),
   CONSTRAINT `FK_C4E0A61FBECE71E6` FOREIGN KEY (`id_player_a`) REFERENCES `player` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-25 23:14:45
+-- Dump completed on 2015-02-27 15:39:19

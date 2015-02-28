@@ -9,7 +9,7 @@ AppBundle\Entity\Team:
                 - id_player_b
     id:
         id:
-            type: smallint
+            type: integer
             nullable: false
             unsigned: false
             id: true
@@ -17,12 +17,12 @@ AppBundle\Entity\Team:
                 strategy: IDENTITY
     fields:
         idPlayerA:
-            type: smallint
+            type: integer
             nullable: false
             unsigned: false
             column: id_player_a
         idPlayerB:
-            type: smallint
+            type: integer
             nullable: false
             unsigned: false
             column: id_player_b
@@ -33,25 +33,25 @@ AppBundle\Entity\Team:
             fixed: false
 
     manyToOne:
-        teams_2_player_a:
+        player_a:
             targetEntity: Player
-            inversedBy: player_a_2_teams
+            inversedBy: teams_player_a
             joinColumn:
                 name: id_player_a
                 referencedColumnName: id
-        teams_2_player_b:
+        player_b:
             targetEntity: Player
-            inversedBy: player_b_2_teams
+            inversedBy: teams_player_b
             joinColumn:
                 name: id_player_b
                 referencedColumnName: id
 
     oneToMany:
-        team_player_a_2_game:
+        team_a_game:
             targetEntity: Game
-            mappedBy: games_2_team_a
-        team_player_b_2_game:
+            mappedBy: team_a
+        team_b_game:
             targetEntity: Game
-            mappedBy: games_2_team_b
+            mappedBy: team_b
 
     lifecycleCallbacks: {  }
