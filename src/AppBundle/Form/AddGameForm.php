@@ -97,7 +97,7 @@ class AddGameForm extends AbstractType {
                 'create_schedule', 'submit', array(
                 'label' => 'Ergebnis eintragen',
                 'attr'  => array(
-                    'class' => 'btn btn-primary pull-right'
+                    'class' => 'btn btn-primary'
                 )
             )
         );
