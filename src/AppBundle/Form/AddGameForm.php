@@ -40,26 +40,12 @@ class AddGameForm extends AbstractType {
                 )
             )
             ->add(
-                'patb', 'entity', array(
-                    'class'         => 'AppBundle:Player',
-                    'property'      => 'name',
-                    'label'         => 'Spieler 1 Team 2'
-                )
-            )
-            ->add(
-                'pbtb', 'entity', array(
-                    'class'         => 'AppBundle:Player',
-                    'property'      => 'name',
-                    'label'         => 'Spieler 2 Team 2'
-                )
-            )
-            ->add(
                 'score_team_a', 'text', array(
                     'label'         => 'Punkte Team 1',
                     'constraints'   => array(
                         new NotBlank(
                             array(
-                              'message' => 'Bitte trage ein Ergebnis für Team 1 ein')
+                                'message' => 'Bitte trage ein Ergebnis für Team 1 ein')
                         ),
                         new Range(
                             array(
@@ -91,6 +77,20 @@ class AddGameForm extends AbstractType {
                             )
                         )
                     )
+                )
+            )
+            ->add(
+                'patb', 'entity', array(
+                    'class'         => 'AppBundle:Player',
+                    'property'      => 'name',
+                    'label'         => 'Spieler 1 Team 2'
+                )
+            )
+            ->add(
+                'pbtb', 'entity', array(
+                    'class'         => 'AppBundle:Player',
+                    'property'      => 'name',
+                    'label'         => 'Spieler 2 Team 2'
                 )
             )
             ->add(
