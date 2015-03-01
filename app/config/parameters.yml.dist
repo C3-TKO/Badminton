@@ -18,3 +18,9 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    current_season:     2
+
+twig:
+    globals:
+        installation_name: 'E pluribus smashum'
