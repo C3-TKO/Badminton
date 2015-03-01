@@ -45,10 +45,21 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             $em         = $this->getDoctrine()->getManager();
             $teamRepo   = $em->getRepository('AppBundle:Team');
+            $roundRepo  = $em->getRepository('AppBundle:Round');
             $teamA      = $teamRepo->findByPlayerIds($form->get('pata')->getData()->getId(), $form->get('pbta')->getData()->getId());
             $teamB      = $teamRepo->findByPlayerIds($form->get('patb')->getData()->getId(), $form->get('pbtb')->getData()->getId());
+            $date       = $form->get('date')->getData();
+            $round      = $roundRepo->findOneBy(array('date' => $date));
 
-            $round = $em->find('AppBundle\Entity\Round', 3);
+            if( null === $round ) {
+                $season = $round = $em->find('AppBundle\Entity\Season', $this->container->getParameter('current_season'));
+                $round = new Round();
+                $round->setDate($date);
+                $round->setSeason($season);
+
+                $em->persist($round);
+                $em->flush();
+            }
 
             $game = new Game();
             $game->setTeamA($teamA);
@@ -59,7 +70,6 @@ class DefaultController extends Controller
 
             $em->merge($game);
             $em->flush();
-
         }
 
         return $this->render('AppBundle:Default:add_game.html.twig', array('form' => $form->createView()));
