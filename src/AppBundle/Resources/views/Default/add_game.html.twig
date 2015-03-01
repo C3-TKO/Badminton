@@ -1,68 +1,68 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block body %}
-    <section class="main-block">
-        <article>
-            <section>
-                <h1>Spiel eintragen</h1>
-                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-                {{ form_errors(form) }}
-                <div class="row">
 
-                    <div class="col-xs-5">
-                        <div class="form-group">
-                            {{ form_errors(form.pata) }}
-                            {{ form_widget(form.pata) }}
-                        </div>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
-                        <div class="form-group">
-                            {{ form_errors(form.pbta) }}
-                            {{ form_widget(form.pbta) }}
-                        </div>
+        <fieldset>
+            <legend>Spiel eintragen</legend>
+
+            {{ form_errors(form) }}
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        {{ form_errors(form.date) }}
+                        {{ form_widget(form.date) }}
                     </div>
-
-                    <div class="col-xs-2 form-group">
-                        <p class="form-control-static text-center">vs.</p>
-                    </div>
-
-                    <div class="col-xs-5">
-                        <div class="form-group">
-                            {{ form_errors(form.patb) }}
-                            {{ form_widget(form.patb) }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_errors(form.pbtb) }}
-                            {{ form_widget(form.pbtb) }}
-                        </div>
-                    </div>
-
-                    <div class="col-xs-3 form-group col-xs-offset-2">
-
-                        {{ form_errors(form.score_team_a) }}
-                        {{ form_widget(form.score_team_a, {'attr': {'maxlength' : '2'} }) }}
-                    </div>
-                    <div class="col-xs-2 form-group">
-                        <p class="form-control-static text-center">:</p>
-                    </div>
-                    <div class="col-xs-3 form-group">
-                        {{ form_errors(form.score_team_b) }}
-                        {{ form_widget(form.score_team_b, {'attr': {'maxlength' : '2'} }) }}
-                    </div>
-
-                    <div class="col-xs-12 form-group">
-                        <div class="text-center">
-                            {{ form_widget(form.create_schedule) }}
-                        </div>
-
-                    </div>
-
                 </div>
 
+                <div class="col-xs-5">
+                    <div class="form-group">
+                        {{ form_errors(form.pata) }}
+                        {{ form_widget(form.pata) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.pbta) }}
+                        {{ form_widget(form.pbta) }}
+                    </div>
+                </div>
 
-                {{ form_end(form) }}
+                <div class="col-xs-2 form-group">
+                    <p class="form-control-static text-center">vs.</p>
+                </div>
 
-            </section>
-        </article>
-    </section>
+                <div class="col-xs-5">
+                    <div class="form-group">
+                        {{ form_errors(form.patb) }}
+                        {{ form_widget(form.patb) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_errors(form.pbtb) }}
+                        {{ form_widget(form.pbtb) }}
+                    </div>
+                </div>
+
+                <div class="col-xs-3 form-group col-xs-offset-2">
+                    {{ form_errors(form.score_team_a) }}
+                    {{ form_widget(form.score_team_a, {'attr': {'maxlength' : '2'} }) }}
+                </div>
+                <div class="col-xs-2 form-group">
+                    <p class="form-control-static text-center">:</p>
+                </div>
+                <div class="col-xs-3 form-group">
+                    {{ form_errors(form.score_team_b) }}
+                    {{ form_widget(form.score_team_b, {'attr': {'maxlength' : '2'} }) }}
+                </div>
+
+                <div class="col-xs-12 form-group">
+                    <div class="text-center">
+                        {{ form_widget(form.create_schedule) }}
+                    </div>
+                </div>
+
+            </div>
+        </fieldset>
+    {{ form_end(form) }}
 {% endblock %}
