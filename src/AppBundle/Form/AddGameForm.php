@@ -25,6 +25,14 @@ class AddGameForm extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('date', 'date', array(
+                    'label'         => 'Spieltag',
+                    'input'         => 'datetime',
+                    'widget'        => 'single_text',
+                    'format'        => 'dd.MM.yy',
+                    'data'          => new \DateTime(),
+                )
+            )
             ->add(
                 'pata', 'entity', array(
                     'class'         => 'AppBundle:Player',
