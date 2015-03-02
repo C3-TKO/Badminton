@@ -104,18 +104,24 @@ class RoundRanking
     }
 
     private function setRanking() {
-        $lastGameWon = 1337;
+        $lastGameWon = $this->getMaxWonMatches();
         $positioning = 1;
         foreach($this->ranking as &$topDownRanking) {
             if ($topDownRanking['games_won'] < $lastGameWon) {
-                $topDownRanking['positioning'] = $positioning;
                 $positioning++;
+                $topDownRanking['positioning'] = $positioning;
                 $lastGameWon = $topDownRanking['games_won'];
             }
             elseif($topDownRanking['games_won'] === $lastGameWon) {
-                $topDownRanking['trophy_level'] = $positioning;
+                $topDownRanking['positioning'] = $positioning;
             }
         }
+    }
+
+    private function getMaxWonMatches() {
+        $bestPlayer = array_slice($this->ranking, 0, 1);
+
+        return $bestPlayer[0]['games_won'];
     }
 
     /**
