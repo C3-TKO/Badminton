@@ -44,6 +44,7 @@ AppBundle\Entity\Game:
             joinColumn:
                 name: id_round
                 referencedColumnName: id
+                onDelete: CASCADE
         team_a:
             targetEntity: Team
             inversedBy: team_a_game
