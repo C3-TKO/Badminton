@@ -33,10 +33,10 @@ CREATE TABLE `game` (
   KEY `IDX_232B318C2B6BAB04` (`id_round`),
   KEY `IDX_232B318C92977BE4` (`id_team_a`),
   KEY `IDX_232B318CB9E2A5E` (`id_team_b`),
-  CONSTRAINT `FK_232B318CB9E2A5E` FOREIGN KEY (`id_team_b`) REFERENCES `team` (`id`),
-  CONSTRAINT `FK_232B318C2B6BAB04` FOREIGN KEY (`id_round`) REFERENCES `round` (`id`),
-  CONSTRAINT `FK_232B318C92977BE4` FOREIGN KEY (`id_team_a`) REFERENCES `team` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  CONSTRAINT `FK_232B318C2B6BAB04` FOREIGN KEY (`id_round`) REFERENCES `round` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_232B318C92977BE4` FOREIGN KEY (`id_team_a`) REFERENCES `team` (`id`),
+  CONSTRAINT `FK_232B318CB9E2A5E` FOREIGN KEY (`id_team_b`) REFERENCES `team` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +60,7 @@ CREATE TABLE `player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +87,7 @@ CREATE TABLE `round` (
   PRIMARY KEY (`id`),
   KEY `IDX_C5EEEA34D6D3EE44` (`id_season`),
   CONSTRAINT `FK_C5EEEA34D6D3EE44` FOREIGN KEY (`id_season`) REFERENCES `season` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +111,7 @@ CREATE TABLE `season` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `season` (
 
 LOCK TABLES `season` WRITE;
 /*!40000 ALTER TABLE `season` DISABLE KEYS */;
-INSERT INTO `season` VALUES (1,'Saison 2014');
+INSERT INTO `season` VALUES (1,'Saison 2014'),(2,'Saison 2015');
 /*!40000 ALTER TABLE `season` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +142,7 @@ CREATE TABLE `team` (
   KEY `IDX_C4E0A61F27C7205C` (`id_player_b`),
   CONSTRAINT `FK_C4E0A61F27C7205C` FOREIGN KEY (`id_player_b`) REFERENCES `player` (`id`),
   CONSTRAINT `FK_C4E0A61FBECE71E6` FOREIGN KEY (`id_player_a`) REFERENCES `player` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-27 15:39:19
+-- Dump completed on 2015-03-02 14:50:28
