@@ -53,6 +53,6 @@ class PlayerRepository extends EntityRepository
 
         $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'AppBundle\Entity\Player');
     }
 }

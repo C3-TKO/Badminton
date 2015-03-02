@@ -42,10 +42,10 @@ class RoundRanking
         $games          = $gameRepo->findByRoundId($id);
 
         foreach($players as $player) {
-            $this->playerStats[$player['id']]['id']           = $player['id'];
-            $this->playerStats[$player['id']]['name']         = $player['name'];
-            $this->playerStats[$player['id']]['games_played'] = 0;
-            $this->playerStats[$player['id']]['games_won']    = 0;
+            $this->playerStats[$player->getId()]['id']           = $player->getId();
+            $this->playerStats[$player->getId()]['name']         = $player->getName();
+            $this->playerStats[$player->getId()]['games_played'] = 0;
+            $this->playerStats[$player->getId()]['games_won']    = 0;
         }
 
         foreach($games as $game) {
