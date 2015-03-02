@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Season
@@ -11,15 +10,37 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Season
 {
     /**
+     * @var integer
+     */
+    private $id;
+
+    /**
      * @var string
      */
     private $name;
 
     /**
-     * @var integer
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $id;
+    private $rounds;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->rounds = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set name
@@ -42,33 +63,6 @@ class Season
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $rounds;
-
-    /**
-     * @var \AppBundle\Entity\Season
-     */
-    private $season;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->rounds = new ArrayCollection();
     }
 
     /**
@@ -102,66 +96,5 @@ class Season
     public function getRounds()
     {
         return $this->rounds;
-    }
-
-    /**
-     * Set season
-     *
-     * @param \AppBundle\Entity\Season $season
-     * @return Season
-     */
-    public function setSeason(\AppBundle\Entity\Season $season = null)
-    {
-        $this->season = $season;
-
-        return $this;
-    }
-
-    /**
-     * Get season
-     *
-     * @return \AppBundle\Entity\Season 
-     */
-    public function getSeason()
-    {
-        return $this->season;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $rounds_2_season;
-
-
-    /**
-     * Add rounds_2_season
-     *
-     * @param \AppBundle\Entity\Round $rounds2Season
-     * @return Season
-     */
-    public function addRounds2Season(\AppBundle\Entity\Round $rounds2Season)
-    {
-        $this->rounds_2_season[] = $rounds2Season;
-
-        return $this;
-    }
-
-    /**
-     * Remove rounds_2_season
-     *
-     * @param \AppBundle\Entity\Round $rounds2Season
-     */
-    public function removeRounds2Season(\AppBundle\Entity\Round $rounds2Season)
-    {
-        $this->rounds_2_season->removeElement($rounds2Season);
-    }
-
-    /**
-     * Get rounds_2_season
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRounds2Season()
-    {
-        return $this->rounds_2_season;
     }
 }

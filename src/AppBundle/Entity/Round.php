@@ -10,7 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Round
 {
     /**
-     * @var boolean
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
      */
     private $idSeason;
 
@@ -20,15 +25,37 @@ class Round
     private $date;
 
     /**
-     * @var integer
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $id;
+    private $games;
 
+    /**
+     * @var \AppBundle\Entity\Season
+     */
+    private $season;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->games = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set idSeason
      *
-     * @param boolean $idSeason
+     * @param integer $idSeason
      * @return Round
      */
     public function setIdSeason($idSeason)
@@ -41,7 +68,7 @@ class Round
     /**
      * Get idSeason
      *
-     * @return boolean 
+     * @return integer 
      */
     public function getIdSeason()
     {
@@ -69,56 +96,6 @@ class Round
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    /**
-     * @var \AppBundle\Entity\Season
-     */
-    private $season;
-
-
-    /**
-     * Set season
-     *
-     * @param \AppBundle\Entity\Season $season
-     * @return Round
-     */
-    public function setSeason(\AppBundle\Entity\Season $season = null)
-    {
-        $this->season = $season;
-
-        return $this;
-    }
-
-    /**
-     * Get season
-     *
-     * @return \AppBundle\Entity\Season 
-     */
-    public function getSeason()
-    {
-        return $this->season;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $games;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->games = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -153,70 +130,27 @@ class Round
     {
         return $this->games;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $games_2_round;
-
 
     /**
-     * Add games_2_round
+     * Set season
      *
-     * @param \AppBundle\Entity\Game $games2Round
+     * @param \AppBundle\Entity\Season $season
      * @return Round
      */
-    public function addGames2Round(\AppBundle\Entity\Game $games2Round)
+    public function setSeason(\AppBundle\Entity\Season $season = null)
     {
-        $this->games_2_round[] = $games2Round;
+        $this->season = $season;
 
         return $this;
     }
 
     /**
-     * Remove games_2_round
-     *
-     * @param \AppBundle\Entity\Game $games2Round
-     */
-    public function removeGames2Round(\AppBundle\Entity\Game $games2Round)
-    {
-        $this->games_2_round->removeElement($games2Round);
-    }
-
-    /**
-     * Get games_2_round
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGames2Round()
-    {
-        return $this->games_2_round;
-    }
-    /**
-     * @var \AppBundle\Entity\Season
-     */
-    private $season_2_rounds;
-
-
-    /**
-     * Set season_2_rounds
-     *
-     * @param \AppBundle\Entity\Season $season2Rounds
-     * @return Round
-     */
-    public function setSeason2Rounds(\AppBundle\Entity\Season $season2Rounds = null)
-    {
-        $this->season_2_rounds = $season2Rounds;
-
-        return $this;
-    }
-
-    /**
-     * Get season_2_rounds
+     * Get season
      *
      * @return \AppBundle\Entity\Season 
      */
-    public function getSeason2Rounds()
+    public function getSeason()
     {
-        return $this->season_2_rounds;
+        return $this->season;
     }
 }
