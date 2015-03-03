@@ -9,22 +9,22 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Count;
 
-const NAME = 'create_schedule';
-const MIN_NUMBER_PLAYERS = 4;
-
 class CreateScheduleForm extends AbstractType {
+
+    const NAME                  = 'create_schedule';
+    const MIN_NUMBER_PLAYERS    = 4;
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add(
-                'Spieler', 'entity', array(
+                'player_list', 'entity', array(
                     'class'         => 'AppBundle:Player',
                     'property'      => 'name',
                     'multiple'      => true,
                     'expanded'      => true,
                     'constraints'   => array(
-                        new Count(array('min' => MIN_NUMBER_PLAYERS, 'minMessage' => 'Bitte wähle mindestens {{ limit }} Spieler aus'))
+                        new Count(array('min' => self::MIN_NUMBER_PLAYERS, 'minMessage' => 'Bitte wähle mindestens {{ limit }} Spieler aus'))
                     )
                 )
             )
@@ -44,6 +44,6 @@ class CreateScheduleForm extends AbstractType {
      */
     public function getName()
     {
-        return NAME;
+        return self::NAME;
     }
 }

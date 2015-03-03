@@ -34,6 +34,12 @@ class DefaultController extends Controller
 
         $form->handleRequest($request);
 
+        if ($form->isValid()) {
+            $matchMaker = $this->get('app.match_scheduler');
+            $matchMaker->setPlayerList($form->get('player_list')->getData());
+            $matchMaker->schedule();
+        }
+
         return $this->render('AppBundle:Default:scheduling.html.twig', array('form' => $form->createView()));
     }
 

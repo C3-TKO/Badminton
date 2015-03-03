@@ -10,5 +10,5 @@ services:
         class: AppBundle\Services\RoundRanking
         arguments:
             em: @doctrine.orm.entity_manager
-    app.matchmaker:
+    app.match_scheduler:
         class: AppBundle\Services\MatchScheduling\MatchScheduler
