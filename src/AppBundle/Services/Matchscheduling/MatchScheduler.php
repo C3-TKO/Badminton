@@ -4,6 +4,7 @@ namespace AppBundle\Services\MatchScheduling;
 
 use AppBundle\Entity\Player;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * Class MatchScheduler
@@ -25,6 +26,9 @@ class MatchScheduler
 
     public function schedule()
     {
+        if (null === $this->playerList) {
+            throw new Exception('Please provide a player list by invoking ' . __CLASS__ . '->setPlayerList()' );
+        }
         $this->getAllPlayerCombinations($this->playerList, self::MAX_NUMBER_PLAYERS_PLAYING);
 
         $test = $this->assign4PlayerMatches($this->playerList->get(0), $this->playerList->get(1), $this->playerList->get(2), $this->playerList->get(3));
