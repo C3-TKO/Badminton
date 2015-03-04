@@ -13,6 +13,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 class MatchScheduler
 {
     const PLAYERS_PLAYING_PER_MATCH = 4;
+    const MAX_NUMBER_PLAYERS        = 7;
 
     /**
      * List of players participating in one round
@@ -31,6 +32,9 @@ class MatchScheduler
         }
         if ($this->playerList->count() < self::PLAYERS_PLAYING_PER_MATCH) {
             throw new Exception('The player list must contain at least ' . self::PLAYERS_PLAYING_PER_MATCH . ' players');
+        }
+        if ($this->playerList->count() > self::MAX_NUMBER_PLAYERS) {
+            throw new Exception('The player list must not contain more than ' . self::MAX_NUMBER_PLAYERS . ' players');
         }
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
