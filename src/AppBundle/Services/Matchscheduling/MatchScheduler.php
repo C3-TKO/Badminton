@@ -23,6 +23,8 @@ class MatchScheduler
 
     private $playerCombinations = array();
 
+    private $matchUpsPerCombination = array();
+
     public function setPlayerList(ArrayCollection $playerList)
     {
         $this->playerList = $playerList;
@@ -42,11 +44,22 @@ class MatchScheduler
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
-        $this->dumpCombinations();
+        shuffle($this->playerCombinations);
 
         foreach($this->playerCombinations as $combination) {
-            $matchUpsCurrentcombination = $this->getMachesPerCombination($combination);
-            $this->dumpMatchUpsPerCombi($matchUpsCurrentcombination);
+            $this->matchUpsPerCombination[] = $this->getMachesPerCombination($combination);
+        }
+
+        $schedule = array();
+
+        for ($i = 0; $i < 3; $i++) {
+            foreach($this->matchUpsPerCombination as $matchUps) {
+                $schedule[] = $matchUps[$i];
+            }
+        }
+        
+        foreach($schedule as $match) {
+            $this->dumpMatchUp($match);
         }
     }
 
@@ -120,24 +133,13 @@ class MatchScheduler
         return $result;
     }
 
+    private function dumpMatchUp($match) {
 
-    private function dumpCombinations()
-    {
-        foreach ($this->playerCombinations as $combination) {
-            foreach ($combination as $player) {
-                echo $player->getName() . ' | ';
-            }
-            echo '<br />';
-        }
-    }
-
-    private function dumpMatchUpsPerCombi($matchUps) {
-        foreach ($matchUps as $match) {
             $player1 = array_shift($match);
             $player2 = array_shift($match);
             $player3 = array_shift($match);
             $player4 = array_shift($match);
             echo $player1->getName() . ' & ' . $player2->getName() . ' vs. ' . $player3->getName() . ' & ' . $player4->getName() . '<br/>';
-        }
+
     }
 }
