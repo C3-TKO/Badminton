@@ -41,6 +41,8 @@ class MatchScheduler
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
+        $this->dumpCombinations();
+
         $test = $this->assign4PlayerMatches($this->playerList->get(0), $this->playerList->get(1), $this->playerList->get(2), $this->playerList->get(3));
 
         foreach($test as $match) {
@@ -73,19 +75,19 @@ class MatchScheduler
     /**
      * Returns all unordered and unique combinations of k elements out of a set of n completely available elements.
      *
-     * @param array     $n          All available elements
-     * @param integer   $k          Number of desired elements to be combined
-     * @param integer   $draw       This is the number of draws already performed
-     * @param array     $drawnKs    Contains the already drawn elements (k)
+     * @param ArrayCollection   $n          All available elements
+     * @param integer           $k          Number of desired elements to be combined
+     * @param integer           $draw       This is the number of draws already performed
+     * @param array             $drawnKs    Contains the already drawn elements (k)
      */
-    private function returnAllCombinationsOfKElementsFromN($n, $k, $draw, $drawnKs) {
+    private function returnAllCombinationsOfKElementsFromN(ArrayCollection $n, $k, $draw, $drawnKs) {
         if($k === 0) {
             $this->playerCombinations[] = $drawnKs;
             return;
         }
         for ($i = $draw; $i <= (count($n) - $k); $i++ ) {
             $countDrawnKs = count($drawnKs);
-            $drawnKs[$countDrawnKs-$k] = &$n[$i];
+            $drawnKs[$countDrawnKs-$k] = $n->get($i);
             $this->returnAllCombinationsOfKElementsFromN($n, $k-1, $i+1, $drawnKs);
         }
     }
@@ -121,5 +123,16 @@ class MatchScheduler
         );
 
         return $result;
+    }
+
+
+
+    private function dumpCombinations() {
+        foreach($this->playerCombinations as $combination) {
+            foreach($combination as $player) {
+                echo $player->getName(). ' | ';
+            }
+            echo '<br />';
+        }
     }
 }
