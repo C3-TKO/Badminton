@@ -46,14 +46,7 @@ class MatchScheduler
 
         foreach($this->playerCombinations as $combination) {
             $matchUpsCurrentcombination = $this->getMachesPerCombination($combination);
-        }
-
-        foreach ($matchUpsCurrentcombination as $match) {
-            $player1 = array_shift($match);
-            $player2 = array_shift($match);
-            $player3 = array_shift($match);
-            $player4 = array_shift($match);
-            echo $player1->getName() . ' & ' . $player2->getName() . ' vs. ' . $player3->getName() . ' & ' . $player4->getName() . '<br/>';
+            $this->dumpMatchUpsPerCombi($matchUpsCurrentcombination);
         }
     }
 
@@ -135,6 +128,16 @@ class MatchScheduler
                 echo $player->getName() . ' | ';
             }
             echo '<br />';
+        }
+    }
+
+    private function dumpMatchUpsPerCombi($matchUps) {
+        foreach ($matchUps as $match) {
+            $player1 = array_shift($match);
+            $player2 = array_shift($match);
+            $player3 = array_shift($match);
+            $player4 = array_shift($match);
+            echo $player1->getName() . ' & ' . $player2->getName() . ' vs. ' . $player3->getName() . ' & ' . $player4->getName() . '<br/>';
         }
     }
 }
