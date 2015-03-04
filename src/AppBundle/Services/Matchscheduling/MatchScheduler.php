@@ -57,10 +57,10 @@ class MatchScheduler
     /**
      * Retrieves all player combinations for match setups
      *
-     * @param array     $n  Complete set of all available players
-     * @param integer   $k
+     * @param ArrayCollection   $n  Complete set of all available players
+     * @param integer           $k
      */
-    private function getAllPlayerCombinations($n, $k) {
+    private function getAllPlayerCombinations(ArrayCollection $n, $k) {
 
         $result = array();
         for($i = 0; $i < $k; $i++) {
@@ -106,7 +106,7 @@ class MatchScheduler
      * @param Player $player4
      * @return array
      */
-    private function assign4PlayerMatches(Player $player1, Player $player2, Player $player3, Player $player4) {
+    private function getMachesPerCombination(Player $player1, Player $player2, Player $player3, Player $player4) {
         $shuffledPlayers = array($player1, $player2, $player3, $player4);
         shuffle($shuffledPlayers);
 
@@ -135,4 +135,5 @@ class MatchScheduler
             echo '<br />';
         }
     }
+
 }
