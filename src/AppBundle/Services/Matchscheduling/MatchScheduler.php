@@ -13,7 +13,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 class MatchScheduler
 {
     const PLAYERS_PLAYING_PER_MATCH = 4;
-    const MAX_NUMBER_PLAYERS        = 7;
+    const MAX_NUMBER_PLAYERS = 7;
 
     /**
      * List of players participating in one round
@@ -23,14 +23,15 @@ class MatchScheduler
 
     private $playerCombinations = array();
 
-    public function setPlayerList( ArrayCollection $playerList ) {
+    public function setPlayerList(ArrayCollection $playerList)
+    {
         $this->playerList = $playerList;
     }
 
     public function schedule()
     {
         if (null === $this->playerList) {
-            throw new Exception('Please provide a player list by invoking ' . __CLASS__ . '->setPlayerList()' );
+            throw new Exception('Please provide a player list by invoking ' . __CLASS__ . '->setPlayerList()');
         }
         if ($this->playerList->count() < self::PLAYERS_PLAYING_PER_MATCH) {
             throw new Exception('The player list must contain at least ' . self::PLAYERS_PLAYING_PER_MATCH . ' players');
@@ -43,27 +44,30 @@ class MatchScheduler
 
         $this->dumpCombinations();
 
-        $test = $this->assign4PlayerMatches($this->playerList->get(0), $this->playerList->get(1), $this->playerList->get(2), $this->playerList->get(3));
+        foreach($this->playerCombinations as $combination) {
+            $matchUpsCurrentcombination = $this->getMachesPerCombination($combination);
+        }
 
-        foreach($test as $match) {
+        foreach ($matchUpsCurrentcombination as $match) {
             $player1 = array_shift($match);
             $player2 = array_shift($match);
             $player3 = array_shift($match);
             $player4 = array_shift($match);
-            echo $player1->getName(). ' & ' .$player2->getName(). ' vs. '.$player3->getName(). ' & '. $player4->getName().'<br/>';
+            echo $player1->getName() . ' & ' . $player2->getName() . ' vs. ' . $player3->getName() . ' & ' . $player4->getName() . '<br/>';
         }
     }
 
     /**
      * Retrieves all player combinations for match setups
      *
-     * @param ArrayCollection   $n  Complete set of all available players
-     * @param integer           $k
+     * @param ArrayCollection $n Complete set of all available players
+     * @param integer $k
      */
-    private function getAllPlayerCombinations(ArrayCollection $n, $k) {
+    private function getAllPlayerCombinations(ArrayCollection $n, $k)
+    {
 
         $result = array();
-        for($i = 0; $i < $k; $i++) {
+        for ($i = 0; $i < $k; $i++) {
             $result[] = null;
         }
 
@@ -75,20 +79,21 @@ class MatchScheduler
     /**
      * Returns all unordered and unique combinations of k elements out of a set of n completely available elements.
      *
-     * @param ArrayCollection   $n          All available elements
-     * @param integer           $k          Number of desired elements to be combined
-     * @param integer           $draw       This is the number of draws already performed
-     * @param array             $drawnKs    Contains the already drawn elements (k)
+     * @param ArrayCollection $n All available elements
+     * @param integer $k Number of desired elements to be combined
+     * @param integer $draw This is the number of draws already performed
+     * @param array $drawnKs Contains the already drawn elements (k)
      */
-    private function returnAllCombinationsOfKElementsFromN(ArrayCollection $n, $k, $draw, $drawnKs) {
-        if($k === 0) {
+    private function returnAllCombinationsOfKElementsFromN(ArrayCollection $n, $k, $draw, $drawnKs)
+    {
+        if ($k === 0) {
             $this->playerCombinations[] = $drawnKs;
             return;
         }
-        for ($i = $draw; $i <= (count($n) - $k); $i++ ) {
+        for ($i = $draw; $i <= (count($n) - $k); $i++) {
             $countDrawnKs = count($drawnKs);
-            $drawnKs[$countDrawnKs-$k] = $n->get($i);
-            $this->returnAllCombinationsOfKElementsFromN($n, $k-1, $i+1, $drawnKs);
+            $drawnKs[$countDrawnKs - $k] = $n->get($i);
+            $this->returnAllCombinationsOfKElementsFromN($n, $k - 1, $i + 1, $drawnKs);
         }
     }
 
@@ -100,40 +105,36 @@ class MatchScheduler
      * A & C vs. B & D
      * A & D vs. B & C
      *
-     * @param Player $player1
-     * @param Player $player2
-     * @param Player $player3
-     * @param Player $player4
+     * @param array $players
      * @return array
      */
-    private function getMachesPerCombination(Player $player1, Player $player2, Player $player3, Player $player4) {
-        $shuffledPlayers = array($player1, $player2, $player3, $player4);
-        shuffle($shuffledPlayers);
+    private function getMachesPerCombination($players)
+    {
+        shuffle($players);
 
         $randomizedPlayer2PositionAssociation = array(
-            'a' => array_shift($shuffledPlayers),
-            'b' => array_shift($shuffledPlayers),
-            'c' => array_shift($shuffledPlayers),
-            'd' => array_shift($shuffledPlayers));
+            'a' => array_shift($players),
+            'b' => array_shift($players),
+            'c' => array_shift($players),
+            'd' => array_shift($players));
 
         $result = array(
-            array($randomizedPlayer2PositionAssociation['a'], $randomizedPlayer2PositionAssociation['b'],$randomizedPlayer2PositionAssociation['c'],$randomizedPlayer2PositionAssociation['d']),
-            array($randomizedPlayer2PositionAssociation['a'], $randomizedPlayer2PositionAssociation['c'],$randomizedPlayer2PositionAssociation['b'],$randomizedPlayer2PositionAssociation['d']),
-            array($randomizedPlayer2PositionAssociation['a'], $randomizedPlayer2PositionAssociation['d'],$randomizedPlayer2PositionAssociation['b'],$randomizedPlayer2PositionAssociation['c'])
+            array($randomizedPlayer2PositionAssociation['a'], $randomizedPlayer2PositionAssociation['b'], $randomizedPlayer2PositionAssociation['c'], $randomizedPlayer2PositionAssociation['d']),
+            array($randomizedPlayer2PositionAssociation['a'], $randomizedPlayer2PositionAssociation['c'], $randomizedPlayer2PositionAssociation['b'], $randomizedPlayer2PositionAssociation['d']),
+            array($randomizedPlayer2PositionAssociation['a'], $randomizedPlayer2PositionAssociation['d'], $randomizedPlayer2PositionAssociation['b'], $randomizedPlayer2PositionAssociation['c'])
         );
 
         return $result;
     }
 
 
-
-    private function dumpCombinations() {
-        foreach($this->playerCombinations as $combination) {
-            foreach($combination as $player) {
-                echo $player->getName(). ' | ';
+    private function dumpCombinations()
+    {
+        foreach ($this->playerCombinations as $combination) {
+            foreach ($combination as $player) {
+                echo $player->getName() . ' | ';
             }
             echo '<br />';
         }
     }
-
 }
