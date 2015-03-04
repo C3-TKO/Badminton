@@ -25,6 +25,8 @@ class MatchScheduler
 
     private $matchUpsPerCombination = array();
 
+    private $schedule = array();
+
     public function setPlayerList(ArrayCollection $playerList)
     {
         $this->playerList = $playerList;
@@ -50,15 +52,15 @@ class MatchScheduler
             $this->matchUpsPerCombination[] = $this->getMachesPerCombination($combination);
         }
 
-        $schedule = array();
+        $this->populateSchedule();
 
-        for ($i = 0; $i < 3; $i++) {
-            foreach($this->matchUpsPerCombination as $matchUps) {
-                $schedule[] = $matchUps[$i];
-            }
+        // When having not enough matches within the schedule - re-attach the schedule until the desired number of
+        // minimum matches is reached
+        while(count($this->schedule) < 20 ) {
+            $this->populateSchedule();
         }
-        
-        foreach($schedule as $match) {
+
+        foreach($this->schedule as $match) {
             $this->dumpMatchUp($match);
         }
     }
@@ -132,6 +134,16 @@ class MatchScheduler
 
         return $result;
     }
+
+
+    private function populateSchedule() {
+        for ($i = 0; $i < 3; $i++) {
+            foreach($this->matchUpsPerCombination as $matchUps) {
+                $this->schedule[] = $matchUps[$i];
+            }
+        }
+    }
+
 
     private function dumpMatchUp($match) {
 
