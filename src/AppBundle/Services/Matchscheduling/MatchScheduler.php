@@ -21,6 +21,8 @@ class MatchScheduler
      */
     private $playerList = null;
 
+    private $playerCombinations = array();
+
     public function setPlayerList( ArrayCollection $playerList ) {
         $this->playerList = $playerList;
     }
@@ -40,7 +42,6 @@ class MatchScheduler
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
         $test = $this->assign4PlayerMatches($this->playerList->get(0), $this->playerList->get(1), $this->playerList->get(2), $this->playerList->get(3));
-
 
         foreach($test as $match) {
             $player1 = array_shift($match);
@@ -79,14 +80,7 @@ class MatchScheduler
      */
     private function returnAllCombinationsOfKElementsFromN($n, $k, $draw, $drawnKs) {
         if($k === 0) {
-            $echo = '';
-            foreach($drawnKs as $player) {
-                /**
-                 * @var Player $player
-                 */
-                $echo .= $player->getName() . ' | ';
-            }
-            echo $echo . '<br/>';
+            $this->playerCombinations[] = $drawnKs;
             return;
         }
         for ($i = $draw; $i <= (count($n) - $k); $i++ ) {
