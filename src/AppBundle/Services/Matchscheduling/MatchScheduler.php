@@ -14,6 +14,7 @@ class MatchScheduler
     const MAX_NUMBER_PLAYERS_PLAYING = 4;
 
     /**
+     * List of players participating in one round
      * @var ArrayCollection Player[]
      */
     private $playerList = null;
@@ -24,7 +25,7 @@ class MatchScheduler
 
     public function schedule()
     {
-        $this->getAllPlayerCombinations(array('A','B','C','D','E'), self::MAX_NUMBER_PLAYERS_PLAYING);
+        $this->getAllPlayerCombinations($this->playerList, self::MAX_NUMBER_PLAYERS_PLAYING);
 
         $test = $this->assign4PlayerMatches($this->playerList->get(0), $this->playerList->get(1), $this->playerList->get(2), $this->playerList->get(3));
 
@@ -85,7 +86,6 @@ class MatchScheduler
 
         $this->returnAllCombinationsOfKElementsFromN($n, $k, 0, $result);
 
-
     }
 
 
@@ -99,13 +99,19 @@ class MatchScheduler
      */
     private function returnAllCombinationsOfKElementsFromN($n, $k, $draw, $drawnKs) {
         if($k === 0) {
-            var_dump($drawnKs);
-            echo '<br/>';
+            $echo = '';
+            foreach($drawnKs as $player) {
+                /**
+                 * @var Player $player
+                 */
+                $echo .= $player->getName() . ' | ';
+            }
+            echo $echo . '<br/>';
             return;
         }
         for ($i = $draw; $i <= (count($n) - $k); $i++ ) {
             $countDrawnKs = count($drawnKs);
-            $drawnKs[$countDrawnKs-$k] = $n[$i];
+            $drawnKs[$countDrawnKs-$k] = &$n[$i];
             $this->returnAllCombinationsOfKElementsFromN($n, $k-1, $i+1, $drawnKs);
         }
     }
