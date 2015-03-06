@@ -46,10 +46,11 @@ class MatchScheduler
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
-        shuffle($this->playerCombinations);
+        #shuffle($this->playerCombinations);
+        $this->spreadBreaks();
 
         foreach($this->playerCombinations as $combination) {
-            $this->matchUpsPerCombination[] = $this->getMachesPerCombination($combination);
+            $this->matchUpsPerCombination[] = $this->getMatchesPerCombination($combination);
         }
 
         $this->populateSchedule();
@@ -106,6 +107,36 @@ class MatchScheduler
     }
 
 
+    private function spreadBreaks() {
+
+
+        foreach($this->playerCombinations as $combi) {
+
+            $allPlayers = clone $this->playerList;
+
+            foreach($combi as $playerPlaying) {
+                $playerPlaying->getId();
+
+                foreach($allPlayers as $index => $player2Remove) {
+                    if($player2Remove->getId() === $playerPlaying->getId()) {
+                        echo $player2Remove->getName() . ' ';
+                        $allPlayers->remove($index);
+                    }
+                }
+
+            }
+
+            echo ' Pause für -> ';
+
+            foreach ($allPlayers as $breakPlayer) {
+                echo $breakPlayer->getName() . ' ';
+            }
+
+            echo '<br />';
+        }
+    }
+
+
     /**
      * Assigns a group of 4 players randomly to all three possible double pairing combinations
      *
@@ -116,7 +147,7 @@ class MatchScheduler
      * @param array $players
      * @return array
      */
-    private function getMachesPerCombination($players)
+    private function getMatchesPerCombination($players)
     {
         shuffle($players);
 
