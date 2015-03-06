@@ -88,6 +88,13 @@ class RoundRanking
     }
 
 
+    public function getPaginationBoundaries() {
+        $roundRepo = $this->em->getRepository('AppBundle:Round');
+
+        return array('min' => 1, 'max' => $roundRepo->findLatestId());
+    }
+
+
     /**
      * Sorts the return array by number of won games
      */
