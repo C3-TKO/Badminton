@@ -21,7 +21,7 @@ class DefaultController extends Controller
     public function resultsAction($idRound = null)
     {
         if (null === $idRound) {
-            return $this->render('AppBundle:Default:results.html.twig', $this->get('app.round_results')->findByLastRound() );
+            return $this->render('AppBundle:Default:results.html.twig', $this->get('app.round_results')->findByLastRound());
         }
         else {
             return $this->render('AppBundle:Default:results.html.twig', $this->get('app.round_results')->findByRoundId($idRound));
