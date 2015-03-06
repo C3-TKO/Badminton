@@ -28,9 +28,14 @@ class DefaultController extends Controller
         }
     }
 
-    public function rankingAction()
+    public function rankingAction($idRound = null)
     {
-        return $this->render('AppBundle:Default:ranking.html.twig', $this->get('app.round_ranking')->findByLastRound() );
+        if (null === $idRound) {
+            return $this->render('AppBundle:Default:ranking.html.twig', $this->get('app.round_ranking')->findByLastRound());
+        }
+        else {
+            return $this->render('AppBundle:Default:ranking.html.twig', $this->get('app.round_ranking')->findByRoundId($idRound));
+        }
     }
 
     public function schedulingAction(Request $request)
