@@ -111,16 +111,21 @@ class RoundRanking
     }
 
     private function setRanking() {
-        $lastGameWon = $this->getMaxWonMatches();
-        $positioning = 1;
+        $lastGameWon    = $this->getMaxWonMatches() + 1;
+        $positioning    = 0;
+        $offset         = 0;
         foreach($this->ranking as &$topDownRanking) {
             if ($topDownRanking['games_won'] < $lastGameWon) {
+                $positioning += $offset;
                 $positioning++;
-                $topDownRanking['positioning'] = $positioning;
-                $lastGameWon = $topDownRanking['games_won'];
+
+                $topDownRanking['positioning']  = $positioning;
+                $lastGameWon                    = $topDownRanking['games_won'];
+                $offset                         = 0;
             }
             elseif($topDownRanking['games_won'] === $lastGameWon) {
                 $topDownRanking['positioning'] = $positioning;
+                $offset++;
             }
         }
     }
