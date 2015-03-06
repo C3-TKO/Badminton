@@ -34,7 +34,7 @@ class GameRepository extends EntityRepository
         JOIN player AS patb ON patb.id = tb.id_player_a
         JOIN player AS pbtb ON pbtb.id = tb.id_player_b
         WHERE r.id = %u
-        ORDER BY r.date DESC;
+        ORDER BY g.id ASC;
         ", $idRound );
 
         $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
