@@ -22,8 +22,8 @@ home:
     path:     /
     defaults: { _controller: AppBundle:Default:index }
 results:
-    path:     /results
-    defaults: { _controller: AppBundle:Default:results }
+    path:     /results/{idRound}
+    defaults: { _controller: AppBundle:Default:results, idRound: null }
 ranking:
     path:     /ranking
     defaults: { _controller: AppBundle:Default:ranking }

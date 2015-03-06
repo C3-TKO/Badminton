@@ -18,9 +18,14 @@ class DefaultController extends Controller
         return $this->render('AppBundle:Default:index.html.twig');
     }
 
-    public function resultsAction()
+    public function resultsAction($idRound = null)
     {
-        return $this->render('AppBundle:Default:results.html.twig', $this->get('app.round_results')->findByLastRound() );
+        if (null === $idRound) {
+            return $this->render('AppBundle:Default:results.html.twig', $this->get('app.round_results')->findByLastRound() );
+        }
+        else {
+            return $this->render('AppBundle:Default:results.html.twig', $this->get('app.round_results')->findByRoundId($idRound));
+        }
     }
 
     public function rankingAction()
