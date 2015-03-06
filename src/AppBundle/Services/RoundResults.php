@@ -39,4 +39,11 @@ class RoundResults
 
         return $this->findByRoundId($roundRepo->findLatestId());
     }
+
+
+    public function getPaginationBoundaries() {
+        $roundRepo = $this->em->getRepository('AppBundle:Round');
+
+        return array('min' => 1, 'max' => $roundRepo->findLatestId());
+    }
 }

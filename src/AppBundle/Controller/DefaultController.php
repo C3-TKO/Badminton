@@ -20,12 +20,19 @@ class DefaultController extends Controller
 
     public function resultsAction($idRound = null)
     {
+        $resultsService             = $this->get('app.round_results');
+        $pagination['pagination']   = $resultsService->getPaginationBoundaries();
+
         if (null === $idRound) {
-            return $this->render('AppBundle:Default:results.html.twig', $this->get('app.round_results')->findByLastRound());
+            $pagination['pagination']['current']    = $pagination['pagination']['max'];
+            $twigVars                               = array_merge($pagination, $resultsService->findByLastRound());
         }
         else {
-            return $this->render('AppBundle:Default:results.html.twig', $this->get('app.round_results')->findByRoundId($idRound));
+            $pagination['pagination']['current']    = $idRound;
+            $twigVars                               = array_merge($pagination, $resultsService->findByRoundId($idRound));
         }
+
+        return $this->render('AppBundle:Default:results.html.twig', $twigVars);
     }
 
     public function rankingAction($idRound = null)
