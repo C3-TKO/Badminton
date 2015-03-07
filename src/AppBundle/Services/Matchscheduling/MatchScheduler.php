@@ -46,6 +46,8 @@ class MatchScheduler
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
+        shuffle($this->playerCombinations);
+                
         $this->listBreakingPlayers();
 
         for($i = 1; $i < count($this->playerList); $i++) {
@@ -133,9 +135,26 @@ class MatchScheduler
         for($i = 0; $i < $countPlayerCombinations; $i++) {
             $breakers = $this->getPlayersInBreak($this->playerCombinations[$i]);
 
+            $temp = array();
             foreach($breakers as $breaker) {
-                $breaks[$breaker->getId()]++;
+                $temp[] = $breaker->getId();
+                #$breaks[$breaker->getId()]++;
             }
+
+            #var_dump($temp);
+
+            foreach($breaks as $key => &$break) {
+                if(in_array($key, $temp)) {
+                    $break++;
+                }
+                else {
+                    $break = 0;
+                }
+            }
+            var_dump( 'breaks: (' . implode(', ', $breaks) . ')<br/>');
+
+
+
 
             // Looking for a max con violation
             foreach($breaks as $break) {
