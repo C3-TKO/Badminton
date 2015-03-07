@@ -110,26 +110,14 @@ class MatchScheduler
     private function spreadBreaks() {
 
 
-        foreach($this->playerCombinations as $combi) {
+        foreach($this->playerCombinations as $combination) {
 
-            $allPlayers = clone $this->playerList;
-
-            foreach($combi as $playerPlaying) {
-                $playerPlaying->getId();
-
-                foreach($allPlayers as $index => $player2Remove) {
-                    if($player2Remove->getId() === $playerPlaying->getId()) {
-                        echo $player2Remove->getName() . ' ';
-                        $allPlayers->remove($index);
-                    }
-                }
-
-            }
+            $breakingPlayers = $this->getPlayerInBreakFromCombination($combination);
 
             echo ' Pause für -> ';
 
-            foreach ($allPlayers as $breakPlayer) {
-                echo $breakPlayer->getName() . ' ';
+            foreach ($breakingPlayers as $breakingPlayer) {
+                echo $breakingPlayer->getName() . ' ';
             }
 
             echo '<br />';
@@ -185,4 +173,29 @@ class MatchScheduler
             echo $player1->getName() . ' & ' . $player2->getName() . ' vs. ' . $player3->getName() . ' & ' . $player4->getName() . '<br/>';
 
     }
+
+
+    /**
+     * Gets all players that are having a break during the match of the given combination
+     *
+     * @param   array                       $combination
+     * @return  ArrayCollection Player[]
+     */
+    private function getPlayerInBreakFromCombination($combination) {
+        $breakingPlayers = clone $this->playerList;
+
+        foreach($combination as $playerPlaying) {
+            $playerPlaying->getId();
+
+            foreach($breakingPlayers as $index => $player2Remove) {
+                if($player2Remove->getId() === $playerPlaying->getId()) {
+                    $breakingPlayers->remove($index);
+                }
+            }
+
+        }
+
+        return $breakingPlayers;
+    }
+
 }
