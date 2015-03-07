@@ -46,8 +46,18 @@ class MatchScheduler
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
-        #shuffle($this->playerCombinations);
-        $this->spreadBreaks();
+        $this->listBreakingPlayers();
+
+        for($i = 1; $i <= 10; $i++) {
+            $this->spreadBreaks();
+            echo '----- Durchgang ' . $i . ': -----<br />';
+            $this->listBreakingPlayers();
+        }
+
+
+        #$this->listBreakingPlayers();
+
+
 
         foreach($this->playerCombinations as $combination) {
             $this->matchUpsPerCombination[] = $this->getMatchesPerCombination($combination);
@@ -109,18 +119,35 @@ class MatchScheduler
 
     private function spreadBreaks() {
 
+        reset($this->playerCombinations);
 
-        foreach($this->playerCombinations as $combination) {
+        $maxConsecutiveBreaks = count($this->getPlayersInBreak(next($this->playerCombinations)));
 
-            $breakingPlayers = $this->getPlayerInBreakFromCombination($combination);
+        $breaks = array();
+        foreach($this->playerList as $player) {
+            $breaks[$player->getId()] = 0;
+        }
 
-            echo ' Pause für -> ';
+        $countPlayerCombinations = count($this->playerCombinations);
 
-            foreach ($breakingPlayers as $breakingPlayer) {
-                echo $breakingPlayer->getName() . ' ';
+        for($i = 0; $i < $countPlayerCombinations; $i++) {
+            $breakers = $this->getPlayersInBreak($this->playerCombinations[$i]);
+
+            foreach($breakers as $breaker) {
+                $breaks[$breaker->getId()]++;
             }
 
-            echo '<br />';
+            // Looking for a max con violation
+            foreach($breaks as $break) {
+                if($break > $maxConsecutiveBreaks) {
+                    $this->swapCombination($i);
+
+                    // Resetting the consecutive counters
+                    array_walk($breaks, function (&$value) { $value = 0;});
+                }
+            }
+
+
         }
     }
 
@@ -137,7 +164,7 @@ class MatchScheduler
      */
     private function getMatchesPerCombination($players)
     {
-        shuffle($players);
+        #shuffle($players);
 
         $randomizedPlayer2PositionAssociation = array(
             'a' => array_shift($players),
@@ -181,7 +208,7 @@ class MatchScheduler
      * @param   array                       $combination
      * @return  ArrayCollection Player[]
      */
-    private function getPlayerInBreakFromCombination($combination) {
+    private function getPlayersInBreak($combination) {
         $breakingPlayers = clone $this->playerList;
 
         foreach($combination as $playerPlaying) {
@@ -196,6 +223,30 @@ class MatchScheduler
         }
 
         return $breakingPlayers;
+    }
+
+
+    private function listBreakingPlayers() {
+
+        foreach($this->playerCombinations as $combination) {
+
+            $breakingPlayers = $this->getPlayersInBreak($combination);
+
+            echo ' Pause für -> ';
+
+            foreach ($breakingPlayers as $breakingPlayer) {
+                echo $breakingPlayer->getName() . ' ';
+            }
+
+            echo '<br />';
+        }
+    }
+
+
+    private function swapCombination($indexToSwap) {
+        $temp = $this->playerCombinations[$indexToSwap];
+        unset($this->playerCombinations[$indexToSwap]);
+        array_unshift($this->playerCombinations, $temp);
     }
 
 }
