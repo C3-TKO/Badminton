@@ -48,7 +48,7 @@ class MatchScheduler
 
         $this->listBreakingPlayers();
 
-        for($i = 1; $i <= 10; $i++) {
+        for($i = 1; $i < count($this->playerList); $i++) {
             $this->spreadBreaks();
             echo '----- Durchgang ' . $i . ': -----<br />';
             $this->listBreakingPlayers();
@@ -140,7 +140,7 @@ class MatchScheduler
             // Looking for a max con violation
             foreach($breaks as $break) {
                 if($break > $maxConsecutiveBreaks) {
-                    $this->swapCombination($i);
+                    $this->swapCombination($this->playerCombinations[$i]);
 
                     // Resetting the consecutive counters
                     array_walk($breaks, function (&$value) { $value = 0;});
@@ -243,10 +243,16 @@ class MatchScheduler
     }
 
 
-    private function swapCombination($indexToSwap) {
-        $temp = $this->playerCombinations[$indexToSwap];
-        unset($this->playerCombinations[$indexToSwap]);
-        array_unshift($this->playerCombinations, $temp);
+    private function swapCombination($combinationToSwap) {
+
+        // Finding index of the combination to swap
+        foreach($this->playerCombinations as $key => $combination) {
+            if ($combination === $combinationToSwap) {
+                unset($this->playerCombinations[$key]);
+                array_unshift($this->playerCombinations, $combinationToSwap);
+                break;
+            }
+        }
     }
 
 }
