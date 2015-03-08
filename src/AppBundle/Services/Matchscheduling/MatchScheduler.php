@@ -12,8 +12,9 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  */
 class MatchScheduler
 {
-    const PLAYERS_PLAYING_PER_MATCH = 4;
-    const MAX_NUMBER_PLAYERS = 7;
+    const PLAYERS_PLAYING_PER_MATCH         = 4;
+    const MAX_NUMBER_PLAYERS                = 7;
+    const AVERAGE_NUMBER_OF_GAMES_PER_ROUND = 12;
 
     /**
      * List of players participating in one round
@@ -26,6 +27,7 @@ class MatchScheduler
     private $matchUpsPerCombination = array();
 
     private $schedule = array();
+
 
     public function setPlayerList(ArrayCollection $playerList)
     {
@@ -46,8 +48,15 @@ class MatchScheduler
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
+        $this->listBreakingPlayers();
+
+        echo 'BreakDex: '. $this->getBreakIndexForCombinationInArray($this->playerCombinations[0], 3, 5);
+
+        die();
+
+
         shuffle($this->playerCombinations);
-                
+
         $this->listBreakingPlayers();
 
         for($i = 1; $i < count($this->playerList); $i++) {
@@ -69,7 +78,7 @@ class MatchScheduler
 
         // When having not enough matches within the schedule - re-attach the schedule until the desired number of
         // minimum matches is reached
-        while(count($this->schedule) < 20 ) {
+        while(count($this->schedule) <= round(self::AVERAGE_NUMBER_OF_GAMES_PER_ROUND * 1.2) ) {
             $this->populateSchedule();
         }
 
@@ -274,4 +283,35 @@ class MatchScheduler
         }
     }
 
+
+    /**
+     * This method sums up all occurrences of breaks for either one of the players of a given combination within a range
+     * ol the list of combinations. This sum will be referred to as BreakIndex
+     *
+     * @param $combination
+     * @param $combinationSubSetOffset
+     * @param $combinationSubSetLength
+     * @return int
+     */
+    private function getBreakIndexForCombinationInArray($combination, $combinationSubSetOffset, $combinationSubSetLength) {
+
+        // Get players for the BreakDex
+        $breakingPlayers    = $this->getPlayersInBreak($combination);
+        $breakDex           = 0;
+
+        for($i = 0; $i < $combinationSubSetLength; $i++) {
+
+            $subSetBreakingPlayers = $this->getPlayersInBreak($this->playerCombinations[$i + $combinationSubSetOffset]);
+
+            foreach ($subSetBreakingPlayers as $subSetBreakingPlayer) {
+                foreach($breakingPlayers as $breakingPlayer) {
+                    if ($breakingPlayer === $subSetBreakingPlayer) {
+                        $breakDex++;
+                    }
+                }
+            }
+        }
+
+        return $breakDex;
+    }
 }
