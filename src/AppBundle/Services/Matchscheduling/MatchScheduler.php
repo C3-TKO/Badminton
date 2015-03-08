@@ -295,14 +295,16 @@ class MatchScheduler
      */
     private function getBreakIndexForCombinationInArray($combination, $combinationSubSetOffset, $combinationSubSetLength) {
 
-        // Get players for the BreakDex
+        // Get players for the BreakIndex
         $breakingPlayers    = $this->getPlayersInBreak($combination);
         $breakDex           = 0;
 
+        // Traversing the specified subset of combinations
         for($i = 0; $i < $combinationSubSetLength; $i++) {
 
             $subSetBreakingPlayers = $this->getPlayersInBreak($this->playerCombinations[$i + $combinationSubSetOffset]);
 
+            // Checking if one of the breaking players is having another break within the combinaiton subset.
             foreach ($subSetBreakingPlayers as $subSetBreakingPlayer) {
                 foreach($breakingPlayers as $breakingPlayer) {
                     if ($breakingPlayer === $subSetBreakingPlayer) {
