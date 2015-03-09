@@ -48,14 +48,9 @@ class MatchScheduler
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
-        $this->listBreakingPlayers();
+        #$this->listBreakingPlayers();
 
-        echo 'BreakDex: '. $this->getBreakIndexForCombinationInArray($this->playerCombinations[0], 3, 5);
-
-        die();
-
-
-        shuffle($this->playerCombinations);
+        #shuffle($this->playerCombinations);
 
         $this->listBreakingPlayers();
 
@@ -147,10 +142,7 @@ class MatchScheduler
             $temp = array();
             foreach($breakers as $breaker) {
                 $temp[] = $breaker->getId();
-                #$breaks[$breaker->getId()]++;
             }
-
-            #var_dump($temp);
 
             foreach($breaks as $key => &$break) {
                 if(in_array($key, $temp)) {
@@ -160,10 +152,6 @@ class MatchScheduler
                     $break = 0;
                 }
             }
-            var_dump( 'breaks: (' . implode(', ', $breaks) . ')<br/>');
-
-
-
 
             // Looking for a max con violation
             foreach($breaks as $break) {
@@ -273,11 +261,31 @@ class MatchScheduler
 
     private function swapCombination($combinationToSwap) {
 
+
+
         // Finding index of the combination to swap
         foreach($this->playerCombinations as $key => $combination) {
             if ($combination === $combinationToSwap) {
+
+                $topHalf    = $this->getBreakIndexForCombinationInArray($combinationToSwap, 0, 7);
+                $bottomHalf = $this->getBreakIndexForCombinationInArray($combinationToSwap, 7, 7);
+
                 unset($this->playerCombinations[$key]);
+
+                var_dump($topHalf, $bottomHalf);
+
+                if ($topHalf > $bottomHalf) {
+                    $this->playerCombinations = array_reverse($this->playerCombinations);
+                    var_dump('reverse');
+                    #$this->listBreakingPlayers();
+                    #die();
+                }
+
                 array_unshift($this->playerCombinations, $combinationToSwap);
+
+                if ($topHalf > $bottomHalf) {
+                    $this->playerCombinations = array_reverse($this->playerCombinations);
+                }
                 break;
             }
         }
@@ -304,7 +312,7 @@ class MatchScheduler
 
             $subSetBreakingPlayers = $this->getPlayersInBreak($this->playerCombinations[$i + $combinationSubSetOffset]);
 
-            // Checking if one of the breaking players is having another break within the combinaiton subset.
+            // Checking if one of the breaking players is having another break within the combination subset.
             foreach ($subSetBreakingPlayers as $subSetBreakingPlayer) {
                 foreach($breakingPlayers as $breakingPlayer) {
                     if ($breakingPlayer === $subSetBreakingPlayer) {
