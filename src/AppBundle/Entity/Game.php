@@ -248,4 +248,20 @@ class Game
     {
         return $this->team_b;
     }
+
+
+    /**
+     * Pretty obvious huh?
+     *
+     * Output example: 'Bü & Mike vs. Thomas & David'
+     *
+     * @return string
+     */
+    public function __toString() {
+        return
+            $this->getTeamA()->getPlayerA()->getName() . ' & ' .
+            $this->getTeamA()->getPlayerB()->getName() . ' vs. ' .
+            $this->getTeamB()->getPlayerA()->getName() . ' & ' .
+            $this->getTeamB()->getPlayerB()->getName();
+    }
 }
