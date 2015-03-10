@@ -13,14 +13,22 @@ use PDO;
  */
 class TeamRepository extends EntityRepository
 {
-    public function findByPlayerIds($idPlayerA, $idPlayerB)
+    /**
+     * Retrieves the team object which both player objects are part of
+     *
+     * @param Player $playerA
+     * @param Player $playerB
+     * @return mixed
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function findByPlayers(Player $playerA, Player $playerB)
     {
         $sql = sprintf('
             SELECT * FROM team
             WHERE
                 (id_player_a = %1$u && id_player_b = %2$u) ||
                 (id_player_a = %2$u && id_player_b = %1$u)',
-            $idPlayerA, $idPlayerB);
+            $playerA->getId(), $playerB->getId());
 
         $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
         $stmt->execute();

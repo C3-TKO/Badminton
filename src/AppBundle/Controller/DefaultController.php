@@ -76,8 +76,8 @@ class DefaultController extends Controller
             $em         = $this->getDoctrine()->getManager();
             $teamRepo   = $em->getRepository('AppBundle:Team');
             $roundRepo  = $em->getRepository('AppBundle:Round');
-            $teamA      = $teamRepo->findByPlayerIds($form->get('pata')->getData()->getId(), $form->get('pbta')->getData()->getId());
-            $teamB      = $teamRepo->findByPlayerIds($form->get('patb')->getData()->getId(), $form->get('pbtb')->getData()->getId());
+            $teamA      = $teamRepo->findByPlayers($form->get('pata')->getData(), $form->get('pbta')->getData());
+            $teamB      = $teamRepo->findByPlayers($form->get('patb')->getData(), $form->get('pbtb')->getData());
             $date       = $form->get('date')->getData();
             $round      = $roundRepo->findOneBy(array('date' => $date));
 
