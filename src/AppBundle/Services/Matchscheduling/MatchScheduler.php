@@ -144,12 +144,11 @@ class MatchScheduler
         }
     }
 
-
+    
     private function spreadBreaks() {
 
         reset($this->playerCombinations);
-
-        $maxConsecutiveBreaks = count($this->getPlayersInBreak(next($this->playerCombinations)));
+        $maxConsecutiveBreaks = count($this->getPlayersInBreak(current($this->playerCombinations)));
 
         $breaks = array();
         foreach($this->playerList as $player) {
@@ -184,8 +183,6 @@ class MatchScheduler
                     array_walk($breaks, function (&$value) { $value = 0;});
                 }
             }
-
-
         }
     }
 
