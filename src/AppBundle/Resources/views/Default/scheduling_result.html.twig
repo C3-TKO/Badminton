@@ -1,0 +1,7 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block body %}
+    {% for game in schedule %}
+        <div>{{ game }}</div>
+    {% endfor %}
+{% endblock %}
