@@ -63,12 +63,14 @@ class MatchScheduler
 
         shuffle($this->playerCombinations);
 
-        $this->listBreakingPlayers();
+        #$this->listBreakingPlayers();
 
         for($i = 1; $i < count($this->playerList); $i++) {
             $this->spreadBreaks();
+            /*
             echo '----- Durchgang ' . $i . ': -----<br />';
             $this->listBreakingPlayers();
+            */
         }
 
         foreach($this->playerCombinations as $combination) {
@@ -77,10 +79,11 @@ class MatchScheduler
 
         $this->populateSchedule();
 
-
+        /*
         foreach($this->schedule as $match) {
             echo $match . '<br />';
         }
+        */
 
         return $this->schedule;
     }
@@ -147,6 +150,9 @@ class MatchScheduler
     }
 
 
+    /**
+     * Tries to spread out the breaks for all players
+     */
     private function spreadBreaks() {
 
         reset($this->playerCombinations);
@@ -293,11 +299,11 @@ class MatchScheduler
 
                 unset($this->playerCombinations[$key]);
 
-                var_dump($topHalf, $bottomHalf);
+                #var_dump($topHalf, $bottomHalf);
 
                 if ($topHalf > $bottomHalf) {
                     $this->playerCombinations = array_reverse($this->playerCombinations);
-                    var_dump('reverse');
+                    #var_dump('reverse');
                     #$this->listBreakingPlayers();
                     #die();
                 }
