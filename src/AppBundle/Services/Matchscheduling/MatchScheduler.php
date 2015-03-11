@@ -45,7 +45,8 @@ class MatchScheduler
      * @param EntityManager $em
      */
     public function __construct(EntityManager $em) {
-        $this->em = $em;
+        $this->em       = $em;
+        $this->schedule = new ArrayCollection();
     }
 
     public function setPlayerList(ArrayCollection $playerList)
@@ -90,13 +91,13 @@ class MatchScheduler
 
         $this->populateSchedule();
 
-        /*
+
         // When having not enough matches within the schedule - re-attach the schedule until the desired number of
         // minimum matches is reached
         while(count($this->schedule) <= round(self::AVERAGE_NUMBER_OF_GAMES_PER_ROUND * 1.2) ) {
             $this->populateSchedule();
         }
-        */
+
 
         foreach($this->schedule as $match) {
             echo $match . '<br />';
@@ -220,7 +221,6 @@ class MatchScheduler
 
 
     private function populateSchedule() {
-        $this->schedule = new ArrayCollection();
 
         for ($i = 0; $i < 3; $i++) {
             foreach($this->matchUpsPerCombination as $matchUps) {
