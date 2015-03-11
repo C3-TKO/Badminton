@@ -75,11 +75,8 @@ class MatchScheduler
             $this->matchUpsPerCombination[] = $this->getMatchesPerCombination($combination);
         }
 
-        // When having not enough matches within the schedule - re-attach the schedule until the desired number of
-        // minimum matches is reached
-        while(count($this->schedule) <= round(self::AVERAGE_NUMBER_OF_GAMES_PER_ROUND * 1.2) ) {
-            $this->populateSchedule();
-        }
+        $this->populateSchedule();
+
 
         foreach($this->schedule as $match) {
             echo $match . '<br />';
@@ -222,17 +219,21 @@ class MatchScheduler
     }
 
 
+    /**
+     * Populates a schedule of games
+     */
     private function populateSchedule() {
-
-        for ($i = 0; $i < 3; $i++) {
-            foreach($this->matchUpsPerCombination as $matchUps) {
-                $game       = new Game();
-                $teamRepo   = $this->em->getRepository('AppBundle:Team');
-                $teamA      = $teamRepo->findByPlayers(array_pop($matchUps[$i]), array_pop($matchUps[$i]));
-                $teamB      = $teamRepo->findByPlayers(array_pop($matchUps[$i]), array_pop($matchUps[$i]));
-                $game->setTeamA($teamA);
-                $game->setTeamB($teamB);
-                $this->schedule->add($game);
+        while(count($this->schedule) <= round(self::AVERAGE_NUMBER_OF_GAMES_PER_ROUND * 1.2) ) {
+            for ($i = 0; $i < 3; $i++) {
+                foreach($this->matchUpsPerCombination as $matchUps) {
+                    $game       = new Game();
+                    $teamRepo   = $this->em->getRepository('AppBundle:Team');
+                    $teamA      = $teamRepo->findByPlayers(array_pop($matchUps[$i]), array_pop($matchUps[$i]));
+                    $teamB      = $teamRepo->findByPlayers(array_pop($matchUps[$i]), array_pop($matchUps[$i]));
+                    $game->setTeamA($teamA);
+                    $game->setTeamB($teamB);
+                    $this->schedule->add($game);
+                }
             }
         }
     }
