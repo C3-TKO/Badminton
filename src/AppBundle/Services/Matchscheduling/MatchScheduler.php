@@ -4,6 +4,7 @@ namespace AppBundle\Services\MatchScheduling;
 
 use AppBundle\Entity\Player;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
@@ -28,6 +29,20 @@ class MatchScheduler
 
     private $schedule = array();
 
+    /**
+     * @var EntityManager
+     */
+    private $em = null;
+
+
+    /**
+     * DIC constructor
+     *
+     * @param EntityManager $em
+     */
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
 
     public function setPlayerList(ArrayCollection $playerList)
     {
