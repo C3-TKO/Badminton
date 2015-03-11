@@ -207,7 +207,7 @@ class MatchScheduler
      */
     private function getMatchesPerCombination($players)
     {
-        #shuffle($players);
+        shuffle($players);
 
         $randomizedPlayer2PositionAssociation = array(
             'a' => array_shift($players),
