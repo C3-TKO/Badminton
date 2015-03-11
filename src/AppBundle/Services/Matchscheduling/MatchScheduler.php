@@ -58,21 +58,8 @@ class MatchScheduler
      */
     public function schedule(ArrayCollection $playerList)
     {
-        if (null === $playerList) {
-            throw new Exception('Please provide a player list by invoking ' . __CLASS__ . '->setPlayerList()');
-        }
-        if ($playerList->count() < self::PLAYERS_PLAYING_PER_MATCH) {
-            throw new Exception('The player list must contain at least ' . self::PLAYERS_PLAYING_PER_MATCH . ' players');
-        }
-        if ($playerList->count() > self::MAX_NUMBER_PLAYERS) {
-            throw new Exception('The player list must not contain more than ' . self::MAX_NUMBER_PLAYERS . ' players');
-        }
-
-        $this->playerList = $playerList;
-
+        $this->setPlayerList($playerList);
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
-
-        #$this->listBreakingPlayers();
 
         shuffle($this->playerCombinations);
 
@@ -100,6 +87,27 @@ class MatchScheduler
 
         return $this->schedule;
     }
+
+
+    /**
+     * Sets the player list and performs some checks
+     *
+     * @param ArrayCollection $playerList
+     */
+    private function setPlayerList(ArrayCollection $playerList) {
+        if (null === $playerList) {
+            throw new Exception('Please provide a player list by invoking ' . __CLASS__ . '->setPlayerList()');
+        }
+        if ($playerList->count() < self::PLAYERS_PLAYING_PER_MATCH) {
+            throw new Exception('The player list must contain at least ' . self::PLAYERS_PLAYING_PER_MATCH . ' players');
+        }
+        if ($playerList->count() > self::MAX_NUMBER_PLAYERS) {
+            throw new Exception('The player list must not contain more than ' . self::MAX_NUMBER_PLAYERS . ' players');
+        }
+
+        $this->playerList = $playerList;
+    }
+
 
     /**
      * Retrieves all player combinations for match setups
