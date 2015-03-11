@@ -2,7 +2,7 @@
 
 namespace AppBundle\Services\MatchScheduling;
 
-use AppBundle\Entity\Player;
+use AppBundle\Entity\Game;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Config\Definition\Exception\Exception;
@@ -23,11 +23,15 @@ class MatchScheduler
      */
     private $playerList = null;
 
+
     private $playerCombinations = array();
 
     private $matchUpsPerCombination = array();
 
-    private $schedule = array();
+    /**
+     * @var ArrayCollection Game[]
+     */
+    private $schedule = null;
 
     /**
      * @var EntityManager
@@ -86,14 +90,16 @@ class MatchScheduler
 
         $this->populateSchedule();
 
+        /*
         // When having not enough matches within the schedule - re-attach the schedule until the desired number of
         // minimum matches is reached
         while(count($this->schedule) <= round(self::AVERAGE_NUMBER_OF_GAMES_PER_ROUND * 1.2) ) {
             $this->populateSchedule();
         }
+        */
 
         foreach($this->schedule as $match) {
-            $this->dumpMatchUp($match);
+            echo $match . '<br />';
         }
     }
 
@@ -214,22 +220,19 @@ class MatchScheduler
 
 
     private function populateSchedule() {
+        $this->schedule = new ArrayCollection();
+
         for ($i = 0; $i < 3; $i++) {
             foreach($this->matchUpsPerCombination as $matchUps) {
-                $this->schedule[] = $matchUps[$i];
+                $game       = new Game();
+                $teamRepo   = $this->em->getRepository('AppBundle:Team');
+                $teamA      = $teamRepo->findByPlayers(array_pop($matchUps[$i]), array_pop($matchUps[$i]));
+                $teamB      = $teamRepo->findByPlayers(array_pop($matchUps[$i]), array_pop($matchUps[$i]));
+                $game->setTeamA($teamA);
+                $game->setTeamB($teamB);
+                $this->schedule->add($game);
             }
         }
-    }
-
-
-    private function dumpMatchUp($match) {
-
-            $player1 = array_shift($match);
-            $player2 = array_shift($match);
-            $player3 = array_shift($match);
-            $player4 = array_shift($match);
-            echo $player1->getName() . ' & ' . $player2->getName() . ' vs. ' . $player3->getName() . ' & ' . $player4->getName() . '<br/>';
-
     }
 
 
