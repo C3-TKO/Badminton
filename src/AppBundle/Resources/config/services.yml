@@ -12,3 +12,5 @@ services:
             em: @doctrine.orm.entity_manager
     app.match_scheduler:
         class: AppBundle\Services\MatchScheduling\MatchScheduler
+        arguments:
+            em: @doctrine.orm.entity_manager
