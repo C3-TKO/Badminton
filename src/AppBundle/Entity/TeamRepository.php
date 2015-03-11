@@ -16,25 +16,27 @@ class TeamRepository extends EntityRepository
     /**
      * Retrieves the team object which both player objects are part of
      *
-     * @param Player $playerA
-     * @param Player $playerB
-     * @return mixed
-     * @throws \Doctrine\DBAL\DBALException
+     * @param Player $player1
+     * @param Player $player2
+     * @return mixed|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findByPlayers(Player $playerA, Player $playerB)
-    {
-        $sql = sprintf('
-            SELECT * FROM team
-            WHERE
-                (id_player_a = %1$u && id_player_b = %2$u) ||
-                (id_player_a = %2$u && id_player_b = %1$u)',
-            $playerA->getId(), $playerB->getId());
+    public function findByPlayers(Player $player1, Player $player2) {
 
-        $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
-        $stmt->execute();
+        $query = $this->getEntityManager()->createQuery('
+              SELECT t, pa, pb FROM AppBundle:Team t
+              JOIN t.player_a pa
+              JOIN t.player_b pb
+              WHERE
+                  (t.player_a = :player_1 AND t.player_b = :player_2) OR
+                  (t.player_a = :player_2 AND t.player_b = :player_1)')
+            ->setParameter('player_1', $player1)
+            ->setParameter('player_2', $player2);
 
-        $teams = $stmt->fetchAll(PDO::FETCH_CLASS, 'AppBundle\Entity\Team');
-
-        return array_pop($teams);
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
 }
