@@ -21,6 +21,7 @@ class CreateScheduleForm extends AbstractType {
                 'player_list', 'entity', array(
                     'class'         => 'AppBundle:Player',
                     'property'      => 'name',
+                    'label'         => 'Spielerauswahl',
                     'multiple'      => true,
                     'expanded'      => true,
                     'constraints'   => array(

@@ -4,9 +4,8 @@
     <section class="main-block">
         <article>
             <section>
-                <h1>Spielplanerstellung</h1>
                 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-                {{ form_widget(form) }}
+                {{ form_widget(form, {'attr': {'class': 'input-lg'}}) }}
                 {{ form_end(form) }}
             </section>
         </article>
