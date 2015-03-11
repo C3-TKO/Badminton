@@ -12,8 +12,9 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  */
 class MatchScheduler
 {
-    const PLAYERS_PLAYING_PER_MATCH = 4;
-    const MAX_NUMBER_PLAYERS = 7;
+    const PLAYERS_PLAYING_PER_MATCH         = 4;
+    const MAX_NUMBER_PLAYERS                = 7;
+    const AVERAGE_NUMBER_OF_GAMES_PER_ROUND = 12;
 
     /**
      * List of players participating in one round
@@ -26,6 +27,7 @@ class MatchScheduler
     private $matchUpsPerCombination = array();
 
     private $schedule = array();
+
 
     public function setPlayerList(ArrayCollection $playerList)
     {
@@ -46,17 +48,32 @@ class MatchScheduler
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
-        shuffle($this->playerCombinations);
+        #$this->listBreakingPlayers();
+
+        #shuffle($this->playerCombinations);
+
+        $this->listBreakingPlayers();
+
+        for($i = 1; $i < count($this->playerList); $i++) {
+            $this->spreadBreaks();
+            echo '----- Durchgang ' . $i . ': -----<br />';
+            $this->listBreakingPlayers();
+        }
+
+
+        #$this->listBreakingPlayers();
+
+
 
         foreach($this->playerCombinations as $combination) {
-            $this->matchUpsPerCombination[] = $this->getMachesPerCombination($combination);
+            $this->matchUpsPerCombination[] = $this->getMatchesPerCombination($combination);
         }
 
         $this->populateSchedule();
 
         // When having not enough matches within the schedule - re-attach the schedule until the desired number of
         // minimum matches is reached
-        while(count($this->schedule) < 20 ) {
+        while(count($this->schedule) <= round(self::AVERAGE_NUMBER_OF_GAMES_PER_ROUND * 1.2) ) {
             $this->populateSchedule();
         }
 
@@ -106,6 +123,51 @@ class MatchScheduler
     }
 
 
+    private function spreadBreaks() {
+
+        reset($this->playerCombinations);
+
+        $maxConsecutiveBreaks = count($this->getPlayersInBreak(next($this->playerCombinations)));
+
+        $breaks = array();
+        foreach($this->playerList as $player) {
+            $breaks[$player->getId()] = 0;
+        }
+
+        $countPlayerCombinations = count($this->playerCombinations);
+
+        for($i = 0; $i < $countPlayerCombinations; $i++) {
+            $breakers = $this->getPlayersInBreak($this->playerCombinations[$i]);
+
+            $temp = array();
+            foreach($breakers as $breaker) {
+                $temp[] = $breaker->getId();
+            }
+
+            foreach($breaks as $key => &$break) {
+                if(in_array($key, $temp)) {
+                    $break++;
+                }
+                else {
+                    $break = 0;
+                }
+            }
+
+            // Looking for a max con violation
+            foreach($breaks as $break) {
+                if($break > $maxConsecutiveBreaks) {
+                    $this->swapCombination($this->playerCombinations[$i]);
+
+                    // Resetting the consecutive counters
+                    array_walk($breaks, function (&$value) { $value = 0;});
+                }
+            }
+
+
+        }
+    }
+
+
     /**
      * Assigns a group of 4 players randomly to all three possible double pairing combinations
      *
@@ -116,9 +178,9 @@ class MatchScheduler
      * @param array $players
      * @return array
      */
-    private function getMachesPerCombination($players)
+    private function getMatchesPerCombination($players)
     {
-        shuffle($players);
+        #shuffle($players);
 
         $randomizedPlayer2PositionAssociation = array(
             'a' => array_shift($players),
@@ -153,5 +215,113 @@ class MatchScheduler
             $player4 = array_shift($match);
             echo $player1->getName() . ' & ' . $player2->getName() . ' vs. ' . $player3->getName() . ' & ' . $player4->getName() . '<br/>';
 
+    }
+
+
+    /**
+     * Gets all players that are having a break during the match of the given combination
+     *
+     * @param   array                       $combination
+     * @return  ArrayCollection Player[]
+     */
+    private function getPlayersInBreak($combination) {
+        $breakingPlayers = clone $this->playerList;
+
+        foreach($combination as $playerPlaying) {
+            $playerPlaying->getId();
+
+            foreach($breakingPlayers as $index => $player2Remove) {
+                if($player2Remove->getId() === $playerPlaying->getId()) {
+                    $breakingPlayers->remove($index);
+                }
+            }
+
+        }
+
+        return $breakingPlayers;
+    }
+
+
+    private function listBreakingPlayers() {
+
+        foreach($this->playerCombinations as $combination) {
+
+            $breakingPlayers = $this->getPlayersInBreak($combination);
+
+            echo ' Pause für -> ';
+
+            foreach ($breakingPlayers as $breakingPlayer) {
+                echo $breakingPlayer->getName() . ' ';
+            }
+
+            echo '<br />';
+        }
+    }
+
+
+    private function swapCombination($combinationToSwap) {
+
+
+
+        // Finding index of the combination to swap
+        foreach($this->playerCombinations as $key => $combination) {
+            if ($combination === $combinationToSwap) {
+
+                $topHalf    = $this->getBreakIndexForCombinationInArray($combinationToSwap, 0, 7);
+                $bottomHalf = $this->getBreakIndexForCombinationInArray($combinationToSwap, 7, 7);
+
+                unset($this->playerCombinations[$key]);
+
+                var_dump($topHalf, $bottomHalf);
+
+                if ($topHalf > $bottomHalf) {
+                    $this->playerCombinations = array_reverse($this->playerCombinations);
+                    var_dump('reverse');
+                    #$this->listBreakingPlayers();
+                    #die();
+                }
+
+                array_unshift($this->playerCombinations, $combinationToSwap);
+
+                if ($topHalf > $bottomHalf) {
+                    $this->playerCombinations = array_reverse($this->playerCombinations);
+                }
+                break;
+            }
+        }
+    }
+
+
+    /**
+     * This method sums up all occurrences of breaks for either one of the players of a given combination within a range
+     * ol the list of combinations. This sum will be referred to as BreakIndex
+     *
+     * @param $combination
+     * @param $combinationSubSetOffset
+     * @param $combinationSubSetLength
+     * @return int
+     */
+    private function getBreakIndexForCombinationInArray($combination, $combinationSubSetOffset, $combinationSubSetLength) {
+
+        // Get players for the BreakIndex
+        $breakingPlayers    = $this->getPlayersInBreak($combination);
+        $breakDex           = 0;
+
+        // Traversing the specified subset of combinations
+        for($i = 0; $i < $combinationSubSetLength; $i++) {
+
+            $subSetBreakingPlayers = $this->getPlayersInBreak($this->playerCombinations[$i + $combinationSubSetOffset]);
+
+            // Checking if one of the breaking players is having another break within the combination subset.
+            foreach ($subSetBreakingPlayers as $subSetBreakingPlayer) {
+                foreach($breakingPlayers as $breakingPlayer) {
+                    if ($breakingPlayer === $subSetBreakingPlayer) {
+                        $breakDex++;
+                    }
+                }
+            }
+        }
+
+        return $breakDex;
     }
 }
