@@ -99,7 +99,7 @@ class DefaultController extends Controller
             $game->setTeamBScore($form->get('score_team_b')->getData());
             $game->setRound($round);
 
-            $em->merge($game);
+            $em->persist($game);
             $em->flush();
         }
 

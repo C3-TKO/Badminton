@@ -5,3 +5,13 @@
         <div>{{ game }}</div>
     {% endfor %}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            console.log('govno');
+        });
+
+    </script>
+{% endblock %}
