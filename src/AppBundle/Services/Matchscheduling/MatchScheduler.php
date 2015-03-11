@@ -70,7 +70,7 @@ class MatchScheduler
 
         #$this->listBreakingPlayers();
 
-        #shuffle($this->playerCombinations);
+        shuffle($this->playerCombinations);
 
         $this->listBreakingPlayers();
 
@@ -88,9 +88,6 @@ class MatchScheduler
         foreach($this->playerCombinations as $combination) {
             $this->matchUpsPerCombination[] = $this->getMatchesPerCombination($combination);
         }
-
-        $this->populateSchedule();
-
 
         // When having not enough matches within the schedule - re-attach the schedule until the desired number of
         // minimum matches is reached
@@ -144,7 +141,7 @@ class MatchScheduler
         }
     }
 
-    
+
     private function spreadBreaks() {
 
         reset($this->playerCombinations);
