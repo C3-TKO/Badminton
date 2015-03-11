@@ -49,22 +49,26 @@ class MatchScheduler
         $this->schedule = new ArrayCollection();
     }
 
-    public function setPlayerList(ArrayCollection $playerList)
+    
+    /**
+     * Creates a schedule for a given collection of players
+     *
+     * @param ArrayCollection $playerList Player[]
+     * @return ArrayCollection Game[]
+     */
+    public function schedule(ArrayCollection $playerList)
     {
-        $this->playerList = $playerList;
-    }
-
-    public function schedule()
-    {
-        if (null === $this->playerList) {
+        if (null === $playerList) {
             throw new Exception('Please provide a player list by invoking ' . __CLASS__ . '->setPlayerList()');
         }
-        if ($this->playerList->count() < self::PLAYERS_PLAYING_PER_MATCH) {
+        if ($playerList->count() < self::PLAYERS_PLAYING_PER_MATCH) {
             throw new Exception('The player list must contain at least ' . self::PLAYERS_PLAYING_PER_MATCH . ' players');
         }
-        if ($this->playerList->count() > self::MAX_NUMBER_PLAYERS) {
+        if ($playerList->count() > self::MAX_NUMBER_PLAYERS) {
             throw new Exception('The player list must not contain more than ' . self::MAX_NUMBER_PLAYERS . ' players');
         }
+
+        $this->playerList = $playerList;
 
         $this->getAllPlayerCombinations($this->playerList, self::PLAYERS_PLAYING_PER_MATCH);
 
@@ -80,11 +84,6 @@ class MatchScheduler
             $this->listBreakingPlayers();
         }
 
-
-        #$this->listBreakingPlayers();
-
-
-
         foreach($this->playerCombinations as $combination) {
             $this->matchUpsPerCombination[] = $this->getMatchesPerCombination($combination);
         }
@@ -95,10 +94,11 @@ class MatchScheduler
             $this->populateSchedule();
         }
 
-
         foreach($this->schedule as $match) {
             echo $match . '<br />';
         }
+
+        return $this->schedule;
     }
 
     /**
