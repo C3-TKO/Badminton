@@ -17,6 +17,7 @@ class MatchScheduler
     const MAX_NUMBER_PLAYERS                = 7;
     const AVERAGE_NUMBER_OF_GAMES_PER_ROUND = 12;
 
+
     /**
      * List of players participating in one round
      * @var ArrayCollection Player[]
@@ -24,14 +25,27 @@ class MatchScheduler
     private $playerList = null;
 
 
+    /**
+     * Stores all possible unique 4 player combinations
+     *
+     * @var array
+     */
     private $playerCombinations = array();
 
+
+    /**
+     * Stores all possible games of a combination of 4 players within an array
+     *
+     * @var array
+     */
     private $matchUpsPerCombination = array();
+
 
     /**
      * @var ArrayCollection Game[]
      */
     private $schedule = null;
+
 
     /**
      * @var EntityManager
@@ -67,10 +81,6 @@ class MatchScheduler
 
         for($i = 1; $i < count($this->playerList); $i++) {
             $this->spreadBreaks();
-            /*
-            echo '----- Durchgang ' . $i . ': -----<br />';
-            $this->listBreakingPlayers();
-            */
         }
 
         foreach($this->playerCombinations as $combination) {
@@ -78,12 +88,6 @@ class MatchScheduler
         }
 
         $this->populateSchedule();
-
-        /*
-        foreach($this->schedule as $match) {
-            echo $match . '<br />';
-        }
-        */
 
         return $this->schedule;
     }
@@ -220,6 +224,8 @@ class MatchScheduler
             array($randomizedPlayer2PositionAssociation['a'], $randomizedPlayer2PositionAssociation['c'], $randomizedPlayer2PositionAssociation['b'], $randomizedPlayer2PositionAssociation['d']),
             array($randomizedPlayer2PositionAssociation['a'], $randomizedPlayer2PositionAssociation['d'], $randomizedPlayer2PositionAssociation['b'], $randomizedPlayer2PositionAssociation['c'])
         );
+
+        shuffle($result);
 
         return $result;
     }
