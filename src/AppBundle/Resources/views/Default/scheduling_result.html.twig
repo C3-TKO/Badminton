@@ -1,8 +1,50 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block body %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="addGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ergebnis</h4>
+                </div>
+                <div class="modal-body row">
+
+                    <form>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="team_a_score" class="control-label">Team A</label>
+                                <input type="text" class="form-control" id="team_a_score" maxlength="2">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="team_b_score" class="control-label">Team B</label>
+                                <input type="text" class="form-control" id="team_b_score" maxlength="2">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-primary">Speichern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule -->
     {% for game in schedule %}
-        <div>{{ game }}</div>
+        <div class="row">
+            <span>{{ game.__toString }}</span>
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addGame" data-team-a="{{ game.getTeamA.getId }}" data-team-b="{{ game.getTeamB.getId }}">
+                Ergebnis eintragen
+            </button>
+        </div>
     {% endfor %}
 {% endblock %}
 
