@@ -1,17 +1,76 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block body %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="addGameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ergebnis</h4>
+                </div>
+                <div class="modal-body row">
+
+                    <form>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="team_a_score" class="control-label">Team A</label>
+                                <input type="text" class="form-control" id="team_a_score" maxlength="2">
+                                <input type="hidden" id="id_team_a">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="team_b_score" class="control-label">Team B</label>
+                                <input type="text" class="form-control" id="team_b_score" maxlength="2">
+                                <input type="hidden" id="id_team_b">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                    <button id="add_game_button" type="button" class="btn btn-primary">Speichern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule -->
     {% for game in schedule %}
-        <div>{{ game }}</div>
+        <div class="row">
+            <span>{{ game.__toString }}</span>
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addGameModal" data-team-a="{{ game.getTeamA.getId }}" data-team-b="{{ game.getTeamB.getId }}">
+                Ergebnis eintragen
+            </button>
+        </div>
     {% endfor %}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script>
-        $(document).ready(function() {
-            console.log('govno');
-        });
+        $('#addGameModal').on('show.bs.modal', function (event) {
+            var button  = $(event.relatedTarget)
+            var idTeamA = button.data('team-a')
+            var idTeamB = button.data('team-b')
+            var modal   = $(this)
+            modal.find('#id_team_a').val(idTeamA)
+            modal.find('#id_team_b').val(idTeamB)
+
+            modal.find('#add_game_button').on('click', function () {
+                jQuery.ajax({
+                    method: 'GET',
+                    url: 'api/add_game/' + jQuery('#id_team_a').val() + '/' + jQuery('#id_team_b').val() + '/' + jQuery('#team_a_score').val() + '/' + jQuery('#team_b_score').val()
+                }).done(function() {
+                    console.log('DONE')
+                    jQuery('#add_game_button').unbind('click')
+                })
+            })
+        })
 
     </script>
 {% endblock %}
