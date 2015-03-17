@@ -49,3 +49,5 @@ logout:
 api_add_game:
     path:       /api/add_game/{teamA}/{teamB}/{teamAScore}/{teamBScore}
     defaults:   { _controller: AppBundle:API:addGame }
+    options:
+        expose: true
