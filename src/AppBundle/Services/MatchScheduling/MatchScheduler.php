@@ -3,8 +3,8 @@
 namespace AppBundle\Services\MatchScheduling;
 
 use AppBundle\Entity\Game;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
@@ -60,7 +60,7 @@ class MatchScheduler
      */
     public function __construct(EntityManager $em) {
         $this->em       = $em;
-        $this->schedule = new ArrayCollection();
+        $this->schedule = new Schedule();
     }
 
     
