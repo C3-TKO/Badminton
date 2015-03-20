@@ -14,3 +14,9 @@ services:
         class: AppBundle\Services\MatchScheduling\MatchScheduler
         arguments:
             em: @doctrine.orm.entity_manager
+    app.schedule_serializer:
+        class: AppBundle\Services\MatchScheduling\ScheduleSerializer
+    app.schedule_normalizer:
+        class: AppBundle\Services\MatchScheduling\ScheduleNormalizer
+        arguments:
+            em: @doctrine.orm.entity_manager

@@ -3,8 +3,8 @@
 namespace AppBundle\Services\MatchScheduling;
 
 use AppBundle\Entity\Game;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
