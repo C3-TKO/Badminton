@@ -60,7 +60,7 @@ class MatchScheduler
      */
     public function __construct(EntityManager $em) {
         $this->em       = $em;
-        $this->schedule = new Schedule();
+        $this->schedule = new ArrayCollection();
     }
 
     

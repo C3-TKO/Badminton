@@ -12,13 +12,16 @@ use AppBundle\Entity\Game;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
-class Schedule extends ArrayCollection {
+class ScheduleSerializer {
 
     /**
      * Serializes a schedule into a json string
+     *
+     * @param ArrayCollection $schedule
+     * @return string
      */
-    public function serialize() {
-        $games                  = $this->getValues();
+    public function serialize(ArrayCollection $schedule) {
+        $games                  = $schedule->getValues();
         $serializedSchedule     = array();
         foreach($games as $game) {
             /**
@@ -35,14 +38,5 @@ class Schedule extends ArrayCollection {
         }
 
         return json_encode($serializedSchedule);
-    }
-
-    /**
-     * Normalizes a serialized schedule
-     *
-     * @param $serializedSchedule
-     */
-    public function normalize($serializedSchedule) {
-
     }
 }
