@@ -71,6 +71,7 @@ class DefaultController extends Controller
     public function addGameAction(Request $request)
     {
         $form = $this->createForm(new AddGameForm());
+        $game = null;
 
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -103,6 +104,6 @@ class DefaultController extends Controller
             $em->flush();
         }
 
-        return $this->render('AppBundle:Default:add_game.html.twig', array('form' => $form->createView()));
+        return $this->render('AppBundle:Default:add_game.html.twig', array('form' => $form->createView(), 'game' => $game ));
     }
 }

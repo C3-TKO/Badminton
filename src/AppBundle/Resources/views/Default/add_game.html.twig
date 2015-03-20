@@ -2,6 +2,13 @@
 
 {% block body %}
 
+    {% if game != null %}
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Volltreffer!</strong> Das Spiel {{ game }} wurde gespeichert!
+    </div>
+    {% endif %}
+
     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
         <fieldset>
