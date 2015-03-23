@@ -54,6 +54,16 @@ class DefaultController extends Controller
 
     public function schedulingAction(Request $request)
     {
+        $session = $this->getRequest()->getSession();
+
+
+        // Trying to resume a schedule from session
+        if ($session->get('schedule') !== null) {
+            $schedule = $this->get('app.schedule_normalizer')->normalize($session->get('schedule'));
+
+            return $this->render('AppBundle:Default:scheduling_result.html.twig', array('schedule' => $schedule));
+        }
+
         $form = $this->createForm(new CreateScheduleForm());
 
         $form->handleRequest($request);
@@ -61,6 +71,8 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             $matchMaker = $this->get('app.match_scheduler');
             $schedule   = $matchMaker->schedule($form->get('player_list')->getData());
+
+            $session->set('schedule', $this->get('app.schedule_serializer')->serialize($schedule));
 
             return $this->render('AppBundle:Default:scheduling_result.html.twig', array('schedule' => $schedule));
         }
