@@ -56,7 +56,6 @@ class DefaultController extends Controller
     {
         $session = $this->getRequest()->getSession();
 
-
         // Trying to resume a schedule from session
         if ($session->get('schedule') !== null) {
             $schedule = $this->get('app.schedule_normalizer')->normalize($session->get('schedule'));
@@ -79,6 +78,16 @@ class DefaultController extends Controller
 
         return $this->render('AppBundle:Default:scheduling_form.html.twig', array('form' => $form->createView()));
     }
+
+
+    public function scheduleResetAction()
+    {
+        $session = $this->getRequest()->getSession();
+        $session->remove('schedule');
+
+        return $this->redirect($this->generateUrl('scheduling'));
+    }
+
 
     public function addGameAction(Request $request)
     {
