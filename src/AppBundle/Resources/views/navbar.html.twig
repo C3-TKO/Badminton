@@ -12,7 +12,12 @@
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <li><a class="link" href="{{ path('logout') }}"><i class="fa fa-sign-out fa-fw fa-lg"></i> Logout</a></li>
             <li><a href="{{ path('add_game') }}"><i class="fa fa-plus fa-fw fa-lg"></i> Spiel eintragen</a></li>
+                {% if (app.session.get('schedule') == null ) %}
             <li><a href="{{ path('scheduling') }}"><i class="fa fa-th-list fa-fw fa-lg"></i> Spielplan erstellen</a></li>
+                {% else %}
+            <li><a href="{{ path('scheduling') }}"><i class="fa fa-th-list fa-fw fa-lg"></i> Spielplan</a></li>
+            <li><a href="{{ path('schedule_reset') }}"><i class="fa fa-recycle fa-fw fa-lg"></i> Spielplan zurücksetzen</a></li>
+                {% endif %}
             {% else %}
             <li><a href="{{ path('login') }}"><i class="fa fa-sign-in fa-fw fa-lg"></i> Login</a></li>
             {% endif %}
