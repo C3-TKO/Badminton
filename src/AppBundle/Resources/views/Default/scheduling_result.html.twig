@@ -1,7 +1,6 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block body %}
-
     <!-- Modal -->
     <div class="modal fade" id="addGameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -39,25 +38,23 @@
         </div>
     </div>
 
-    <!-- Schedule -->
-    {% for game in schedule %}
-        <div class="row">
-            <span>{{ game.__toString }}</span>
-            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addGameModal" data-team-a="{{ game.getTeamA.getId }}" data-team-b="{{ game.getTeamB.getId }}">
-                Ergebnis eintragen
-            </button>
-        </div>
-    {% endfor %}
+    <div id="schedule_container">
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script>
-        $('#addGameModal').on('show.bs.modal', function (event) {
-            var button  = $(event.relatedTarget)
+
+        jQuery( document ).ready(
+            loadSchedule()
+        )
+
+        jQuery('#addGameModal').on('show.bs.modal', function (event) {
+            var button  = jQuery(event.relatedTarget)
             var idTeamA = button.data('team-a')
             var idTeamB = button.data('team-b')
-            var modal   = $(this)
+            var modal   = jQuery(this)
             modal.find('#id_team_a').val(idTeamA)
             modal.find('#id_team_b').val(idTeamB)
 
@@ -65,12 +62,32 @@
                 jQuery.ajax({
                     method: 'GET',
                     url: Routing.generate('api_add_game', { teamA: jQuery('#id_team_a').val(), teamB: jQuery('#id_team_b').val(), teamAScore: jQuery('#team_a_score').val(), teamBScore: jQuery('#team_b_score').val() })
-                }).done(function() {
-                    console.log('DONE')
+                }).done(function(data) {
+                    console.log(data)
+                    jQuery('#team_a_score').val('')
+                    jQuery('#team_b_score').val('')
                     jQuery('#add_game_button').unbind('click')
+                    modal.modal('hide')
+                    loadSchedule()
                 })
             })
         })
+
+
+        // Loads the DOM Elements of the schedule
+        function loadSchedule() {
+
+            var schedule = jQuery('#schedule_container')
+
+            schedule.empty();
+
+            jQuery.ajax({
+                method: 'GET',
+                url: Routing.generate('schedule_load')
+            }).done(function(data) {
+                schedule.append(data)
+            })
+        }
 
     </script>
 {% endblock %}

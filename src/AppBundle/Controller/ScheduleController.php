@@ -32,7 +32,7 @@ class ScheduleController extends Controller
         if ($session->get('schedule') !== null) {
             $schedule = $this->get('app.schedule_normalizer')->normalize($session->get('schedule'));
 
-            return $this->render('AppBundle:Default:scheduling_result.html.twig', array('schedule' => $schedule));
+            return $this->render('AppBundle:Default:scheduling_result.html.twig');
         }
 
         $form = $this->createForm(new CreateScheduleForm());
@@ -45,7 +45,7 @@ class ScheduleController extends Controller
 
             $session->set('schedule', $this->get('app.schedule_serializer')->serialize($schedule));
 
-            return $this->render('AppBundle:Default:scheduling_result.html.twig', array('schedule' => $schedule));
+            return $this->render('AppBundle:Default:scheduling_result.html.twig');
         }
 
         return $this->render('AppBundle:Default:scheduling_form.html.twig', array('form' => $form->createView()));
@@ -57,11 +57,20 @@ class ScheduleController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function scheduleResetAction()
+    public function scheduleAction()
     {
         $session = $this->getRequest()->getSession();
         $session->remove('schedule');
 
         return $this->redirect($this->generateUrl('scheduling'));
+    }
+
+
+    public function loadAction() {
+        $session = $this->getRequest()->getSession();
+
+        $schedule = $this->get('app.schedule_normalizer')->normalize($session->get('schedule'));
+
+        return $this->render('AppBundle:Default:schedule.html.twig', array('schedule' => $schedule));
     }
 }
