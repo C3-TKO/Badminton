@@ -11,6 +11,13 @@ use AppBundle\Entity\Season;
 use AppBundle\Entity\Round;
 use Symfony\Component\Validator\Constraints\DateTime;
 
+/**
+ * Class ScheduleController
+ *
+ * @TODO: Use non deprecated way of accessinf the symfony session
+ *
+ * @package AppBundle\Controller
+ */
 class ScheduleController extends Controller
 {
     /**
@@ -66,11 +73,78 @@ class ScheduleController extends Controller
     }
 
 
+    /**
+     * Loads the schedule. Will be called asynchronously via AJAX. Delivers DOM elements that describe the schedule.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function loadAction() {
         $session = $this->getRequest()->getSession();
 
         $schedule = $this->get('app.schedule_normalizer')->normalize($session->get('schedule'));
 
         return $this->render('AppBundle:Default:schedule.html.twig', array('schedule' => $schedule));
+    }
+
+    /**
+     * @TODO Assign preliminary ids to games of the schedule. These ids are not to be persisted. They will be used to reference games in the schedule while updating them with a real id from the database
+     */
+
+    /**
+     * Adds a score for one game of the schedule
+     *
+     * @param $teamA
+     * @param $teamB
+     * @param $teamAScore
+     * @param $teamBScore
+     * @return JsonResponse
+     */
+    public function addScoreAction($teamA, $teamB, $teamAScore, $teamBScore)
+    {
+        $em         = $this->getDoctrine()->getManager();
+        $teamRepo   = $em->getRepository('AppBundle:Team');
+        $roundRepo  = $em->getRepository('AppBundle:Round');
+        $teamA      = $teamRepo->find($teamA);
+        $teamB      = $teamRepo->find($teamB);
+        $date       = new \DateTime();
+        $round      = $roundRepo->findOneBy(array('date' => $date));
+
+        if (null === $round) {
+            $season = $round = $em->find('AppBundle\Entity\Season', $this->container->getParameter('current_season'));
+            $round  = new Round();
+            $round->setDate($date);
+            $round->setSeason($season);
+
+            $em->persist($round);
+            $em->flush();
+        }
+
+        $game = new Game();
+        $game->setTeamA($teamA);
+        $game->setTeamB($teamB);
+        $game->setTeamAScore($teamAScore);
+        $game->setTeamBScore($teamBScore);
+        $game->setRound($round);
+
+        $em->persist($game);
+        $em->flush();
+
+        return $response = new JsonResponse($game->getId());
+    }
+
+
+    /**
+     * Updates the schedule stored within the session by adding one games score and assigning the id from the
+     * persistance layer
+     *
+     * @TODO: Implement properly
+     *
+     * @param Game $game
+     */
+    private function updateSchedule(Game $game) {
+        $session    = $this->getRequest()->getSession();
+        $schedule   = $session->get('schedule');
+
+
     }
 }
