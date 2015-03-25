@@ -33,10 +33,10 @@ ranking:
     defaults: { _controller: AppBundle:Default:ranking, idRound: null }
 scheduling:
     path:     /scheduling
-    defaults: { _controller: AppBundle:Default:scheduling }
+    defaults: { _controller: AppBundle:Schedule:scheduling }
 schedule_reset:
     path:     /schedule_reset
-    defaults: { _controller: AppBundle:Default:scheduleReset }
+    defaults: { _controller: AppBundle:Schedule:scheduleReset }
 add_game:
     path:     /add_game
     defaults: { _controller: AppBundle:Default:addGame }
