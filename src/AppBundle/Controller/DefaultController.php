@@ -80,15 +80,6 @@ class DefaultController extends Controller
     }
 
 
-    public function scheduleResetAction()
-    {
-        $session = $this->getRequest()->getSession();
-        $session->remove('schedule');
-
-        return $this->redirect($this->generateUrl('scheduling'));
-    }
-
-
     public function addGameAction(Request $request)
     {
         $form = $this->createForm(new AddGameForm());

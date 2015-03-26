@@ -34,9 +34,19 @@ ranking:
 scheduling:
     path:     /scheduling
     defaults: { _controller: AppBundle:Schedule:scheduling }
-schedule_reset:
-    path:     /schedule_reset
-    defaults: { _controller: AppBundle:Schedule:scheduleReset }
+schedule_flush:
+    path:     /schedule/flush
+    defaults: { _controller: AppBundle:Schedule:flush }
+schedule_load:
+    path:     /schedule/load
+    defaults: { _controller: AppBundle:Schedule:load }
+    options:
+        expose: true
+schedule_update:
+    path:     /schedule/update/{index}/team_a_score/{teamAScore}/team_b_score/{teamBScore}
+    defaults: { _controller: AppBundle:Schedule:update }
+    options:
+        expose: true
 add_game:
     path:     /add_game
     defaults: { _controller: AppBundle:Default:addGame }

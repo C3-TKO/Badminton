@@ -248,4 +248,14 @@ class Team
     {
         return $this->player_b;
     }
+
+
+    /**
+     * Stringify
+     *
+     * @return string
+     */
+    public function __toString() {
+        return $this->getPlayerA()->getName() . ' & ' . $this->getPlayerB()->getName();
+    }
 }
