@@ -61,7 +61,7 @@
             modal.find('#add_game_button').on('click', function () {
                 jQuery.ajax({
                     method: 'GET',
-                    url: Routing.generate('api_add_game', { teamA: jQuery('#id_team_a').val(), teamB: jQuery('#id_team_b').val(), teamAScore: jQuery('#team_a_score').val(), teamBScore: jQuery('#team_b_score').val() })
+                    url: Routing.generate('schedule_update', { index: button.data('index'), teamAScore: jQuery('#team_a_score').val(), teamBScore: jQuery('#team_b_score').val() })
                 }).done(function(data) {
                     console.log(data)
                     jQuery('#team_a_score').val('')
