@@ -2,9 +2,6 @@
 {% for game in schedule %}
     <div class="row">
         <span>{{ game.__toString }}</span>
-        {% if game.getTeamAScore != null %}
-            <span>{{ game.getTeamAScore }} : {{ game.getTeamBScore }}</span>
-        {% endif %}
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addGameModal" data-index="{{ loop.index }}" data-team-a="{{ game.getTeamA.getId }}" data-team-b="{{ game.getTeamB.getId }}">
             Ergebnis eintragen
         </button>

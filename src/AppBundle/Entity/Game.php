@@ -258,10 +258,11 @@ class Game
      * @return string
      */
     public function __toString() {
-        return
-            $this->getTeamA()->getPlayerA()->getName() . ' & ' .
-            $this->getTeamA()->getPlayerB()->getName() . ' vs. ' .
-            $this->getTeamB()->getPlayerA()->getName() . ' & ' .
-            $this->getTeamB()->getPlayerB()->getName();
+        $return = $this->getTeamA() . ' vs. ' . $this->getTeamB();
+        if( $this->teamAScore !== null) {
+            $return .= ' ' . $this->teamAScore . ' : ' . $this->teamBScore;
+        }
+
+        return $return;
     }
 }
