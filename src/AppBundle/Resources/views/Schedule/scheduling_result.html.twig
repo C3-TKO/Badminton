@@ -51,12 +51,17 @@
         )
 
         jQuery('#addGameModal').on('show.bs.modal', function (event) {
-            var button  = jQuery(event.relatedTarget)
-            var idTeamA = button.data('team-a')
-            var idTeamB = button.data('team-b')
-            var modal   = jQuery(this)
+            var button      = jQuery(event.relatedTarget)
+            var idTeamA     = button.data('id-team-a')
+            var idTeamB     = button.data('id-team-b')
+            var nameTeamA   = button.data('name-team-a')
+            var nameTeamB   = button.data('name-team-b')
+            var modal       = jQuery(this)
             modal.find('#id_team_a').val(idTeamA)
             modal.find('#id_team_b').val(idTeamB)
+
+            modal.find('label[for="team_a_score"]').text(nameTeamA)
+            modal.find('label[for="team_b_score"]').text(nameTeamB)
 
             modal.find('#add_game_button').on('click', function () {
                 jQuery.ajax({
