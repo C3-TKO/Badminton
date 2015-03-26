@@ -123,8 +123,22 @@ class ScheduleController extends Controller
 
         $schedule->set($index -1, $game);
 
-        $session->set('schedule', $schedule);
+        $session->set('schedule', $this->get('app.schedule_serializer')->serialize($schedule));
 
         return $response = new JsonResponse(true);
+    }
+
+
+    /**
+     * Flushes the schedule from session
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function flushAction()
+    {
+        $session = $this->container->get('session');
+        $session->remove('schedule');
+
+        return $this->redirect($this->generateUrl('scheduling'));
     }
 }

@@ -34,9 +34,9 @@ ranking:
 scheduling:
     path:     /scheduling
     defaults: { _controller: AppBundle:Schedule:scheduling }
-schedule_reset:
-    path:     /schedule/reset
-    defaults: { _controller: AppBundle:Schedule:reset }
+schedule_flush:
+    path:     /schedule/flush
+    defaults: { _controller: AppBundle:Schedule:flush }
 schedule_load:
     path:     /schedule/load
     defaults: { _controller: AppBundle:Schedule:load }
