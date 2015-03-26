@@ -14,8 +14,6 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * Class ScheduleController
  *
- * @TODO: Use non deprecated way of accessinf the symfony session
- *
  * @package AppBundle\Controller
  */
 class ScheduleController extends Controller
@@ -33,7 +31,7 @@ class ScheduleController extends Controller
      */
     public function schedulingAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $this->container->get('session');
 
         // Trying to resume a schedule from session
         if ($session->get('schedule') !== null) {
@@ -66,7 +64,7 @@ class ScheduleController extends Controller
      */
     public function scheduleAction()
     {
-        $session = $this->getRequest()->getSession();
+        $session = $this->container->get('session');
         $session->remove('schedule');
 
         return $this->redirect($this->generateUrl('scheduling'));
@@ -79,7 +77,7 @@ class ScheduleController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loadAction() {
-        $session = $this->getRequest()->getSession();
+        $session = $this->container->get('session');
 
         $schedule = $this->get('app.schedule_normalizer')->normalize($session->get('schedule'));
 
@@ -141,8 +139,8 @@ class ScheduleController extends Controller
      *
      * @param Game $game
      */
-    private function updateSchedule(Game $game) {
-        $session    = $this->getRequest()->getSession();
+    private function updateAction(Game $game) {
+        $session    = $this->container->get('session');
         $schedule   = $session->get('schedule');
 
 
