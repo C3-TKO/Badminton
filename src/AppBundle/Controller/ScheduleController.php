@@ -6,15 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\CreateScheduleForm;
-use AppBundle\Entity\Game;
-use AppBundle\Entity\Season;
 use AppBundle\Entity\Round;
 
 
 /**
  * Class ScheduleController
- *
- * @TODO: Use non deprecated way of accessing the symfony session
  *
  * @package AppBundle\Controller
  */
