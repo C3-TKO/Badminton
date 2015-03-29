@@ -33,7 +33,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/doctrine-fixtures-bundle": "~2.2.0",
         "jquery/jquery":  "1.11.*",
-        "friendsofsymfony/jsrouting-bundle": "~1.5"
+        "friendsofsymfony/jsrouting-bundle": "~1.5",
+        "phpunit/phpunit": "~4.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
