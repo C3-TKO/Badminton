@@ -13,7 +13,7 @@ crud_player__new:
 crud_player__create:
     path:     /create
     defaults: { _controller: "AppBundle:Player:create" }
-    requirements: { _method: post }
+    requirements: { methods: post }
 
 crud_player__edit:
     path:     /{id}/edit
@@ -22,9 +22,9 @@ crud_player__edit:
 crud_player__update:
     path:     /{id}/update
     defaults: { _controller: "AppBundle:Player:update" }
-    requirements: { _method: post|put }
+    requirements: { methods: post|put }
 
 crud_player__delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Player:delete" }
-    requirements: { _method: post|delete }
+    requirements: { methods: post|delete }

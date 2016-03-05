@@ -13,7 +13,7 @@ crud_season__new:
 crud_season__create:
     path:     /create
     defaults: { _controller: "AppBundle:Season:create" }
-    requirements: { _method: post }
+    requirements: { methods: post }
 
 crud_season__edit:
     path:     /{id}/edit
@@ -22,9 +22,9 @@ crud_season__edit:
 crud_season__update:
     path:     /{id}/update
     defaults: { _controller: "AppBundle:Season:update" }
-    requirements: { _method: post|put }
+    requirements: { methods: post|put }
 
 crud_season__delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Season:delete" }
-    requirements: { _method: post|delete }
+    requirements: { methods: post|delete }
