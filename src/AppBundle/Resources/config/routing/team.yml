@@ -13,7 +13,7 @@ crud_team__new:
 crud_team__create:
     path:     /create
     defaults: { _controller: "AppBundle:Team:create" }
-    requirements: { _method: post }
+    requirements: { methods: post }
 
 crud_team__edit:
     path:     /{id}/edit
@@ -22,9 +22,9 @@ crud_team__edit:
 crud_team__update:
     path:     /{id}/update
     defaults: { _controller: "AppBundle:Team:update" }
-    requirements: { _method: post|put }
+    requirements: { methods: post|put }
 
 crud_team__delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Team:delete" }
-    requirements: { _method: post|delete }
+    requirements: { methods: post|delete }
