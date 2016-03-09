@@ -10,9 +10,7 @@ services:
 # keep your service names short
 app.round_results:
     class: AppBundle\Services\RoundResults
-    arguments:
-        em: doctrine.orm.entity_manager
+    arguments: '@doctrine.orm.entity_manager'
 app.round_ranking:
     class: AppBundle\Services\RoundRanking
-    arguments:
-        em: doctrine.orm.entity_manager
+    arguments: '@doctrine.orm.entity_manager'
