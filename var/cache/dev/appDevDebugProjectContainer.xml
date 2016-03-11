@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.root_dir">/Users/tomzilla/dev/badminton/app</parameter>
+    <parameter key="kernel.root_dir">/var/www/badminton/app</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">/Users/tomzilla/dev/badminton/app/cache/dev</parameter>
-    <parameter key="kernel.logs_dir">/Users/tomzilla/dev/badminton/app/logs</parameter>
+    <parameter key="kernel.cache_dir">/var/www/badminton/var/cache/dev</parameter>
+    <parameter key="kernel.logs_dir">/var/www/badminton/var/logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
       <parameter key="TwigBundle">Symfony\Bundle\TwigBundle\TwigBundle</parameter>
       <parameter key="MonologBundle">Symfony\Bundle\MonologBundle\MonologBundle</parameter>
       <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
-      <parameter key="AsseticBundle">Symfony\Bundle\AsseticBundle\AsseticBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="FOSJsRoutingBundle">FOS\JsRoutingBundle\FOSJsRoutingBundle</parameter>
@@ -27,11 +26,11 @@
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
     <parameter key="database_driver">pdo_mysql</parameter>
-    <parameter key="database_host">127.0.0.1</parameter>
+    <parameter key="database_host">localhost</parameter>
     <parameter key="database_port">null</parameter>
     <parameter key="database_name">badminton</parameter>
-    <parameter key="database_user">root</parameter>
-    <parameter key="database_password">root</parameter>
+    <parameter key="database_user">smash_db</parameter>
+    <parameter key="database_password">nolens0#Gesetze</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
@@ -41,262 +40,57 @@
     <parameter key="current_season">1</parameter>
     <parameter key="admin_username">admin</parameter>
     <parameter key="admin_password">fb300480</parameter>
-    <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
-    <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
-    <parameter key="response_listener.class">Symfony\Component\HttpKernel\EventListener\ResponseListener</parameter>
-    <parameter key="streamed_response_listener.class">Symfony\Component\HttpKernel\EventListener\StreamedResponseListener</parameter>
-    <parameter key="locale_listener.class">Symfony\Component\HttpKernel\EventListener\LocaleListener</parameter>
-    <parameter key="event_dispatcher.class">Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher</parameter>
-    <parameter key="http_kernel.class">Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel</parameter>
-    <parameter key="filesystem.class">Symfony\Component\Filesystem\Filesystem</parameter>
-    <parameter key="cache_warmer.class">Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate</parameter>
-    <parameter key="cache_clearer.class">Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer</parameter>
-    <parameter key="file_locator.class">Symfony\Component\HttpKernel\Config\FileLocator</parameter>
-    <parameter key="uri_signer.class">Symfony\Component\HttpKernel\UriSigner</parameter>
-    <parameter key="request_stack.class">Symfony\Component\HttpFoundation\RequestStack</parameter>
-    <parameter key="fragment.handler.class">Symfony\Component\HttpKernel\DependencyInjection\LazyLoadingFragmentHandler</parameter>
-    <parameter key="fragment.renderer.inline.class">Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer</parameter>
-    <parameter key="fragment.renderer.hinclude.class">Symfony\Component\HttpKernel\Fragment\HIncludeFragmentRenderer</parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
-    <parameter key="fragment.renderer.esi.class">Symfony\Component\HttpKernel\Fragment\EsiFragmentRenderer</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
-    <parameter key="translator.class">Symfony\Bundle\FrameworkBundle\Translation\Translator</parameter>
-    <parameter key="translator.identity.class">Symfony\Component\Translation\IdentityTranslator</parameter>
-    <parameter key="translator.selector.class">Symfony\Component\Translation\MessageSelector</parameter>
-    <parameter key="translation.loader.php.class">Symfony\Component\Translation\Loader\PhpFileLoader</parameter>
-    <parameter key="translation.loader.yml.class">Symfony\Component\Translation\Loader\YamlFileLoader</parameter>
-    <parameter key="translation.loader.xliff.class">Symfony\Component\Translation\Loader\XliffFileLoader</parameter>
-    <parameter key="translation.loader.po.class">Symfony\Component\Translation\Loader\PoFileLoader</parameter>
-    <parameter key="translation.loader.mo.class">Symfony\Component\Translation\Loader\MoFileLoader</parameter>
-    <parameter key="translation.loader.qt.class">Symfony\Component\Translation\Loader\QtFileLoader</parameter>
-    <parameter key="translation.loader.csv.class">Symfony\Component\Translation\Loader\CsvFileLoader</parameter>
-    <parameter key="translation.loader.res.class">Symfony\Component\Translation\Loader\IcuResFileLoader</parameter>
-    <parameter key="translation.loader.dat.class">Symfony\Component\Translation\Loader\IcuDatFileLoader</parameter>
-    <parameter key="translation.loader.ini.class">Symfony\Component\Translation\Loader\IniFileLoader</parameter>
-    <parameter key="translation.loader.json.class">Symfony\Component\Translation\Loader\JsonFileLoader</parameter>
-    <parameter key="translation.dumper.php.class">Symfony\Component\Translation\Dumper\PhpFileDumper</parameter>
-    <parameter key="translation.dumper.xliff.class">Symfony\Component\Translation\Dumper\XliffFileDumper</parameter>
-    <parameter key="translation.dumper.po.class">Symfony\Component\Translation\Dumper\PoFileDumper</parameter>
-    <parameter key="translation.dumper.mo.class">Symfony\Component\Translation\Dumper\MoFileDumper</parameter>
-    <parameter key="translation.dumper.yml.class">Symfony\Component\Translation\Dumper\YamlFileDumper</parameter>
-    <parameter key="translation.dumper.qt.class">Symfony\Component\Translation\Dumper\QtFileDumper</parameter>
-    <parameter key="translation.dumper.csv.class">Symfony\Component\Translation\Dumper\CsvFileDumper</parameter>
-    <parameter key="translation.dumper.ini.class">Symfony\Component\Translation\Dumper\IniFileDumper</parameter>
-    <parameter key="translation.dumper.json.class">Symfony\Component\Translation\Dumper\JsonFileDumper</parameter>
-    <parameter key="translation.dumper.res.class">Symfony\Component\Translation\Dumper\IcuResFileDumper</parameter>
-    <parameter key="translation.extractor.php.class">Symfony\Bundle\FrameworkBundle\Translation\PhpExtractor</parameter>
-    <parameter key="translation.loader.class">Symfony\Bundle\FrameworkBundle\Translation\TranslationLoader</parameter>
-    <parameter key="translation.extractor.class">Symfony\Component\Translation\Extractor\ChainExtractor</parameter>
-    <parameter key="translation.writer.class">Symfony\Component\Translation\Writer\TranslationWriter</parameter>
-    <parameter key="property_accessor.class">Symfony\Component\PropertyAccess\PropertyAccessor</parameter>
     <parameter key="kernel.secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.trusted_proxies" type="collection"/>
     <parameter key="kernel.default_locale">de</parameter>
-    <parameter key="session.class">Symfony\Component\HttpFoundation\Session\Session</parameter>
-    <parameter key="session.flashbag.class">Symfony\Component\HttpFoundation\Session\Flash\FlashBag</parameter>
-    <parameter key="session.attribute_bag.class">Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag</parameter>
-    <parameter key="session.storage.metadata_bag.class">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</parameter>
     <parameter key="session.metadata.storage_key">_sf2_meta</parameter>
-    <parameter key="session.storage.native.class">Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage</parameter>
-    <parameter key="session.storage.php_bridge.class">Symfony\Component\HttpFoundation\Session\Storage\PhpBridgeSessionStorage</parameter>
-    <parameter key="session.storage.mock_file.class">Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage</parameter>
-    <parameter key="session.handler.native_file.class">Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler</parameter>
-    <parameter key="session.handler.write_check.class">Symfony\Component\HttpFoundation\Session\Storage\Handler\WriteCheckSessionHandler</parameter>
-    <parameter key="session_listener.class">Symfony\Bundle\FrameworkBundle\EventListener\SessionListener</parameter>
     <parameter key="session.storage.options" type="collection">
       <parameter key="cookie_httponly">true</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">/Users/tomzilla/dev/badminton/app/cache/dev/sessions</parameter>
+    <parameter key="session.save_path">/var/www/badminton/var/cache/dev/sessions</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
-    <parameter key="security.secure_random.class">Symfony\Component\Security\Core\Util\SecureRandom</parameter>
-    <parameter key="form.resolved_type_factory.class">Symfony\Component\Form\ResolvedFormTypeFactory</parameter>
-    <parameter key="form.registry.class">Symfony\Component\Form\FormRegistry</parameter>
-    <parameter key="form.factory.class">Symfony\Component\Form\FormFactory</parameter>
-    <parameter key="form.extension.class">Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension</parameter>
-    <parameter key="form.type_guesser.validator.class">Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser</parameter>
-    <parameter key="form.type_extension.form.request_handler.class">Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationRequestHandler</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
-    <parameter key="security.csrf.token_generator.class">Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator</parameter>
-    <parameter key="security.csrf.token_storage.class">Symfony\Component\Security\Csrf\TokenStorage\SessionTokenStorage</parameter>
-    <parameter key="security.csrf.token_manager.class">Symfony\Component\Security\Csrf\CsrfTokenManager</parameter>
-    <parameter key="templating.engine.delegating.class">Symfony\Bundle\FrameworkBundle\Templating\DelegatingEngine</parameter>
-    <parameter key="templating.name_parser.class">Symfony\Bundle\FrameworkBundle\Templating\TemplateNameParser</parameter>
-    <parameter key="templating.filename_parser.class">Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser</parameter>
-    <parameter key="templating.cache_warmer.template_paths.class">Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer</parameter>
-    <parameter key="templating.locator.class">Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator</parameter>
-    <parameter key="templating.loader.filesystem.class">Symfony\Bundle\FrameworkBundle\Templating\Loader\FilesystemLoader</parameter>
-    <parameter key="templating.loader.cache.class">Symfony\Component\Templating\Loader\CacheLoader</parameter>
-    <parameter key="templating.loader.chain.class">Symfony\Component\Templating\Loader\ChainLoader</parameter>
-    <parameter key="templating.finder.class">Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder</parameter>
-    <parameter key="templating.helper.assets.class">Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper</parameter>
-    <parameter key="templating.helper.router.class">Symfony\Bundle\FrameworkBundle\Templating\Helper\RouterHelper</parameter>
     <parameter key="templating.helper.code.file_link_format">null</parameter>
     <parameter key="templating.loader.cache.path">null</parameter>
     <parameter key="templating.engines" type="collection">
       <parameter>twig</parameter>
     </parameter>
-    <parameter key="validator.class">Symfony\Component\Validator\Validator\ValidatorInterface</parameter>
-    <parameter key="validator.builder.class">Symfony\Component\Validator\ValidatorBuilderInterface</parameter>
-    <parameter key="validator.builder.factory.class">Symfony\Component\Validator\Validation</parameter>
-    <parameter key="validator.mapping.cache.apc.class">Symfony\Component\Validator\Mapping\Cache\ApcCache</parameter>
     <parameter key="validator.mapping.cache.prefix"></parameter>
-    <parameter key="validator.validator_factory.class">Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory</parameter>
-    <parameter key="validator.expression.class">Symfony\Component\Validator\Constraints\ExpressionValidator</parameter>
-    <parameter key="validator.email.class">Symfony\Component\Validator\Constraints\EmailValidator</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
-    <parameter key="validator.api">2.5-bc</parameter>
-    <parameter key="fragment.listener.class">Symfony\Component\HttpKernel\EventListener\FragmentListener</parameter>
-    <parameter key="profiler.class">Symfony\Component\HttpKernel\Profiler\Profiler</parameter>
-    <parameter key="profiler_listener.class">Symfony\Component\HttpKernel\EventListener\ProfilerListener</parameter>
-    <parameter key="data_collector.config.class">Symfony\Component\HttpKernel\DataCollector\ConfigDataCollector</parameter>
-    <parameter key="data_collector.request.class">Symfony\Component\HttpKernel\DataCollector\RequestDataCollector</parameter>
-    <parameter key="data_collector.exception.class">Symfony\Component\HttpKernel\DataCollector\ExceptionDataCollector</parameter>
-    <parameter key="data_collector.events.class">Symfony\Component\HttpKernel\DataCollector\EventDataCollector</parameter>
-    <parameter key="data_collector.logger.class">Symfony\Component\HttpKernel\DataCollector\LoggerDataCollector</parameter>
-    <parameter key="data_collector.time.class">Symfony\Component\HttpKernel\DataCollector\TimeDataCollector</parameter>
-    <parameter key="data_collector.memory.class">Symfony\Component\HttpKernel\DataCollector\MemoryDataCollector</parameter>
-    <parameter key="data_collector.router.class">Symfony\Bundle\FrameworkBundle\DataCollector\RouterDataCollector</parameter>
-    <parameter key="form.resolved_type_factory.data_collector_proxy.class">Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy</parameter>
-    <parameter key="form.type_extension.form.data_collector.class">Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension</parameter>
-    <parameter key="data_collector.form.class">Symfony\Component\Form\Extension\DataCollector\FormDataCollector</parameter>
-    <parameter key="data_collector.form.extractor.class">Symfony\Component\Form\Extension\DataCollector\FormDataExtractor</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:/Users/tomzilla/dev/badminton/app/cache/dev/profiler</parameter>
-    <parameter key="profiler.storage.username"></parameter>
-    <parameter key="profiler.storage.password"></parameter>
-    <parameter key="profiler.storage.lifetime">86400</parameter>
-    <parameter key="router.class">Symfony\Bundle\FrameworkBundle\Routing\Router</parameter>
-    <parameter key="router.request_context.class">Symfony\Component\Routing\RequestContext</parameter>
-    <parameter key="routing.loader.class">Symfony\Bundle\FrameworkBundle\Routing\DelegatingLoader</parameter>
-    <parameter key="routing.resolver.class">Symfony\Component\Config\Loader\LoaderResolver</parameter>
-    <parameter key="routing.loader.xml.class">Symfony\Component\Routing\Loader\XmlFileLoader</parameter>
-    <parameter key="routing.loader.yml.class">Symfony\Component\Routing\Loader\YamlFileLoader</parameter>
-    <parameter key="routing.loader.php.class">Symfony\Component\Routing\Loader\PhpFileLoader</parameter>
+    <parameter key="profiler.storage.dsn">file:/var/www/badminton/var/cache/dev/profiler</parameter>
     <parameter key="router.options.generator_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\PhpGeneratorDumper</parameter>
     <parameter key="router.options.matcher_class">Symfony\Bundle\FrameworkBundle\Routing\RedirectableUrlMatcher</parameter>
     <parameter key="router.options.matcher_base_class">Symfony\Bundle\FrameworkBundle\Routing\RedirectableUrlMatcher</parameter>
     <parameter key="router.options.matcher_dumper_class">Symfony\Component\Routing\Matcher\Dumper\PhpMatcherDumper</parameter>
-    <parameter key="router.cache_warmer.class">Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer</parameter>
     <parameter key="router.options.matcher.cache_class">appDevUrlMatcher</parameter>
     <parameter key="router.options.generator.cache_class">appDevUrlGenerator</parameter>
-    <parameter key="router_listener.class">Symfony\Component\HttpKernel\EventListener\RouterListener</parameter>
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">/Users/tomzilla/dev/badminton/app/cache/dev/assetic/routing.yml</parameter>
+    <parameter key="router.resource">/var/www/badminton/app/config/routing_dev.yml</parameter>
     <parameter key="router.cache_class_prefix">appDev</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
-    <parameter key="annotations.reader.class">Doctrine\Common\Annotations\AnnotationReader</parameter>
-    <parameter key="annotations.cached_reader.class">Doctrine\Common\Annotations\CachedReader</parameter>
-    <parameter key="annotations.file_cache_reader.class">Doctrine\Common\Annotations\FileCacheReader</parameter>
-    <parameter key="debug.debug_handlers_listener.class">Symfony\Component\HttpKernel\EventListener\DebugHandlersListener</parameter>
-    <parameter key="debug.stopwatch.class">Symfony\Component\Stopwatch\Stopwatch</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.event_dispatcher.class">Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher</parameter>
-    <parameter key="debug.container.dump">/Users/tomzilla/dev/badminton/app/cache/dev/appDevDebugProjectContainer.xml</parameter>
-    <parameter key="debug.controller_resolver.class">Symfony\Component\HttpKernel\Controller\TraceableControllerResolver</parameter>
-    <parameter key="security.context.class">Symfony\Component\Security\Core\SecurityContext</parameter>
-    <parameter key="security.user_checker.class">Symfony\Component\Security\Core\User\UserChecker</parameter>
-    <parameter key="security.encoder_factory.generic.class">Symfony\Component\Security\Core\Encoder\EncoderFactory</parameter>
-    <parameter key="security.encoder.digest.class">Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder</parameter>
-    <parameter key="security.encoder.plain.class">Symfony\Component\Security\Core\Encoder\PlaintextPasswordEncoder</parameter>
-    <parameter key="security.encoder.pbkdf2.class">Symfony\Component\Security\Core\Encoder\Pbkdf2PasswordEncoder</parameter>
-    <parameter key="security.encoder.bcrypt.class">Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder</parameter>
-    <parameter key="security.user.provider.in_memory.class">Symfony\Component\Security\Core\User\InMemoryUserProvider</parameter>
-    <parameter key="security.user.provider.in_memory.user.class">Symfony\Component\Security\Core\User\User</parameter>
-    <parameter key="security.user.provider.chain.class">Symfony\Component\Security\Core\User\ChainUserProvider</parameter>
-    <parameter key="security.authentication.trust_resolver.class">Symfony\Component\Security\Core\Authentication\AuthenticationTrustResolver</parameter>
+    <parameter key="debug.container.dump">/var/www/badminton/var/cache/dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="security.authentication.trust_resolver.anonymous_class">Symfony\Component\Security\Core\Authentication\Token\AnonymousToken</parameter>
     <parameter key="security.authentication.trust_resolver.rememberme_class">Symfony\Component\Security\Core\Authentication\Token\RememberMeToken</parameter>
-    <parameter key="security.authentication.manager.class">Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager</parameter>
-    <parameter key="security.authentication.session_strategy.class">Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy</parameter>
-    <parameter key="security.access.decision_manager.class">Symfony\Component\Security\Core\Authorization\AccessDecisionManager</parameter>
-    <parameter key="security.access.simple_role_voter.class">Symfony\Component\Security\Core\Authorization\Voter\RoleVoter</parameter>
-    <parameter key="security.access.authenticated_voter.class">Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter</parameter>
-    <parameter key="security.access.role_hierarchy_voter.class">Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter</parameter>
-    <parameter key="security.access.expression_voter.class">Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter</parameter>
-    <parameter key="security.firewall.class">Symfony\Component\Security\Http\Firewall</parameter>
-    <parameter key="security.firewall.map.class">Symfony\Bundle\SecurityBundle\Security\FirewallMap</parameter>
-    <parameter key="security.firewall.context.class">Symfony\Bundle\SecurityBundle\Security\FirewallContext</parameter>
-    <parameter key="security.matcher.class">Symfony\Component\HttpFoundation\RequestMatcher</parameter>
-    <parameter key="security.expression_matcher.class">Symfony\Component\HttpFoundation\ExpressionRequestMatcher</parameter>
-    <parameter key="security.role_hierarchy.class">Symfony\Component\Security\Core\Role\RoleHierarchy</parameter>
-    <parameter key="security.http_utils.class">Symfony\Component\Security\Http\HttpUtils</parameter>
-    <parameter key="security.validator.user_password.class">Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator</parameter>
-    <parameter key="security.expression_language.class">Symfony\Component\Security\Core\Authorization\ExpressionLanguage</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection"/>
-    <parameter key="security.authentication.retry_entry_point.class">Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint</parameter>
-    <parameter key="security.channel_listener.class">Symfony\Component\Security\Http\Firewall\ChannelListener</parameter>
-    <parameter key="security.authentication.form_entry_point.class">Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint</parameter>
-    <parameter key="security.authentication.listener.form.class">Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener</parameter>
-    <parameter key="security.authentication.listener.simple_form.class">Symfony\Component\Security\Http\Firewall\SimpleFormAuthenticationListener</parameter>
-    <parameter key="security.authentication.listener.simple_preauth.class">Symfony\Component\Security\Http\Firewall\SimplePreAuthenticationListener</parameter>
-    <parameter key="security.authentication.listener.basic.class">Symfony\Component\Security\Http\Firewall\BasicAuthenticationListener</parameter>
-    <parameter key="security.authentication.basic_entry_point.class">Symfony\Component\Security\Http\EntryPoint\BasicAuthenticationEntryPoint</parameter>
-    <parameter key="security.authentication.listener.digest.class">Symfony\Component\Security\Http\Firewall\DigestAuthenticationListener</parameter>
-    <parameter key="security.authentication.digest_entry_point.class">Symfony\Component\Security\Http\EntryPoint\DigestAuthenticationEntryPoint</parameter>
-    <parameter key="security.authentication.listener.x509.class">Symfony\Component\Security\Http\Firewall\X509AuthenticationListener</parameter>
-    <parameter key="security.authentication.listener.anonymous.class">Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener</parameter>
-    <parameter key="security.authentication.switchuser_listener.class">Symfony\Component\Security\Http\Firewall\SwitchUserListener</parameter>
-    <parameter key="security.logout_listener.class">Symfony\Component\Security\Http\Firewall\LogoutListener</parameter>
-    <parameter key="security.logout.handler.session.class">Symfony\Component\Security\Http\Logout\SessionLogoutHandler</parameter>
-    <parameter key="security.logout.handler.cookie_clearing.class">Symfony\Component\Security\Http\Logout\CookieClearingLogoutHandler</parameter>
-    <parameter key="security.logout.success_handler.class">Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler</parameter>
-    <parameter key="security.access_listener.class">Symfony\Component\Security\Http\Firewall\AccessListener</parameter>
-    <parameter key="security.access_map.class">Symfony\Component\Security\Http\AccessMap</parameter>
-    <parameter key="security.exception_listener.class">Symfony\Component\Security\Http\Firewall\ExceptionListener</parameter>
-    <parameter key="security.context_listener.class">Symfony\Component\Security\Http\Firewall\ContextListener</parameter>
-    <parameter key="security.authentication.provider.dao.class">Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider</parameter>
-    <parameter key="security.authentication.provider.simple.class">Symfony\Component\Security\Core\Authentication\Provider\SimpleAuthenticationProvider</parameter>
-    <parameter key="security.authentication.provider.pre_authenticated.class">Symfony\Component\Security\Core\Authentication\Provider\PreAuthenticatedAuthenticationProvider</parameter>
-    <parameter key="security.authentication.provider.anonymous.class">Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider</parameter>
-    <parameter key="security.authentication.success_handler.class">Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler</parameter>
-    <parameter key="security.authentication.failure_handler.class">Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler</parameter>
-    <parameter key="security.authentication.simple_success_failure_handler.class">Symfony\Component\Security\Http\Authentication\SimpleAuthenticationHandler</parameter>
-    <parameter key="security.authentication.provider.rememberme.class">Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider</parameter>
-    <parameter key="security.authentication.listener.rememberme.class">Symfony\Component\Security\Http\Firewall\RememberMeListener</parameter>
-    <parameter key="security.rememberme.token.provider.in_memory.class">Symfony\Component\Security\Core\Authentication\RememberMe\InMemoryTokenProvider</parameter>
-    <parameter key="security.authentication.rememberme.services.persistent.class">Symfony\Component\Security\Http\RememberMe\PersistentTokenBasedRememberMeServices</parameter>
-    <parameter key="security.authentication.rememberme.services.simplehash.class">Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices</parameter>
-    <parameter key="security.rememberme.response_listener.class">Symfony\Component\Security\Http\RememberMe\ResponseListener</parameter>
-    <parameter key="templating.helper.logout_url.class">Symfony\Bundle\SecurityBundle\Templating\Helper\LogoutUrlHelper</parameter>
-    <parameter key="templating.helper.security.class">Symfony\Bundle\SecurityBundle\Templating\Helper\SecurityHelper</parameter>
-    <parameter key="twig.extension.logout_url.class">Symfony\Bridge\Twig\Extension\LogoutUrlExtension</parameter>
-    <parameter key="twig.extension.security.class">Symfony\Bridge\Twig\Extension\SecurityExtension</parameter>
-    <parameter key="data_collector.security.class">Symfony\Bundle\SecurityBundle\DataCollector\SecurityDataCollector</parameter>
     <parameter key="security.access.denied_url">null</parameter>
     <parameter key="security.authentication.manager.erase_credentials">true</parameter>
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
-    <parameter key="twig.class">Twig_Environment</parameter>
-    <parameter key="twig.loader.filesystem.class">Symfony\Bundle\TwigBundle\Loader\FilesystemLoader</parameter>
-    <parameter key="twig.loader.chain.class">Twig_Loader_Chain</parameter>
-    <parameter key="templating.engine.twig.class">Symfony\Bundle\TwigBundle\TwigEngine</parameter>
-    <parameter key="twig.cache_warmer.class">Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer</parameter>
-    <parameter key="twig.extension.trans.class">Symfony\Bridge\Twig\Extension\TranslationExtension</parameter>
-    <parameter key="twig.extension.actions.class">Symfony\Bundle\TwigBundle\Extension\ActionsExtension</parameter>
-    <parameter key="twig.extension.code.class">Symfony\Bridge\Twig\Extension\CodeExtension</parameter>
-    <parameter key="twig.extension.routing.class">Symfony\Bridge\Twig\Extension\RoutingExtension</parameter>
-    <parameter key="twig.extension.yaml.class">Symfony\Bridge\Twig\Extension\YamlExtension</parameter>
-    <parameter key="twig.extension.form.class">Symfony\Bridge\Twig\Extension\FormExtension</parameter>
-    <parameter key="twig.extension.httpkernel.class">Symfony\Bridge\Twig\Extension\HttpKernelExtension</parameter>
-    <parameter key="twig.extension.debug.stopwatch.class">Symfony\Bridge\Twig\Extension\StopwatchExtension</parameter>
-    <parameter key="twig.extension.expression.class">Symfony\Bridge\Twig\Extension\ExpressionExtension</parameter>
-    <parameter key="twig.form.engine.class">Symfony\Bridge\Twig\Form\TwigRendererEngine</parameter>
-    <parameter key="twig.form.renderer.class">Symfony\Bridge\Twig\Form\TwigRenderer</parameter>
-    <parameter key="twig.translation.extractor.class">Symfony\Bridge\Twig\Translation\TwigExtractor</parameter>
-    <parameter key="twig.exception_listener.class">Symfony\Component\HttpKernel\EventListener\ExceptionListener</parameter>
-    <parameter key="twig.controller.exception.class">Symfony\Bundle\TwigBundle\Controller\ExceptionController</parameter>
-    <parameter key="twig.controller.preview_error.class">Symfony\Bundle\TwigBundle\Controller\PreviewErrorController</parameter>
     <parameter key="twig.exception_listener.controller">twig.controller.exception:showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
@@ -383,7 +177,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">/Users/tomzilla/dev/badminton/app/cache/dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">/var/www/badminton/var/cache/dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -394,54 +188,6 @@
       <parameter key="default">swiftmailer.mailer.default</parameter>
     </parameter>
     <parameter key="swiftmailer.default_mailer">default</parameter>
-    <parameter key="assetic.asset_factory.class">Symfony\Bundle\AsseticBundle\Factory\AssetFactory</parameter>
-    <parameter key="assetic.asset_manager.class">Assetic\Factory\LazyAssetManager</parameter>
-    <parameter key="assetic.asset_manager_cache_warmer.class">Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer</parameter>
-    <parameter key="assetic.cached_formula_loader.class">Assetic\Factory\Loader\CachedFormulaLoader</parameter>
-    <parameter key="assetic.config_cache.class">Assetic\Cache\ConfigCache</parameter>
-    <parameter key="assetic.config_loader.class">Symfony\Bundle\AsseticBundle\Factory\Loader\ConfigurationLoader</parameter>
-    <parameter key="assetic.config_resource.class">Symfony\Bundle\AsseticBundle\Factory\Resource\ConfigurationResource</parameter>
-    <parameter key="assetic.coalescing_directory_resource.class">Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource</parameter>
-    <parameter key="assetic.directory_resource.class">Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource</parameter>
-    <parameter key="assetic.filter_manager.class">Symfony\Bundle\AsseticBundle\FilterManager</parameter>
-    <parameter key="assetic.worker.ensure_filter.class">Assetic\Factory\Worker\EnsureFilterWorker</parameter>
-    <parameter key="assetic.worker.cache_busting.class">Assetic\Factory\Worker\CacheBustingWorker</parameter>
-    <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
-    <parameter key="assetic.node.paths" type="collection"/>
-    <parameter key="assetic.cache_dir">/Users/tomzilla/dev/badminton/app/cache/dev/assetic</parameter>
-    <parameter key="assetic.bundles" type="collection"/>
-    <parameter key="assetic.twig_extension.class">Symfony\Bundle\AsseticBundle\Twig\AsseticExtension</parameter>
-    <parameter key="assetic.twig_formula_loader.class">Assetic\Extension\Twig\TwigFormulaLoader</parameter>
-    <parameter key="assetic.helper.dynamic.class">Symfony\Bundle\AsseticBundle\Templating\DynamicAsseticHelper</parameter>
-    <parameter key="assetic.helper.static.class">Symfony\Bundle\AsseticBundle\Templating\StaticAsseticHelper</parameter>
-    <parameter key="assetic.php_formula_loader.class">Symfony\Bundle\AsseticBundle\Factory\Loader\AsseticHelperFormulaLoader</parameter>
-    <parameter key="assetic.debug">true</parameter>
-    <parameter key="assetic.use_controller">true</parameter>
-    <parameter key="assetic.enable_profiler">false</parameter>
-    <parameter key="assetic.read_from">/Users/tomzilla/dev/badminton/app/../web</parameter>
-    <parameter key="assetic.write_to">/Users/tomzilla/dev/badminton/app/../web</parameter>
-    <parameter key="assetic.variables" type="collection"/>
-    <parameter key="assetic.java.bin">/usr/bin/java</parameter>
-    <parameter key="assetic.node.bin">/usr/local/bin/node</parameter>
-    <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
-    <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
-    <parameter key="assetic.reactjsx.bin">/usr/bin/jsx</parameter>
-    <parameter key="assetic.filter.cssrewrite.class">Assetic\Filter\CssRewriteFilter</parameter>
-    <parameter key="assetic.filter.less.class">Assetic\Filter\LessFilter</parameter>
-    <parameter key="assetic.filter.less.node">/usr/local/bin/node</parameter>
-    <parameter key="assetic.filter.less.node_paths" type="collection">
-      <parameter>/usr/local/lib/node_modules</parameter>
-    </parameter>
-    <parameter key="assetic.filter.less.timeout">null</parameter>
-    <parameter key="assetic.filter.less.compress">null</parameter>
-    <parameter key="assetic.filter.less.load_paths" type="collection"/>
-    <parameter key="assetic.filter.less.cssrewrite">null</parameter>
-    <parameter key="assetic.twig_extension.functions" type="collection"/>
-    <parameter key="assetic.controller.class">Symfony\Bundle\AsseticBundle\Controller\AsseticController</parameter>
-    <parameter key="assetic.routing_loader.class">Symfony\Bundle\AsseticBundle\Routing\AsseticLoader</parameter>
-    <parameter key="assetic.cache.class">Assetic\Cache\FilesystemCache</parameter>
-    <parameter key="assetic.use_controller_worker.class">Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker</parameter>
-    <parameter key="assetic.request_listener.class">Symfony\Bundle\AsseticBundle\EventListener\RequestListener</parameter>
     <parameter key="doctrine_cache.apc.class">Doctrine\Common\Cache\ApcCache</parameter>
     <parameter key="doctrine_cache.apcu.class">Doctrine\Common\Cache\ApcuCache</parameter>
     <parameter key="doctrine_cache.array.class">Doctrine\Common\Cache\ArrayCache</parameter>
@@ -549,7 +295,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">/Users/tomzilla/dev/badminton/app/cache/dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">/var/www/badminton/var/cache/dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -566,19 +312,9 @@
     <parameter key="fos_js_routing.cache_control" type="collection">
       <parameter key="enabled">false</parameter>
     </parameter>
-    <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
-    <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
-    <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
-    <parameter key="twig.extension.webprofiler.class">Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension</parameter>
     <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
-    <parameter key="web_profiler.debug_toolbar.class">Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
-    <parameter key="sensio_distribution.webconfigurator.class">Sensio\Bundle\DistributionBundle\Configurator\Configurator</parameter>
-    <parameter key="sensio_distribution.webconfigurator.doctrine_step.class">Sensio\Bundle\DistributionBundle\Configurator\Step\DoctrineStep</parameter>
-    <parameter key="sensio_distribution.webconfigurator.secret_step.class">Sensio\Bundle\DistributionBundle\Configurator\Step\SecretStep</parameter>
-    <parameter key="sensio_distribution.security_checker.class">SensioLabs\Security\SecurityChecker</parameter>
-    <parameter key="sensio_distribution.security_checker.command.class">SensioLabs\Security\Command\SecurityCheckerCommand</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -646,12 +382,6 @@
     </parameter>
   </parameters>
   <services>
-    <service id="app.round_results" class="AppBundle\Services\RoundResults">
-      <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
-    </service>
-    <service id="app.round_ranking" class="AppBundle\Services\RoundRanking">
-      <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
-    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -674,12 +404,10 @@
       <argument type="service" id="translator"/>
       <argument type="service" id="request_stack"/>
     </service>
-    <service id="http_kernel" class="Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel">
+    <service id="http_kernel" class="Symfony\Component\HttpKernel\HttpKernel">
       <argument type="service" id="debug.event_dispatcher"/>
-      <argument type="service" id="service_container"/>
       <argument type="service" id="debug.controller_resolver"/>
       <argument type="service" id="request_stack"/>
-      <argument>false</argument>
     </service>
     <service id="request_stack" class="Symfony\Component\HttpFoundation\RequestStack"/>
     <service id="cache_warmer" class="Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate">
@@ -691,16 +419,10 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>/Users/tomzilla/dev/badminton/app/Resources</argument>
+                <argument>/var/www/badminton/app/Resources</argument>
               </service>
             </argument>
             <argument type="service" id="templating.locator"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer" public="false">
-            <tag name="kernel.cache_warmer" priority="10"/>
-            <argument type="service" id="service_container"/>
           </service>
         </argument>
         <argument type="service" id="kernel.class_cache.cache_warmer"/>
@@ -724,7 +446,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>/Users/tomzilla/dev/badminton/app/Resources</argument>
+                <argument>/var/www/badminton/app/Resources</argument>
               </service>
             </argument>
             <argument type="collection"/>
@@ -737,7 +459,7 @@
             <argument type="service">
               <service class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
                 <argument type="service" id="kernel"/>
-                <argument>/Users/tomzilla/dev/badminton/app</argument>
+                <argument>/var/www/badminton/app</argument>
                 <argument type="collection"/>
               </service>
             </argument>
@@ -757,9 +479,6 @@
     <service id="cache_clearer" class="Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer">
       <argument type="collection"/>
     </service>
-    <service id="request" scope="request" synthetic="true" synchronized="true">
-      <deprecated>The "%service_id%" service is deprecated since Symfony 2.7 and will be removed in 3.0. Use the "request_stack" service instead.</deprecated>
-    </service>
     <service id="service_container" synthetic="true">
       <autowiring-type>Symfony\Component\DependencyInjection\ContainerInterface</autowiring-type>
     </service>
@@ -767,7 +486,7 @@
     <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
     <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
       <argument type="service" id="kernel"/>
-      <argument>/Users/tomzilla/dev/badminton/app/Resources</argument>
+      <argument>/var/www/badminton/app/Resources</argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
       <argument>ThisTokenIsNotSoSecretChangeIt</argument>
@@ -777,11 +496,6 @@
         <argument type="service">
           <service class="Symfony\Component\Config\Resource\SelfCheckingResourceChecker" public="false">
             <tag name="config_cache.resource_checker" priority="-990"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Component\Config\Resource\BCResourceInterfaceChecker" public="false">
-            <tag name="config_cache.resource_checker" priority="-1000"/>
           </service>
         </argument>
       </argument>
@@ -887,7 +601,7 @@
         </argument>
       </argument>
       <argument type="collection">
-        <argument key="cache_dir">/Users/tomzilla/dev/badminton/app/cache/dev/translations</argument>
+        <argument key="cache_dir">/var/www/badminton/var/cache/dev/translations</argument>
         <argument key="debug">true</argument>
       </argument>
       <argument type="collection"/>
@@ -1104,9 +818,6 @@
     <service id="session.save_listener" class="Symfony\Component\HttpKernel\EventListener\SaveSessionListener">
       <tag name="kernel.event_subscriber"/>
     </service>
-    <service id="security.secure_random" class="Symfony\Component\Security\Core\Util\SecureRandom">
-      <deprecated>The "%service_id%" service is deprecated since Symfony 2.8 and will be removed in 3.0. Use the random_bytes() function instead.</deprecated>
-    </service>
     <service id="form.resolved_type_factory" class="Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy">
       <argument type="service">
         <service class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
@@ -1119,69 +830,37 @@
           <service class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
             <argument type="service" id="service_container"/>
             <argument type="collection">
-              <argument key="form">form.type.form</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType">form.type.form</argument>
-              <argument key="birthday">form.type.birthday</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\BirthdayType">form.type.birthday</argument>
-              <argument key="checkbox">form.type.checkbox</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\CheckboxType">form.type.checkbox</argument>
-              <argument key="choice">form.type.choice</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType">form.type.choice</argument>
-              <argument key="collection">form.type.collection</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\CollectionType">form.type.collection</argument>
-              <argument key="country">form.type.country</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\CountryType">form.type.country</argument>
-              <argument key="date">form.type.date</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\DateType">form.type.date</argument>
-              <argument key="datetime">form.type.datetime</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\DateTimeType">form.type.datetime</argument>
-              <argument key="email">form.type.email</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\EmailType">form.type.email</argument>
-              <argument key="file">form.type.file</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\FileType">form.type.file</argument>
-              <argument key="hidden">form.type.hidden</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\HiddenType">form.type.hidden</argument>
-              <argument key="integer">form.type.integer</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\IntegerType">form.type.integer</argument>
-              <argument key="language">form.type.language</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\LanguageType">form.type.language</argument>
-              <argument key="locale">form.type.locale</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\LocaleType">form.type.locale</argument>
-              <argument key="money">form.type.money</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\MoneyType">form.type.money</argument>
-              <argument key="number">form.type.number</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\NumberType">form.type.number</argument>
-              <argument key="password">form.type.password</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\PasswordType">form.type.password</argument>
-              <argument key="percent">form.type.percent</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\PercentType">form.type.percent</argument>
-              <argument key="radio">form.type.radio</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\RadioType">form.type.radio</argument>
-              <argument key="range">form.type.range</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\RangeType">form.type.range</argument>
-              <argument key="repeated">form.type.repeated</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\RepeatedType">form.type.repeated</argument>
-              <argument key="search">form.type.search</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\SearchType">form.type.search</argument>
-              <argument key="textarea">form.type.textarea</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\TextareaType">form.type.textarea</argument>
-              <argument key="text">form.type.text</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\TextType">form.type.text</argument>
-              <argument key="time">form.type.time</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\TimeType">form.type.time</argument>
-              <argument key="timezone">form.type.timezone</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\TimezoneType">form.type.timezone</argument>
-              <argument key="url">form.type.url</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\UrlType">form.type.url</argument>
-              <argument key="button">form.type.button</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\ButtonType">form.type.button</argument>
-              <argument key="submit">form.type.submit</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\SubmitType">form.type.submit</argument>
-              <argument key="reset">form.type.reset</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\ResetType">form.type.reset</argument>
-              <argument key="currency">form.type.currency</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\CurrencyType">form.type.currency</argument>
-              <argument key="entity">form.type.entity</argument>
               <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType">form.type.entity</argument>
             </argument>
             <argument type="collection">
@@ -1216,17 +895,17 @@
       <argument type="service" id="validator"/>
     </service>
     <service id="form.type.form" class="Symfony\Component\Form\Extension\Core\Type\FormType">
-      <tag name="form.type" alias="form"/>
+      <tag name="form.type"/>
       <argument type="service" id="property_accessor"/>
     </service>
     <service id="form.type.birthday" class="Symfony\Component\Form\Extension\Core\Type\BirthdayType">
-      <tag name="form.type" alias="birthday"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.checkbox" class="Symfony\Component\Form\Extension\Core\Type\CheckboxType">
-      <tag name="form.type" alias="checkbox"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.choice" class="Symfony\Component\Form\Extension\Core\Type\ChoiceType">
-      <tag name="form.type" alias="choice"/>
+      <tag name="form.type"/>
       <argument type="service">
         <service class="Symfony\Component\Form\ChoiceList\Factory\CachingFactoryDecorator" public="false">
           <argument type="service">
@@ -1241,85 +920,85 @@
       </argument>
     </service>
     <service id="form.type.collection" class="Symfony\Component\Form\Extension\Core\Type\CollectionType">
-      <tag name="form.type" alias="collection"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.country" class="Symfony\Component\Form\Extension\Core\Type\CountryType">
-      <tag name="form.type" alias="country"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.date" class="Symfony\Component\Form\Extension\Core\Type\DateType">
-      <tag name="form.type" alias="date"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.datetime" class="Symfony\Component\Form\Extension\Core\Type\DateTimeType">
-      <tag name="form.type" alias="datetime"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.email" class="Symfony\Component\Form\Extension\Core\Type\EmailType">
-      <tag name="form.type" alias="email"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.file" class="Symfony\Component\Form\Extension\Core\Type\FileType">
-      <tag name="form.type" alias="file"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.hidden" class="Symfony\Component\Form\Extension\Core\Type\HiddenType">
-      <tag name="form.type" alias="hidden"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.integer" class="Symfony\Component\Form\Extension\Core\Type\IntegerType">
-      <tag name="form.type" alias="integer"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.language" class="Symfony\Component\Form\Extension\Core\Type\LanguageType">
-      <tag name="form.type" alias="language"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.locale" class="Symfony\Component\Form\Extension\Core\Type\LocaleType">
-      <tag name="form.type" alias="locale"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.money" class="Symfony\Component\Form\Extension\Core\Type\MoneyType">
-      <tag name="form.type" alias="money"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.number" class="Symfony\Component\Form\Extension\Core\Type\NumberType">
-      <tag name="form.type" alias="number"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.password" class="Symfony\Component\Form\Extension\Core\Type\PasswordType">
-      <tag name="form.type" alias="password"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.percent" class="Symfony\Component\Form\Extension\Core\Type\PercentType">
-      <tag name="form.type" alias="percent"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.radio" class="Symfony\Component\Form\Extension\Core\Type\RadioType">
-      <tag name="form.type" alias="radio"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.range" class="Symfony\Component\Form\Extension\Core\Type\RangeType">
-      <tag name="form.type" alias="range"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.repeated" class="Symfony\Component\Form\Extension\Core\Type\RepeatedType">
-      <tag name="form.type" alias="repeated"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.search" class="Symfony\Component\Form\Extension\Core\Type\SearchType">
-      <tag name="form.type" alias="search"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.textarea" class="Symfony\Component\Form\Extension\Core\Type\TextareaType">
-      <tag name="form.type" alias="textarea"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.text" class="Symfony\Component\Form\Extension\Core\Type\TextType">
-      <tag name="form.type" alias="text"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.time" class="Symfony\Component\Form\Extension\Core\Type\TimeType">
-      <tag name="form.type" alias="time"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.timezone" class="Symfony\Component\Form\Extension\Core\Type\TimezoneType">
-      <tag name="form.type" alias="timezone"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.url" class="Symfony\Component\Form\Extension\Core\Type\UrlType">
-      <tag name="form.type" alias="url"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.button" class="Symfony\Component\Form\Extension\Core\Type\ButtonType">
-      <tag name="form.type" alias="button"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.submit" class="Symfony\Component\Form\Extension\Core\Type\SubmitType">
-      <tag name="form.type" alias="submit"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.reset" class="Symfony\Component\Form\Extension\Core\Type\ResetType">
-      <tag name="form.type" alias="reset"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type.currency" class="Symfony\Component\Form\Extension\Core\Type\CurrencyType">
-      <tag name="form.type" alias="currency"/>
+      <tag name="form.type"/>
     </service>
     <service id="form.type_extension.form.http_foundation" class="Symfony\Component\Form\Extension\HttpFoundation\Type\FormTypeHttpFoundationExtension">
       <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
@@ -1342,10 +1021,6 @@
     </service>
     <service id="form.type_extension.submit.validator" class="Symfony\Component\Form\Extension\Validator\Type\SubmitTypeValidatorExtension">
       <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\SubmitType" extended-type="Symfony\Component\Form\Extension\Core\Type\SubmitType"/>
-    </service>
-    <service id="form.csrf_provider" class="Symfony\Component\Form\Extension\Csrf\CsrfProvider\CsrfTokenManagerAdapter">
-      <argument type="service" id="security.csrf.token_manager"/>
-      <deprecated>The "%service_id%" service is deprecated since Symfony 2.4 and will be removed in 3.0. Use the "security.csrf.token_manager" service instead.</deprecated>
     </service>
     <service id="form.type_extension.csrf" class="Symfony\Component\Form\Extension\Csrf\Type\FormTypeCsrfExtension">
       <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
@@ -1386,16 +1061,7 @@
     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
-      <argument>/Users/tomzilla/dev/badminton/app/cache/dev</argument>
-    </service>
-    <service id="templating.helper.assets" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper">
-      <tag name="templating.helper" alias="assets"/>
-      <argument type="service" id="assets.packages"/>
-      <argument type="collection"/>
-    </service>
-    <service id="templating.helper.router" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\RouterHelper">
-      <tag name="templating.helper" alias="router"/>
-      <argument type="service" id="router"/>
+      <argument>/var/www/badminton/var/cache/dev</argument>
     </service>
     <service id="validator" class="Symfony\Component\Validator\Validator\ValidatorInterface">
       <factory service="validator.builder" method="getValidator"/>
@@ -1425,12 +1091,12 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>/Users/tomzilla/dev/badminton/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</argument>
+          <argument>/var/www/badminton/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="addYamlMappings">
         <argument type="collection">
-          <argument>/Users/tomzilla/dev/badminton/src/AppBundle/Resources/config/validation.yml</argument>
+          <argument>/var/www/badminton/src/AppBundle/Resources/config/validation.yml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1448,7 +1114,6 @@
     </service>
     <service id="validator.expression" class="Symfony\Component\Validator\Constraints\ExpressionValidator">
       <tag name="validator.constraint_validator" alias="validator.expression"/>
-      <argument type="service" id="property_accessor"/>
     </service>
     <service id="validator.email" class="Symfony\Component\Validator\Constraints\EmailValidator">
       <tag name="validator.constraint_validator" alias="Symfony\Component\Validator\Constraints\EmailValidator"/>
@@ -1463,10 +1128,7 @@
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service">
         <service class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-          <argument>file:/Users/tomzilla/dev/badminton/app/cache/dev/profiler</argument>
-          <argument></argument>
-          <argument></argument>
-          <argument>86400</argument>
+          <argument>file:/var/www/badminton/var/cache/dev/profiler</argument>
         </service>
       </argument>
       <argument type="service" id="monolog.logger.profiler" on-invalid="null"/>
@@ -1533,6 +1195,7 @@
             <argument type="service" id="security.token_storage" on-invalid="ignore"/>
             <argument type="service" id="security.role_hierarchy"/>
             <argument type="service" id="security.logout_url_generator"/>
+            <argument type="service" id="debug.security.access.decision_manager"/>
           </service>
         </argument>
       </call>
@@ -1649,15 +1312,6 @@
           </call>
           <call method="addLoader">
             <argument type="service">
-              <service class="Symfony\Bundle\AsseticBundle\Routing\AsseticLoader" public="false">
-                <tag name="routing.loader"/>
-                <argument type="service" id="assetic.asset_manager"/>
-                <argument type="collection"/>
-              </service>
-            </argument>
-          </call>
-          <call method="addLoader">
-            <argument type="service">
               <service class="Symfony\Component\Routing\Loader\AnnotationDirectoryLoader" public="false">
                 <tag name="routing.loader"/>
                 <argument type="service" id="file_locator"/>
@@ -1716,7 +1370,7 @@
       <tag name="monolog.logger" channel="php"/>
       <argument>null</argument>
       <argument type="service" id="monolog.logger.php" on-invalid="null"/>
-      <argument>-4182</argument>
+      <argument>28586</argument>
       <argument>null</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -1736,14 +1390,6 @@
         <argument type="collection">
           <argument>data_collector.router</argument>
           <argument>onKernelController</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListenerService">
-        <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument>assetic.request_listener</argument>
-          <argument>onKernelRequest</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -1855,15 +1501,10 @@
       </argument>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id="security.context" class="Symfony\Component\Security\Core\SecurityContext">
-      <argument type="service" id="security.token_storage"/>
-      <argument type="service" id="security.authorization_checker"/>
-      <deprecated>The "%service_id%" service is deprecated since Symfony 2.6 and will be removed in 3.0.</deprecated>
-    </service>
     <service id="security.authorization_checker" class="Symfony\Component\Security\Core\Authorization\AuthorizationChecker">
       <argument type="service" id="security.token_storage"/>
       <argument type="service" id="security.authentication.manager"/>
-      <argument type="service" id="security.access.decision_manager"/>
+      <argument type="service" id="debug.security.access.decision_manager"/>
       <argument>false</argument>
     </service>
     <service id="security.token_storage" class="Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage"/>
@@ -1880,7 +1521,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56dcb404498af8.68121175</argument>
+            <argument>56e2f7a415e6d8.92196866</argument>
           </service>
         </argument>
       </argument>
@@ -1895,37 +1536,6 @@
     </service>
     <service id="security.authentication_utils" class="Symfony\Component\Security\Http\Authentication\AuthenticationUtils">
       <argument type="service" id="request_stack"/>
-    </service>
-    <service id="security.access.decision_manager" class="Symfony\Component\Security\Core\Authorization\AccessDecisionManager" public="false">
-      <argument type="collection"/>
-      <argument>affirmative</argument>
-      <argument>false</argument>
-      <argument>true</argument>
-      <call method="setVoters">
-        <argument type="collection">
-          <argument type="service">
-            <service class="Symfony\Component\Security\Core\Authorization\Voter\RoleVoter" public="false">
-              <tag name="security.voter" priority="245"/>
-            </service>
-          </argument>
-          <argument type="service">
-            <service class="Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter" public="false">
-              <tag name="security.voter" priority="245"/>
-              <argument type="service">
-                <service class="Symfony\Component\Security\Core\Authorization\ExpressionLanguage" public="false"/>
-              </argument>
-              <argument type="service" id="security.authentication.trust_resolver"/>
-              <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
-            </service>
-          </argument>
-          <argument type="service">
-            <service class="Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter" public="false">
-              <tag name="security.voter" priority="250"/>
-              <argument type="service" id="security.authentication.trust_resolver"/>
-            </service>
-          </argument>
-        </argument>
-      </call>
     </service>
     <service id="security.role_hierarchy" class="Symfony\Component\Security\Core\Role\RoleHierarchy" public="false">
       <argument type="collection"/>
@@ -2184,7 +1794,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>56dcb404498af8.68121175</argument>
+            <argument>56e2f7a415e6d8.92196866</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2193,7 +1803,7 @@
           <service class="Symfony\Component\Security\Http\Firewall\AccessListener" public="false">
             <tag name="monolog.logger" channel="security"/>
             <argument type="service" id="security.token_storage"/>
-            <argument type="service" id="security.access.decision_manager"/>
+            <argument type="service" id="debug.security.access.decision_manager"/>
             <argument type="service">
               <service class="Symfony\Component\Security\Http\AccessMap" public="false">
                 <call method="add">
@@ -2277,18 +1887,78 @@
         </service>
       </argument>
     </service>
+    <service id="debug.security.access.decision_manager" class="Symfony\Component\Security\Core\Authorization\DebugAccessDecisionManager" public="false">
+      <argument type="service">
+        <service class="Symfony\Component\Security\Core\Authorization\AccessDecisionManager" public="false">
+          <argument type="collection"/>
+          <argument>affirmative</argument>
+          <argument>false</argument>
+          <argument>true</argument>
+          <call method="setVoters">
+            <argument type="collection">
+              <argument type="service">
+                <service class="Symfony\Component\Security\Core\Authorization\Voter\RoleVoter" public="false">
+                  <tag name="security.voter" priority="245"/>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter" public="false">
+                  <tag name="security.voter" priority="245"/>
+                  <argument type="service">
+                    <service class="Symfony\Component\Security\Core\Authorization\ExpressionLanguage" public="false"/>
+                  </argument>
+                  <argument type="service" id="security.authentication.trust_resolver"/>
+                  <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter" public="false">
+                  <tag name="security.voter" priority="250"/>
+                  <argument type="service" id="security.authentication.trust_resolver"/>
+                </service>
+              </argument>
+            </argument>
+          </call>
+        </service>
+      </argument>
+      <call method="setVoters">
+        <argument type="collection">
+          <argument type="service">
+            <service class="Symfony\Component\Security\Core\Authorization\Voter\RoleVoter" public="false">
+              <tag name="security.voter" priority="245"/>
+            </service>
+          </argument>
+          <argument type="service">
+            <service class="Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter" public="false">
+              <tag name="security.voter" priority="245"/>
+              <argument type="service">
+                <service class="Symfony\Component\Security\Core\Authorization\ExpressionLanguage" public="false"/>
+              </argument>
+              <argument type="service" id="security.authentication.trust_resolver"/>
+              <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
+            </service>
+          </argument>
+          <argument type="service">
+            <service class="Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter" public="false">
+              <tag name="security.voter" priority="250"/>
+              <argument type="service" id="security.authentication.trust_resolver"/>
+            </service>
+          </argument>
+        </argument>
+      </call>
+    </service>
     <service id="twig" class="Twig_Environment">
       <argument type="service" id="twig.loader"/>
       <argument type="collection">
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
-        <argument key="exception_controller">twig.controller.exception:showAction</argument>
         <argument key="form_themes" type="collection">
           <argument>form_div_layout.html.twig</argument>
           <argument>bootstrap_3_layout.html.twig</argument>
         </argument>
+        <argument key="exception_controller">twig.controller.exception:showAction</argument>
         <argument key="autoescape">filename</argument>
-        <argument key="cache">/Users/tomzilla/dev/badminton/app/cache/dev/twig</argument>
+        <argument key="cache">/var/www/badminton/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
@@ -2340,21 +2010,6 @@
           <service class="Symfony\Bridge\Twig\Extension\AssetExtension" public="false">
             <tag name="twig.extension"/>
             <argument type="service" id="assets.packages"/>
-            <argument type="service">
-              <service class="Symfony\Bridge\Twig\Extension\HttpFoundationExtension" public="false">
-                <tag name="twig.extension"/>
-                <argument type="service" id="request_stack"/>
-                <argument type="service" id="router.request_context" on-invalid="ignore"/>
-              </service>
-            </argument>
-          </service>
-        </argument>
-      </call>
-      <call method="addExtension">
-        <argument type="service">
-          <service class="Symfony\Bundle\TwigBundle\Extension\ActionsExtension" public="false">
-            <tag name="twig.extension"/>
-            <argument type="service" id="fragment.handler"/>
           </service>
         </argument>
       </call>
@@ -2363,7 +2018,7 @@
           <service class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
             <tag name="twig.extension"/>
             <argument>null</argument>
-            <argument>/Users/tomzilla/dev/badminton/app</argument>
+            <argument>/var/www/badminton/app</argument>
             <argument>UTF-8</argument>
           </service>
         </argument>
@@ -2445,24 +2100,6 @@
       </call>
       <call method="addExtension">
         <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Twig\AsseticExtension" public="false">
-            <tag name="twig.extension"/>
-            <tag name="assetic.templating.twig"/>
-            <argument type="service" id="assetic.asset_factory"/>
-            <argument type="service" id="templating.name_parser"/>
-            <argument>true</argument>
-            <argument type="collection"/>
-            <argument type="collection"/>
-            <argument type="service">
-              <service class="Symfony\Bundle\AsseticBundle\DefaultValueSupplier" public="false">
-                <argument type="service" id="service_container"/>
-              </service>
-            </argument>
-          </service>
-        </argument>
-      </call>
-      <call method="addExtension">
-        <argument type="service">
           <service class="Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension" public="false">
             <tag name="twig.extension"/>
           </service>
@@ -2498,9 +2135,6 @@
             </call>
             <call method="setRequestStack">
               <argument type="service" id="request_stack" on-invalid="ignore"/>
-            </call>
-            <call method="setContainer">
-              <argument type="service" id="service_container"/>
             </call>
           </service>
         </argument>
@@ -2540,7 +2174,7 @@
       <argument>twig.controller.exception:showAction</argument>
     </service>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
-      <argument>/Users/tomzilla/dev/badminton/app/logs/dev.log</argument>
+      <argument>/var/www/badminton/var/logs/dev.log</argument>
       <argument>100</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -2579,110 +2213,6 @@
     <service id="swiftmailer.mailer.default.plugin.messagelogger" class="Swift_Plugins_MessageLogger">
       <tag name="swiftmailer.default.plugin"/>
     </service>
-    <service id="assetic.filter_manager" class="Symfony\Bundle\AsseticBundle\FilterManager">
-      <argument type="service" id="service_container"/>
-      <argument type="collection">
-        <argument key="cssrewrite">assetic.filter.cssrewrite</argument>
-        <argument key="less">assetic.filter.less</argument>
-      </argument>
-    </service>
-    <service id="assetic.asset_manager" class="Assetic\Factory\LazyAssetManager">
-      <argument type="service" id="assetic.asset_factory"/>
-      <argument type="collection">
-        <argument key="twig" type="service">
-          <service class="Assetic\Factory\Loader\CachedFormulaLoader" public="false">
-            <tag name="assetic.formula_loader" alias="twig"/>
-            <tag name="assetic.templating.twig"/>
-            <argument type="service">
-              <service class="Assetic\Extension\Twig\TwigFormulaLoader" public="false">
-                <tag name="assetic.templating.twig"/>
-                <tag name="monolog.logger" channel="assetic"/>
-                <argument type="service" id="twig"/>
-                <argument type="service" id="monolog.logger.assetic" on-invalid="ignore"/>
-              </service>
-            </argument>
-            <argument type="service">
-              <service class="Assetic\Cache\ConfigCache" public="false">
-                <argument>/Users/tomzilla/dev/badminton/app/cache/dev/assetic/config</argument>
-              </service>
-            </argument>
-            <argument>true</argument>
-          </service>
-        </argument>
-      </argument>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="service" id="templating.loader"/>
-            <argument></argument>
-            <argument>/Users/tomzilla/dev/badminton/app/Resources/views</argument>
-            <argument>/\.[^.]+\.twig$/</argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-    </service>
-    <service id="assetic.asset_factory" class="Symfony\Bundle\AsseticBundle\Factory\AssetFactory" public="false">
-      <argument type="service" id="kernel"/>
-      <argument type="service" id="service_container"/>
-      <argument type="service">
-        <service class="Symfony\Component\DependencyInjection\ParameterBag\ParameterBag" public="false">
-          <factory service="service_container" method="getParameterBag"/>
-        </service>
-      </argument>
-      <argument>/Users/tomzilla/dev/badminton/app/../web</argument>
-      <argument>true</argument>
-      <call method="addWorker">
-        <argument type="service">
-          <service class="Assetic\Factory\Worker\EnsureFilterWorker" public="false">
-            <tag name="assetic.factory_worker"/>
-            <argument>/\.less$/</argument>
-            <argument type="service" id="assetic.filter.less"/>
-          </service>
-        </argument>
-      </call>
-      <call method="addWorker">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker" public="false">
-            <tag name="assetic.factory_worker"/>
-          </service>
-        </argument>
-      </call>
-    </service>
-    <service id="assetic.filter.cssrewrite" class="Assetic\Filter\CssRewriteFilter">
-      <tag name="assetic.filter" alias="cssrewrite"/>
-    </service>
-    <service id="assetic.filter.less" class="Assetic\Filter\LessFilter">
-      <tag name="assetic.filter" alias="less"/>
-      <argument>/usr/local/bin/node</argument>
-      <argument type="collection">
-        <argument>/usr/local/lib/node_modules</argument>
-      </argument>
-      <call method="setTimeout">
-        <argument>null</argument>
-      </call>
-      <call method="setCompress">
-        <argument>null</argument>
-      </call>
-      <call method="setLoadPaths">
-        <argument type="collection"/>
-      </call>
-    </service>
-    <service id="assetic.controller" class="Symfony\Bundle\AsseticBundle\Controller\AsseticController">
-      <argument type="service" id="assetic.asset_manager"/>
-      <argument type="service">
-        <service class="Assetic\Cache\FilesystemCache" public="false">
-          <argument>/Users/tomzilla/dev/badminton/app/cache/dev/assetic/assets</argument>
-        </service>
-      </argument>
-      <argument>false</argument>
-      <argument type="service" id="profiler" on-invalid="null"/>
-    </service>
-    <service id="assetic.request_listener" class="Symfony\Bundle\AsseticBundle\EventListener\RequestListener">
-      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
-    </service>
     <service id="doctrine.dbal.connection_factory" class="Doctrine\Bundle\DoctrineBundle\ConnectionFactory">
       <argument type="collection"/>
     </service>
@@ -2701,11 +2231,11 @@
     <service id="doctrine.dbal.default_connection" class="Doctrine\DBAL\Connection">
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
-        <argument key="host">127.0.0.1</argument>
-        <argument key="port">null</argument>
         <argument key="dbname">badminton</argument>
-        <argument key="user">root</argument>
-        <argument key="password">root</argument>
+        <argument key="host">localhost</argument>
+        <argument key="port">null</argument>
+        <argument key="user">smash_db</argument>
+        <argument key="password">nolens0#Gesetze</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="defaultTableOptions" type="collection"/>
@@ -2764,17 +2294,17 @@
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_7be83a46e7a0fa6b16b00b5a89584c5ed8c0355c2e36f27d1900eedc3e47082d</argument>
+        <argument>sf2orm_default_0facade1b250e30432cede23f1068eafac82857ea104ca4a8490958af20475ce</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_result_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_7be83a46e7a0fa6b16b00b5a89584c5ed8c0355c2e36f27d1900eedc3e47082d</argument>
+        <argument>sf2orm_default_0facade1b250e30432cede23f1068eafac82857ea104ca4a8490958af20475ce</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_query_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_7be83a46e7a0fa6b16b00b5a89584c5ed8c0355c2e36f27d1900eedc3e47082d</argument>
+        <argument>sf2orm_default_0facade1b250e30432cede23f1068eafac82857ea104ca4a8490958af20475ce</argument>
       </call>
     </service>
     <service id="doctrine.orm.default_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
@@ -2810,7 +2340,7 @@
                   <argument type="service">
                     <service class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
                       <argument type="collection">
-                        <argument key="/Users/tomzilla/dev/badminton/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
+                        <argument key="/var/www/badminton/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
                       </argument>
                       <call method="setGlobalBasename">
                         <argument>mapping</argument>
@@ -2823,7 +2353,7 @@
             </argument>
           </call>
           <call method="setProxyDir">
-            <argument>/Users/tomzilla/dev/badminton/app/cache/dev/doctrine/orm/Proxies</argument>
+            <argument>/var/www/badminton/var/cache/dev/doctrine/orm/Proxies</argument>
           </call>
           <call method="setProxyNamespace">
             <argument>Proxies</argument>
@@ -2907,14 +2437,13 @@
     <service id="fos_js_routing.extractor" class="FOS\JsRoutingBundle\Extractor\ExposedRoutesExtractor">
       <argument type="service" id="router"/>
       <argument type="collection"/>
-      <argument>/Users/tomzilla/dev/badminton/app/cache/dev</argument>
+      <argument>/var/www/badminton/var/cache/dev</argument>
       <argument type="collection">
         <argument key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</argument>
         <argument key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</argument>
         <argument key="TwigBundle">Symfony\Bundle\TwigBundle\TwigBundle</argument>
         <argument key="MonologBundle">Symfony\Bundle\MonologBundle\MonologBundle</argument>
         <argument key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</argument>
-        <argument key="AsseticBundle">Symfony\Bundle\AsseticBundle\AsseticBundle</argument>
         <argument key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</argument>
         <argument key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</argument>
         <argument key="FOSJsRoutingBundle">FOS\JsRoutingBundle\FOSJsRoutingBundle</argument>
@@ -2945,6 +2474,12 @@
           <service class="Symfony\Component\Serializer\Encoder\JsonEncoder" public="false"/>
         </argument>
       </argument>
+    </service>
+    <service id="app.round_results" class="AppBundle\Services\RoundResults">
+      <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
+    <service id="app.round_ranking" class="AppBundle\Services\RoundRanking">
+      <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="app.match_scheduler" class="AppBundle\Services\MatchScheduling\MatchScheduler">
       <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
@@ -3065,25 +2600,6 @@
       <argument type="service" id="router" on-invalid="ignore"/>
       <argument>^/(app(_[\w]+)?\.php/)?_wdt</argument>
     </service>
-    <service id="sensio_distribution.webconfigurator" class="Sensio\Bundle\DistributionBundle\Configurator\Configurator">
-      <argument>/Users/tomzilla/dev/badminton/app</argument>
-      <call method="addStep">
-        <argument type="service">
-          <service class="Sensio\Bundle\DistributionBundle\Configurator\Step\DoctrineStep" public="false">
-            <tag name="webconfigurator.step" priority="10"/>
-          </service>
-        </argument>
-        <argument>10</argument>
-      </call>
-      <call method="addStep">
-        <argument type="service">
-          <service class="Sensio\Bundle\DistributionBundle\Configurator\Step\SecretStep" public="false">
-            <tag name="webconfigurator.step"/>
-          </service>
-        </argument>
-        <argument>0</argument>
-      </call>
-    </service>
     <service id="sensio_distribution.security_checker" class="SensioLabs\Security\SecurityChecker"/>
     <service id="sensio_distribution.security_checker.command" class="SensioLabs\Security\Command\SecurityCheckerCommand">
       <tag name="console.command"/>
@@ -3185,18 +2701,6 @@
         <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
-    <service id="monolog.logger.assetic" class="Symfony\Bridge\Monolog\Logger">
-      <argument>assetic</argument>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.console"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
-    </service>
     <service id="monolog.logger.doctrine" class="Symfony\Bridge\Monolog\Logger">
       <argument>doctrine</argument>
       <call method="pushHandler">
@@ -3214,7 +2718,7 @@
       <argument>true</argument>
     </service>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
-      <argument>/Users/tomzilla/dev/badminton/app/cache/dev/sessions</argument>
+      <argument>/var/www/badminton/var/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
@@ -3229,9 +2733,9 @@
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>/Users/tomzilla/dev/badminton/app/cache/dev/assetic/routing.yml</argument>
+      <argument>/var/www/badminton/app/config/routing_dev.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">/Users/tomzilla/dev/badminton/app/cache/dev</argument>
+        <argument key="cache_dir">/var/www/badminton/var/cache/dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -3242,7 +2746,6 @@
         <argument key="matcher_dumper_class">Symfony\Component\Routing\Matcher\Dumper\PhpMatcherDumper</argument>
         <argument key="matcher_cache_class">appDevUrlMatcher</argument>
         <argument key="strict_requirements">true</argument>
-        <argument key="resource_type">yaml</argument>
       </argument>
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.router" on-invalid="ignore"/>
@@ -3252,19 +2755,22 @@
     </service>
     <service id="annotation_reader" class="Doctrine\Common\Annotations\CachedReader">
       <argument type="service">
-        <service class="Doctrine\Common\Annotations\AnnotationReader" public="false"/>
+        <service class="Doctrine\Common\Annotations\AnnotationReader" public="false">
+          <autowiring-type>Doctrine\Common\Annotations\Reader</autowiring-type>
+        </service>
       </argument>
       <argument type="service">
         <service class="Doctrine\Common\Cache\FilesystemCache" public="false">
-          <argument>/Users/tomzilla/dev/badminton/app/cache/dev/annotations</argument>
+          <argument>/var/www/badminton/var/cache/dev/annotations</argument>
         </service>
       </argument>
       <argument>true</argument>
+      <autowiring-type>Doctrine\Common\Annotations\Reader</autowiring-type>
     </service>
     <service id="security.encoder_factory" class="Symfony\Component\Security\Core\Encoder\EncoderFactory">
       <argument type="collection">
         <argument key="Symfony\Component\Security\Core\User\User" type="collection">
-          <argument key="class">%security.encoder.plain.class%</argument>
+          <argument key="class">Symfony\Component\Security\Core\Encoder\PlaintextPasswordEncoder</argument>
           <argument key="arguments" type="collection">
             <argument>false</argument>
           </argument>
@@ -3280,43 +2786,39 @@
       <argument type="service" id="templating.locator"/>
       <argument type="service" id="templating.name_parser"/>
       <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
+        <argument>/var/www/badminton/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
+        <argument>/var/www/badminton/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
+        <argument>/var/www/badminton/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
+        <argument>/var/www/badminton/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>/var/www/badminton/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/src/AppBundle/Resources/views</argument>
+        <argument>/var/www/badminton/src/AppBundle/Resources/views</argument>
         <argument>App</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
+        <argument>/var/www/badminton/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
+        <argument>/var/www/badminton/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views</argument>
-        <argument>SensioDistribution</argument>
-      </call>
-      <call method="addPath">
-        <argument>/Users/tomzilla/dev/badminton/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
+        <argument>/var/www/badminton/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
       </call>
     </service>
     <service id="logger" class="Symfony\Bridge\Monolog\Logger">
@@ -3404,7 +2906,6 @@
     <service id="doctrine.orm.default_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.default_metadata_cache"/>
     <service id="doctrine.orm.default_result_cache" alias="doctrine_cache.providers.doctrine.orm.default_result_cache"/>
     <service id="doctrine.orm.default_query_cache" alias="doctrine_cache.providers.doctrine.orm.default_query_cache"/>
-    <service id="sensio.distribution.webconfigurator" alias="sensio_distribution.webconfigurator"/>
     <service id="console.command.sensiolabs_security_command_securitycheckercommand" alias="sensio_distribution.security_checker.command"/>
   </services>
 </container>

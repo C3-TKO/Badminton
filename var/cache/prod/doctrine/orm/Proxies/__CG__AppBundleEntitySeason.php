@@ -36,7 +36,7 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'rounds');
+            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'rounds'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'rounds');
+        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Season' . "\0" . 'rounds'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
     public function setName($name)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$name]);
 
         return parent::setName($name);
     }
@@ -205,7 +205,7 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
     public function getName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
         return parent::getName();
     }
@@ -216,7 +216,7 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
     public function addRound(\AppBundle\Entity\Round $rounds)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addRound', array($rounds));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addRound', [$rounds]);
 
         return parent::addRound($rounds);
     }
@@ -227,7 +227,7 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
     public function removeRound(\AppBundle\Entity\Round $rounds)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeRound', array($rounds));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeRound', [$rounds]);
 
         return parent::removeRound($rounds);
     }
@@ -238,7 +238,7 @@ class Season extends \AppBundle\Entity\Season implements \Doctrine\ORM\Proxy\Pro
     public function getRounds()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRounds', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRounds', []);
 
         return parent::getRounds();
     }

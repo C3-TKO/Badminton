@@ -36,7 +36,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'teams_player_a', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'teams_player_b');
+            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'teams_player_a', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'teams_player_b'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'teams_player_a', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'teams_player_b');
+        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'teams_player_a', '' . "\0" . 'AppBundle\\Entity\\Player' . "\0" . 'teams_player_b'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
     public function setName($name)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$name]);
 
         return parent::setName($name);
     }
@@ -205,7 +205,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
     public function getName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
         return parent::getName();
     }
@@ -216,7 +216,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
     public function addTeamsPlayerA(\AppBundle\Entity\Team $teamsPlayerA)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTeamsPlayerA', array($teamsPlayerA));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTeamsPlayerA', [$teamsPlayerA]);
 
         return parent::addTeamsPlayerA($teamsPlayerA);
     }
@@ -227,7 +227,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
     public function removeTeamsPlayerA(\AppBundle\Entity\Team $teamsPlayerA)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTeamsPlayerA', array($teamsPlayerA));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTeamsPlayerA', [$teamsPlayerA]);
 
         return parent::removeTeamsPlayerA($teamsPlayerA);
     }
@@ -238,7 +238,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
     public function getTeamsPlayerA()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamsPlayerA', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamsPlayerA', []);
 
         return parent::getTeamsPlayerA();
     }
@@ -249,7 +249,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
     public function addTeamsPlayerB(\AppBundle\Entity\Team $teamsPlayerB)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTeamsPlayerB', array($teamsPlayerB));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTeamsPlayerB', [$teamsPlayerB]);
 
         return parent::addTeamsPlayerB($teamsPlayerB);
     }
@@ -260,7 +260,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
     public function removeTeamsPlayerB(\AppBundle\Entity\Team $teamsPlayerB)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTeamsPlayerB', array($teamsPlayerB));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTeamsPlayerB', [$teamsPlayerB]);
 
         return parent::removeTeamsPlayerB($teamsPlayerB);
     }
@@ -271,7 +271,7 @@ class Player extends \AppBundle\Entity\Player implements \Doctrine\ORM\Proxy\Pro
     public function getTeamsPlayerB()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamsPlayerB', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamsPlayerB', []);
 
         return parent::getTeamsPlayerB();
     }

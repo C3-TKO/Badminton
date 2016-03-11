@@ -5,7 +5,7 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\RequestContext;
 
 /**
- * appProdUrlMatcher
+ * appProdUrlMatcher.
  *
  * This class has been auto-generated
  * by the Symfony Routing Component.
@@ -26,6 +26,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $pathinfo = rawurldecode($pathinfo);
         $context = $this->context;
         $request = $this->request;
+
+        // fos_js_routing_js
+        if (0 === strpos($pathinfo, '/js/routing') && preg_match('#^/js/routing(?:\\.(?P<_format>js|json))?$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_js_routing_js')), array (  '_controller' => 'fos_js_routing.controller:indexAction',  '_format' => 'js',));
+        }
 
         if (0 === strpos($pathinfo, '/crud')) {
             if (0 === strpos($pathinfo, '/crud/season')) {
@@ -50,14 +55,8 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_season__create
                 if ($pathinfo === '/crud/season/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_crud_season__create;
-                    }
-
                     return array (  '_controller' => 'AppBundle\\Controller\\SeasonController::createAction',  '_route' => 'crud_season__create',);
                 }
-                not_crud_season__create:
 
                 // crud_season__edit
                 if (preg_match('#^/crud/season/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
@@ -66,25 +65,13 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_season__update
                 if (preg_match('#^/crud/season/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_crud_season__update;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_season__update')), array (  '_controller' => 'AppBundle\\Controller\\SeasonController::updateAction',));
                 }
-                not_crud_season__update:
 
                 // crud_season__delete
                 if (preg_match('#^/crud/season/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_crud_season__delete;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_season__delete')), array (  '_controller' => 'AppBundle\\Controller\\SeasonController::deleteAction',));
                 }
-                not_crud_season__delete:
 
             }
 
@@ -110,14 +97,8 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_player__create
                 if ($pathinfo === '/crud/player/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_crud_player__create;
-                    }
-
                     return array (  '_controller' => 'AppBundle\\Controller\\PlayerController::createAction',  '_route' => 'crud_player__create',);
                 }
-                not_crud_player__create:
 
                 // crud_player__edit
                 if (preg_match('#^/crud/player/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
@@ -126,25 +107,13 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_player__update
                 if (preg_match('#^/crud/player/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_crud_player__update;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_player__update')), array (  '_controller' => 'AppBundle\\Controller\\PlayerController::updateAction',));
                 }
-                not_crud_player__update:
 
                 // crud_player__delete
                 if (preg_match('#^/crud/player/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_crud_player__delete;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_player__delete')), array (  '_controller' => 'AppBundle\\Controller\\PlayerController::deleteAction',));
                 }
-                not_crud_player__delete:
 
             }
 
@@ -170,14 +139,8 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_team__create
                 if ($pathinfo === '/crud/team/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_crud_team__create;
-                    }
-
                     return array (  '_controller' => 'AppBundle\\Controller\\TeamController::createAction',  '_route' => 'crud_team__create',);
                 }
-                not_crud_team__create:
 
                 // crud_team__edit
                 if (preg_match('#^/crud/team/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
@@ -186,25 +149,13 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_team__update
                 if (preg_match('#^/crud/team/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_crud_team__update;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_team__update')), array (  '_controller' => 'AppBundle\\Controller\\TeamController::updateAction',));
                 }
-                not_crud_team__update:
 
                 // crud_team__delete
                 if (preg_match('#^/crud/team/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_crud_team__delete;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_team__delete')), array (  '_controller' => 'AppBundle\\Controller\\TeamController::deleteAction',));
                 }
-                not_crud_team__delete:
 
             }
 
@@ -230,14 +181,8 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_round__create
                 if ($pathinfo === '/crud/round/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_crud_round__create;
-                    }
-
                     return array (  '_controller' => 'AppBundle\\Controller\\RoundController::createAction',  '_route' => 'crud_round__create',);
                 }
-                not_crud_round__create:
 
                 // crud_round__edit
                 if (preg_match('#^/crud/round/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
@@ -246,25 +191,13 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_round__update
                 if (preg_match('#^/crud/round/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_crud_round__update;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_round__update')), array (  '_controller' => 'AppBundle\\Controller\\RoundController::updateAction',));
                 }
-                not_crud_round__update:
 
                 // crud_round__delete
                 if (preg_match('#^/crud/round/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_crud_round__delete;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_round__delete')), array (  '_controller' => 'AppBundle\\Controller\\RoundController::deleteAction',));
                 }
-                not_crud_round__delete:
 
             }
 
@@ -290,14 +223,8 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_game__create
                 if ($pathinfo === '/crud/game/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_crud_game__create;
-                    }
-
                     return array (  '_controller' => 'AppBundle\\Controller\\GameController::createAction',  '_route' => 'crud_game__create',);
                 }
-                not_crud_game__create:
 
                 // crud_game__edit
                 if (preg_match('#^/crud/game/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
@@ -306,25 +233,13 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // crud_game__update
                 if (preg_match('#^/crud/game/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_crud_game__update;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_game__update')), array (  '_controller' => 'AppBundle\\Controller\\GameController::updateAction',));
                 }
-                not_crud_game__update:
 
                 // crud_game__delete
                 if (preg_match('#^/crud/game/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_crud_game__delete;
-                    }
-
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'crud_game__delete')), array (  '_controller' => 'AppBundle\\Controller\\GameController::deleteAction',));
                 }
-                not_crud_game__delete:
 
             }
 
@@ -341,20 +256,41 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         if (0 === strpos($pathinfo, '/r')) {
             // results
-            if ($pathinfo === '/results') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::resultsAction',  '_route' => 'results',);
+            if (0 === strpos($pathinfo, '/results') && preg_match('#^/results(?:/(?P<idRound>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'results')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::resultsAction',  'idRound' => NULL,));
             }
 
             // ranking
-            if ($pathinfo === '/ranking') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::rankingAction',  '_route' => 'ranking',);
+            if (0 === strpos($pathinfo, '/ranking') && preg_match('#^/ranking(?:/(?P<idRound>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ranking')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::rankingAction',  'idRound' => NULL,));
             }
 
         }
 
-        // scheduling
-        if ($pathinfo === '/scheduling') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::schedulingAction',  '_route' => 'scheduling',);
+        if (0 === strpos($pathinfo, '/schedul')) {
+            // scheduling
+            if ($pathinfo === '/scheduling') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ScheduleController::schedulingAction',  '_route' => 'scheduling',);
+            }
+
+            if (0 === strpos($pathinfo, '/schedule')) {
+                // schedule_flush
+                if ($pathinfo === '/schedule/flush') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\ScheduleController::flushAction',  '_route' => 'schedule_flush',);
+                }
+
+                // schedule_load
+                if ($pathinfo === '/schedule/load') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\ScheduleController::loadAction',  '_route' => 'schedule_load',);
+                }
+
+                // schedule_update
+                if (0 === strpos($pathinfo, '/schedule/update') && preg_match('#^/schedule/update/(?P<index>[^/]++)/team_a_score/(?P<teamAScore>[^/]++)/team_b_score/(?P<teamBScore>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'schedule_update')), array (  '_controller' => 'AppBundle\\Controller\\ScheduleController::updateAction',));
+                }
+
+            }
+
         }
 
         // add_game
@@ -381,6 +317,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array('_route' => 'logout');
             }
 
+        }
+
+        // api_add_game
+        if (0 === strpos($pathinfo, '/api/add_game') && preg_match('#^/api/add_game/(?P<teamA>[^/]++)/(?P<teamB>[^/]++)/(?P<teamAScore>[^/]++)/(?P<teamBScore>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_add_game')), array (  '_controller' => 'AppBundle\\Controller\\APIController::addGameAction',));
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

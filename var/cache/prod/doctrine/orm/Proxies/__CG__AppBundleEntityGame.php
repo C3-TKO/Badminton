@@ -36,7 +36,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idRound', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idTeamA', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idTeamB', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'teamAScore', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'teamBScore', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'round', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'team_a', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'team_b');
+            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idRound', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idTeamA', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idTeamB', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'teamAScore', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'teamBScore', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'round', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'team_a', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'team_b'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idRound', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idTeamA', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idTeamB', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'teamAScore', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'teamBScore', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'round', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'team_a', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'team_b');
+        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idRound', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idTeamA', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'idTeamB', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'teamAScore', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'teamBScore', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'round', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'team_a', '' . "\0" . 'AppBundle\\Entity\\Game' . "\0" . 'team_b'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function setIdRound($idRound)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdRound', array($idRound));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdRound', [$idRound]);
 
         return parent::setIdRound($idRound);
     }
@@ -205,7 +205,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function getIdRound()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdRound', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdRound', []);
 
         return parent::getIdRound();
     }
@@ -216,7 +216,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function setIdTeamA($idTeamA)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdTeamA', array($idTeamA));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdTeamA', [$idTeamA]);
 
         return parent::setIdTeamA($idTeamA);
     }
@@ -227,7 +227,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function getIdTeamA()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdTeamA', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdTeamA', []);
 
         return parent::getIdTeamA();
     }
@@ -238,7 +238,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function setIdTeamB($idTeamB)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdTeamB', array($idTeamB));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdTeamB', [$idTeamB]);
 
         return parent::setIdTeamB($idTeamB);
     }
@@ -249,7 +249,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function getIdTeamB()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdTeamB', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdTeamB', []);
 
         return parent::getIdTeamB();
     }
@@ -260,7 +260,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function setTeamAScore($teamAScore)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeamAScore', array($teamAScore));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeamAScore', [$teamAScore]);
 
         return parent::setTeamAScore($teamAScore);
     }
@@ -271,7 +271,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function getTeamAScore()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamAScore', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamAScore', []);
 
         return parent::getTeamAScore();
     }
@@ -282,7 +282,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function setTeamBScore($teamBScore)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeamBScore', array($teamBScore));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeamBScore', [$teamBScore]);
 
         return parent::setTeamBScore($teamBScore);
     }
@@ -293,7 +293,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function getTeamBScore()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamBScore', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamBScore', []);
 
         return parent::getTeamBScore();
     }
@@ -304,7 +304,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function setRound(\AppBundle\Entity\Round $round = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRound', array($round));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRound', [$round]);
 
         return parent::setRound($round);
     }
@@ -315,7 +315,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function getRound()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRound', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRound', []);
 
         return parent::getRound();
     }
@@ -326,7 +326,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function setTeamA(\AppBundle\Entity\Team $teamA = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeamA', array($teamA));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeamA', [$teamA]);
 
         return parent::setTeamA($teamA);
     }
@@ -337,7 +337,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function getTeamA()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamA', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamA', []);
 
         return parent::getTeamA();
     }
@@ -348,7 +348,7 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function setTeamB(\AppBundle\Entity\Team $teamB = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeamB', array($teamB));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeamB', [$teamB]);
 
         return parent::setTeamB($teamB);
     }
@@ -359,9 +359,20 @@ class Game extends \AppBundle\Entity\Game implements \Doctrine\ORM\Proxy\Proxy
     public function getTeamB()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamB', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeamB', []);
 
         return parent::getTeamB();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
+
+        return parent::__toString();
     }
 
 }
