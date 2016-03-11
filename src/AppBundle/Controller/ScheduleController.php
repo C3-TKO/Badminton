@@ -38,7 +38,7 @@ class ScheduleController extends Controller
             return $this->render('AppBundle:Schedule:scheduling_result.html.twig');
         }
 
-        $form = $this->createForm(new CreateScheduleForm());
+        $form = $this->createForm(CreateScheduleForm::class);
 
         $form->handleRequest($request);
 
