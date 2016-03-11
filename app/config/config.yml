@@ -40,7 +40,7 @@ twig:
 doctrine:
     dbal:
         driver:   %database_driver%
-        dbname:   %badminton%
+        dbname:   %database_name%
         host:     %database_host%
         port:     %database_port%
         user:     %database_user%
