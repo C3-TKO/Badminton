@@ -13,7 +13,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
@@ -36,15 +35,18 @@ class AppKernel extends Kernel
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
 
-    /*
+    public function getRootDir()
+    {
+        return __DIR__;
+    }
+
     public function getCacheDir()
     {
-        return '/tmp/symfony/cache/'. $this->environment;
+        return dirname(__DIR__).'/var/cache/'.$this->environment;
     }
 
     public function getLogDir()
     {
-        return '/tmp/symfony/log/'. $this->environment;
+        return dirname(__DIR__).'/var/logs';
     }
-    */
 }
