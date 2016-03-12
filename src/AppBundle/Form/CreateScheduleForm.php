@@ -6,6 +6,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Count;
@@ -21,20 +22,20 @@ class CreateScheduleForm extends AbstractType {
             ->add(
                 'player_list', EntityType::class, array(
                     'class'         => 'AppBundle:Player',
-                    'property'      => 'name',
                     'label'         => 'Spielerauswahl',
                     'multiple'      => true,
                     'expanded'      => true,
                     'constraints'   => array(
                         new Count(array('min' => self::MIN_NUMBER_PLAYERS, 'minMessage' => 'Bitte wähle mindestens {{ limit }} Spieler aus'))
-                    )
+                    ),
+                    'choice_label' => function ($player) {
+                        return $player->getName();
+                    }
                 )
             )
-            ->add(
-                'create_schedule', 'submit', array(
-                    'label' => 'Spielplan erstellen',
-                    'attr'  => array(
-                        'class' => 'btn btn-primary pull-right')
+            ->add('save', ButtonType::class, array(
+                'label' => 'Spielplan erstellen',
+                'attr'  => array('class' => 'btn btn-primary pull-right')
                 )
             );
     }
