@@ -33,6 +33,10 @@ class ScheduleController extends Controller
 
         // Trying to resume a schedule from session
         if ($session->get('schedule') !== null) {
+
+            /**
+             * @TODO: Check out why the return value of the schedule_normalizer is not used - Maybe because js is loading the schedule from an ajax action
+             */
             $schedule = $this->get('app.schedule_normalizer')->normalize($session->get('schedule'));
 
             return $this->render('AppBundle:Schedule:scheduling_result.html.twig');
