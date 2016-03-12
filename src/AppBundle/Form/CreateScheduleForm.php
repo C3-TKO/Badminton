@@ -6,7 +6,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Count;
@@ -33,7 +33,7 @@ class CreateScheduleForm extends AbstractType {
                     }
                 )
             )
-            ->add('save', ButtonType::class, array(
+            ->add('save', SubmitType::class, array(
                 'label' => 'Spielplan erstellen',
                 'attr'  => array('class' => 'btn btn-primary pull-right')
                 )
