@@ -78,44 +78,4 @@ class DefaultController extends Controller
 
         return $this->render('AppBundle:Default:scheduling_form.html.twig', array('form' => $form->createView()));
     }
-
-
-    public function addGameAction(Request $request)
-    {
-        $form = $this->createForm(new AddGameForm());
-        $game = null;
-
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $em         = $this->getDoctrine()->getManager();
-            $teamRepo   = $em->getRepository('AppBundle:Team');
-            $roundRepo  = $em->getRepository('AppBundle:Round');
-            $teamA      = $teamRepo->findByPlayers($form->get('pata')->getData(), $form->get('pbta')->getData());
-            $teamB      = $teamRepo->findByPlayers($form->get('patb')->getData(), $form->get('pbtb')->getData());
-            $date       = $form->get('date')->getData();
-            $round      = $roundRepo->findOneBy(array('date' => $date));
-
-            if( null === $round ) {
-                $season = $round = $em->find('AppBundle\Entity\Season', $this->container->getParameter('current_season'));
-                $round = new Round();
-                $round->setDate($date);
-                $round->setSeason($season);
-
-                $em->persist($round);
-                $em->flush();
-            }
-
-            $game = new Game();
-            $game->setTeamA($teamA);
-            $game->setTeamB($teamB);
-            $game->setTeamAScore($form->get('score_team_a')->getData());
-            $game->setTeamBScore($form->get('score_team_b')->getData());
-            $game->setRound($round);
-
-            $em->persist($game);
-            $em->flush();
-        }
-
-        return $this->render('AppBundle:Default:add_game.html.twig', array('form' => $form->createView(), 'game' => $game ));
-    }
 }
