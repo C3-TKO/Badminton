@@ -26,7 +26,7 @@ security:
                 target: home
 
     access_control:
-        - { path: /add_game, roles: ROLE_ADMIN }
+        - { path: ^/add_game, roles: ROLE_ADMIN }
         - { path: /scheduling, roles: ROLE_ADMIN }
-        - { path: /api, roles: ROLE_ADMIN }
+        - { path: /ajax/add_game, roles: ROLE_ADMIN }
         - { path: ^/crud, roles: ROLE_ADMIN }

@@ -7,7 +7,7 @@ use AppBundle\Entity\Game;
 use AppBundle\Entity\Round;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class APIController extends Controller
+class AJAXController extends Controller
 {
     public function addGameAction($teamA, $teamB, $teamAScore, $teamBScore)
     {
