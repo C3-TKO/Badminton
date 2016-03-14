@@ -12,6 +12,13 @@
 namespace Tests\AppBundle\Services;
 
 
-class AddGameResultTest {
-
+class AddGameResultTesT extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @test
+     */
+    public function simple()
+    {
+        $this->assertTrue(true);
+    }
 }
