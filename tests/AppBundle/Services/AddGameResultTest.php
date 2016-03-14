@@ -12,10 +12,11 @@
 namespace Tests\AppBundle\Services;
 
 
-class AddGameResultTesT extends \PHPUnit_Framework_TestCase
+class AddGameResultTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
+     * @small
      */
     public function simple()
     {
