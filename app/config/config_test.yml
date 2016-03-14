@@ -14,3 +14,9 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        # add "_test" to the database name as we do not want to mess with other databases:
+        dbname:   %database_name%_test
