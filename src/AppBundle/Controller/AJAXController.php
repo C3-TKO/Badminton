@@ -41,4 +41,17 @@ class AJAXController extends Controller
 
         return $response = new JsonResponse($game->getId());
     }
+
+    /**
+     * Adds a game result to the current sessions gameday
+     *
+     * @param int $idTeamA      The identifier for the first of the both competing teams
+     * @param int $idTeamB      The identifier for the first of the both competing teams
+     * @param int $idWinnerTeam The identifier for the team that won this game
+     * @param int $looserScore  The score of the loosiong team
+     */
+    public function addGameResultAction($idTeamA, $idTeamB, $idWinnerTeam, $looserScore) {
+        // Call some new service
+        // return something to javascript;
+    }
 }
