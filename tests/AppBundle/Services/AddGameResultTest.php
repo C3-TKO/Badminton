@@ -11,7 +11,10 @@
 
 namespace Tests\AppBundle\Services;
 
-
+/**
+ * Class AddGameResultTest
+ * @package Tests\AppBundle\Services
+ */
 class AddGameResultTest extends \PHPUnit_Framework_TestCase
 {
     /**
