@@ -1774,7 +1774,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/bb2727a6804d1c8a0e0cadc7ad9791d2d096c443",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/f29d46f29b91ea5c30699cf6bdb8e65545d1dd26",
                 "reference": "bb2727a6804d1c8a0e0cadc7ad9791d2d096c443",
                 "shasum": ""
             },
