@@ -30,6 +30,34 @@ class AddGameResultTest extends KernelTestCase
      */
     private static $addGameResultService;
 
+    /**
+     * Used within the addGameResultsDataProvider
+     *
+     * @var array
+     */
+    private static $testResults = [
+        [
+            'winnerScore' => 21,
+            'looserScore' => 0
+
+        ],
+        [
+            'winnerScore' => 21,
+            'looserScore' => 19
+
+        ],
+        [
+            'winnerScore' => 22,
+            'looserScore' => 20
+
+        ],
+        [
+            'winnerScore' => 30,
+            'looserScore' => 29
+
+        ]
+    ];
+
 
     /**
      * - Boots the symfony kernel
@@ -112,32 +140,21 @@ class AddGameResultTest extends KernelTestCase
 
         $expectedGame = clone $game;
 
-        return [
-            [
-                'game'              => $game,
+        $return = [];
+
+        foreach(self::$testResults as $index => $testResult) {
+            ${'game'.$index}         = clone $game;
+            ${'expectedGame'.$index} = clone $expectedGame;
+
+            $return[] = [
+                'game'              => ${'game'.$index},
                 'winningTeam'       => $teamA,
-                'scoreLoosingTeam'  => 0,
-                'expectation'       => $expectedGame->setTeamAScore(21)->setTeamBScore(0)
-            ],
-            [
-                'game'              => $game,
-                'winningTeam'       => $teamA,
-                'scoreLoosingTeam'  => 19,
-                'expectation'       => $expectedGame->setTeamAScore(21)->setTeamBScore(0)
-            ],
-            [
-                'game'              => $game,
-                'winningTeam'       => $teamA,
-                'scoreLoosingTeam'  => 20,
-                'expectation'       => $expectedGame->setTeamAScore(22)->setTeamBScore(0)
-            ],
-            [
-                'game'              => $game,
-                'winningTeam'       => $teamA,
-                'scoreLoosingTeam'  => 29,
-                'expectation'       => $expectedGame->setTeamAScore(30)->setTeamBScore(0)
-            ]
-        ];
+                'scoreLoosingTeam'  => $testResult['looserScore'],
+                'expectation'       => ${'expectedGame'.$index}->setTeamAScore($testResult['winnerScore'])->setTeamBScore($testResult['looserScore'])
+            ];
+        }
+
+        return $return;
     }
 
     public function addGameExpectExceptionDataProvider()
