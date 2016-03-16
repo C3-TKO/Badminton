@@ -20,3 +20,5 @@ services:
         class: AppBundle\Services\MatchScheduling\ScheduleNormalizer
         arguments:
             em: '@doctrine.orm.entity_manager'
+    app.add_game_result:
+            class: AppBundle\Services\AddGameResult
