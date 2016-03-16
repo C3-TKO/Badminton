@@ -10,6 +10,7 @@
 
 
 namespace Tests\AppBundle\Services;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use AppBundle\Entity\Game;
 use AppBundle\Entity\Team;
 
@@ -17,24 +18,55 @@ use AppBundle\Entity\Team;
  * Class AddGameResultTest
  * @package Tests\AppBundle\Services
  */
-class AddGameResultTest extends \PHPUnit_Framework_TestCase
+class AddGameResultTest extends KernelTestCase
 {
+    /**
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     */
+    private static $container;
+
+    /**
+     * @var \AppBundle\Services\AddGameResult
+     */
+    private static $addGameResultService;
+
+
+    /**
+     * - Boots the symfony kernel
+     * - Gets the DI container
+     * - Gets the test subject service
+     */
+    public static function setUpBeforeClass()
+    {
+        // Start the symfony kernel
+        self::bootKernel();
+
+        // Get the DI container
+        self::$container = self::$kernel->getContainer();
+
+        // Now we can instantiate our service (if you want a fresh one for
+        // each test method, do this in setUp() instead
+        self::$addGameResultService = self::$container->get('app.add_game_result');
+    }
+
+
     /**
      * Tests the main method of the add game service
      *
      * @test
      * @small
+     * @covers determineWinnerTeamScore
      *
-     * @dataProvider addGameDataProvider
+     * @dataProvider addGameResultDataProvider
      *
      * @param \AppBundle\Entity\Game $game
      * @param \AppBundle\Entity\Team $winningTeam
      * @param $scoreLoosingTeam
      * @param \AppBundle\Entity\Game $expectation
      */
-    public function addGame(Game $game, Team $winningTeam, $scoreLoosingTeam, Game $expectation)
+    public function addGameResult(Game $game, Team $winningTeam, $scoreLoosingTeam, Game $expectation)
     {
-        $this->assertEquals($expectation, $game);
+        $this->assertEquals($expectation, self::$addGameResultService->addGameResult($game, $winningTeam, $scoreLoosingTeam));
     }
 
     /**
@@ -44,13 +76,26 @@ class AddGameResultTest extends \PHPUnit_Framework_TestCase
      */
     public function addGameExpectException($scoreLoosingTeam)
     {
-        // @TODO: Add the method call for the throwing method
+        $game            = new Game();
+        $teamA           = new Team();
+        $teamB           = new Team();
+        $reflectionClass = new \ReflectionClass('\AppBundle\Entity\Team');
+
+        $reflectionProperty = $reflectionClass->getProperty('id');
+        $reflectionProperty->setAccessible(true);
+        $reflectionProperty->setValue($teamA, 1);
+        $reflectionProperty->setValue($teamB, 2);
+
+        $game->setTeamA($teamA);
+
+
+        self::$addGameResultService->addGameResult($game, $teamA, $scoreLoosingTeam);
     }
 
     /**
      * DataProvider for the addGame test
      */
-    public function addGameDataProvider()
+    public function addGameResultDataProvider()
     {
         $game            = new Game();
         $teamA           = new Team();
