@@ -25,8 +25,8 @@ class AddGameResult
      * Adds a game result
      *
      * @param Game $game
-     * @param Team $winningTeam
-     * @param $scoreLoosingTeam
+     * @param Team $winnerTeam
+     * @param $looserTeamScore
      *
      * @throws \OutOfRangeException
      *
@@ -44,6 +44,21 @@ class AddGameResult
             );
         }
 
+        $winnerTeamScore = $this->determineWinnerTeamScore($looserTeamScore);
+
+        if ($game->getTeamA() === $winnerTeam) {
+            $game->setTeamAScore($winnerTeamScore);
+        }
+        else {
+            $game->setTeamAScore($looserTeamScore);
+        }
+
+        if ($game->getTeamB() === $winnerTeam) {
+            $game->setTeamBScore($winnerTeamScore);
+        }
+        else {
+            $game->setTeamBScore($looserTeamScore);
+        }
 
         return $game;
     }
