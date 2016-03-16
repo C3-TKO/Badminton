@@ -25,7 +25,7 @@ class AddGameResultTest extends \PHPUnit_Framework_TestCase
      * @test
      * @small
      *
-     * @dataProvider addGameProvider
+     * @dataProvider addGameDataProvider
      *
      * @param \AppBundle\Entity\Game $game
      * @param \AppBundle\Entity\Team $winningTeam
@@ -38,9 +38,19 @@ class AddGameResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @test
+     * @expectedException \OutOfRangeException
+     * @dataProvider addGameExpectExceptionDataProvider
+     */
+    public function addGameExpectException($scoreLoosingTeam)
+    {
+        // @TODO: Add the method call for the throwing method
+    }
+
+    /**
      * DataProvider for the addGame test
      */
-    public function addGameProvider()
+    public function addGameDataProvider()
     {
         $game            = new Game();
         $teamA           = new Team();
@@ -81,6 +91,18 @@ class AddGameResultTest extends \PHPUnit_Framework_TestCase
                 'winningTeam'       => $teamA,
                 'scoreLoosingTeam'  => 29,
                 'expectation'       => $expectedGame->setTeamAScore(30)->setTeamBScore(0)
+            ]
+        ];
+    }
+
+    public function addGameExpectExceptionDataProvider()
+    {
+        return[
+            [
+                'scoreLoosingTeam' => -1
+            ],
+            [
+                'scoreLoosingTeam' => 30
             ]
         ];
     }
