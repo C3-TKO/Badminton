@@ -50,3 +50,5 @@ Vagrantfile
 /composer.phar
 /.idea
 
+build.properties
+
