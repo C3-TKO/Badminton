@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Badminton" default="list-commands" basedir="." description="a demo project">
+    <property name="tmp-mysql-dump-file-name" value="badminton.sql.tmp" />
+
+    <target name="list-commands">
+        <echo msg="get-remote-db-dump"/>
+        <echo msg="import-local-db"/>
+    </target>
+    <target name="get-remote-db-dump">
+        <property file="./build.properties" />
+        <ssh username="${strato.username}" password="${strato.password}" host="${strato.ssh.host}"
+             command="mysqldump ${strato.database.name} --add-drop-table -h ${strato.database.host} -u ${strato.database.user} -p${strato.database.password} > badminton.sql" />
+        <exec command="sshpass -p '${strato.password}' scp ${strato.username}@${strato.ssh.host}:badminton.sql ${tmp-mysql-dump-file-name}" dir="." />
+    </target>
+    <target name="import-local-db">
+        <property file="app/config/parameters.yml" />
+        <exec command="mysql -u ${parameters.database_user} -h ${parameters.database_host} -p${parameters.database_password} ${parameters.database_name} &lt; ./${tmp-mysql-dump-file-name}"/>
+        <exec command="rm ${tmp-mysql-dump-file-name}"/>
+    </target>
+</project>
