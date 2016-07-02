@@ -51,4 +51,5 @@ Vagrantfile
 /.idea
 
 build.properties
+badminton.sql.tmp
 
