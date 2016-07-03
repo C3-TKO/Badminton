@@ -50,3 +50,6 @@ Vagrantfile
 /composer.phar
 /.idea
 
+build.properties
+badminton.sql.tmp
+
