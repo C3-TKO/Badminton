@@ -65,8 +65,8 @@ logout:
     path:     /logout
 
 
-api_add_game:
-    path:       /api/add_game/{teamA}/{teamB}/{teamAScore}/{teamBScore}
-    defaults:   { _controller: AppBundle:API:addGame }
+ajax_add_game:
+    path:       /ajax/add_game/{teamA}/{teamB}/{teamAScore}/{teamBScore}
+    defaults:   { _controller: AppBundle:AJAX:addGame }
     options:
         expose: true

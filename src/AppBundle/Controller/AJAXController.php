@@ -7,7 +7,7 @@ use AppBundle\Entity\Game;
 use AppBundle\Entity\Round;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class APIController extends Controller
+class AJAXController extends Controller
 {
     public function addGameAction($teamA, $teamB, $teamAScore, $teamBScore)
     {
@@ -40,5 +40,18 @@ class APIController extends Controller
         $em->flush();
 
         return $response = new JsonResponse($game->getId());
+    }
+
+    /**
+     * Adds a game result to the current sessions gameday
+     *
+     * @param int $idTeamA      The identifier for the first of the both competing teams
+     * @param int $idTeamB      The identifier for the first of the both competing teams
+     * @param int $idWinnerTeam The identifier for the team that won this game
+     * @param int $looserScore  The score of the loosiong team
+     */
+    public function addGameResultAction($idTeamA, $idTeamB, $idWinnerTeam, $looserScore) {
+        // Call some new service
+        // return something to javascript;
     }
 }
